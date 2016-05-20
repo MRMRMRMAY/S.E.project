@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 import C.Main;
 import C.M.userLogin;
 
-public class PersonLoginController {
+public class PersonLoginController{
 
 
     @FXML
@@ -39,8 +39,12 @@ public class PersonLoginController {
         // Initialize the person table with the two columns.
     	//ID.setText(user.getId());
     //    password.setText(user.getPassword());
+    	showLoginDetail(null);
        
        
+    }
+    private void showLoginDetail(userLogin person){
+    	
     }
     private void handleOk() {
         if (isInputValid()) {

@@ -22,7 +22,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 public class Main extends Application {
-
+	
     private Stage primaryStage;
     private BorderPane rootLayout;
     private ObservableList<Person> personData = FXCollections.observableArrayList();
@@ -87,12 +87,10 @@ public class Main extends Application {
     }
     public void showLogin(){
     	try {
-      // Load person overview.
     	  FXMLLoader loader = new FXMLLoader();
           loader.setLocation(Main.class.getResource("V/login.fxml"));
           AnchorPane login = (AnchorPane) loader.load();
-          
-      // Set person overview into the center of root layout.
+         
           rootLayout.setCenter(login);
           PersonLoginController controller = loader.getController();
           //controller.setMainApp(this);

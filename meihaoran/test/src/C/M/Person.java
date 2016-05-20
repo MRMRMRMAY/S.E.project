@@ -15,7 +15,7 @@ package C.M;
 	 *
 	 * @author Marco Jakob
 	 */
-	public class Person {
+public class Person {
 
 	    private final StringProperty firstName;
 	    private final StringProperty lastName;
