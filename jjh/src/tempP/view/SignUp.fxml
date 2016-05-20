@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <!-- TODO Add Nodes -->
+  <children>
+    <Pane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <Label layoutX="163.0" layoutY="111.0" text="ID" />
+        <Label layoutX="125.0" layoutY="143.0" text="Password" />
+        <Label layoutX="151.0" layoutY="180.0" text="이름" />
+        <Label layoutX="139.0" layoutY="217.0" text="연락처" />
+        <TextField layoutX="200.0" layoutY="108.0" prefWidth="200.0" text="영어 소문자와 숫자 4~8자리" />
+        <PasswordField layoutX="200.0" layoutY="140.0" prefWidth="200.0" />
+        <TextField layoutX="200.0" layoutY="177.0" prefWidth="200.0" />
+        <TextField layoutX="200.0" layoutY="214.0" prefWidth="200.0" text="010XXXXXXXX 형식" />
+        <CheckBox layoutX="195.0" layoutY="265.0" mnemonicParsing="false" text="연락처 제공에 동의합니다." />
+        <Button layoutX="232.0" layoutY="312.0" mnemonicParsing="false" text="회원가입" />
+        <Button layoutX="312.0" layoutY="313.0" mnemonicParsing="false" text="취소" />
+      </children>
+    </Pane>
+  </children>
+</AnchorPane>
