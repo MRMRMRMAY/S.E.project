@@ -20,6 +20,8 @@ public class PersonLoginController{
     private PasswordField password;
     @FXML
     private TextField ID;
+    @FXML
+    private Button ok;
     private userLogin user;
     private boolean okClicked = false;
     // Reference to the main application.
@@ -48,7 +50,6 @@ public class PersonLoginController{
     private void showLoginDetail(userLogin person){
     	
     }
-    @FXML
     private void handleOk() {
         if (isInputValid()) {
             user.setId(ID.getText());
@@ -74,7 +75,7 @@ public class PersonLoginController{
     private boolean isInputValid() {
         String errorMessage = "";
 
- /*       	if (ID.getText() == null || ID.getText().length() == 0) {
+        if (ID.getText() == null || ID.getText().length() == 0) {
             errorMessage += "No valid id!\n";
             System.out.println("fl");
         }
@@ -83,7 +84,7 @@ public class PersonLoginController{
         }
         if (errorMessage.length() == 0) {
             return true;
-        } else {*/
+        } else {
             // Show the error message.
             Dialogs.create()
                 .title("Invalid Fields")
@@ -91,7 +92,7 @@ public class PersonLoginController{
                 .message(errorMessage)
                 .showError();
             return false;
- //       }
+        }
     }
 
     public boolean isOkClicked() {

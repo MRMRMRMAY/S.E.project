@@ -6,10 +6,10 @@
 
 
 package C;
-
 import java.io.IOException;
-
+import java.util.Scanner;
 import C.M.Person;
+import C.M.userLogin;
 import C.V.PersonLoginController;
 import C.V.PersonOverviewController;
 import javafx.application.Application;
@@ -26,7 +26,7 @@ public class Main extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
     private ObservableList<Person> personData = FXCollections.observableArrayList();
-
+    private Scanner input = new Scanner(System.in);
     /**
      * Constructor
      */
@@ -60,7 +60,7 @@ public class Main extends Application {
 
         initRootLayout();
 
-        showPersonOverview();
+      //  showPersonOverview();
         
         showLogin();
         
@@ -88,10 +88,13 @@ public class Main extends Application {
     public void showLogin(){
     	try {
     	  FXMLLoader loader = new FXMLLoader();
+    	  
           loader.setLocation(Main.class.getResource("V/login.fxml"));
           AnchorPane login = (AnchorPane) loader.load();
-         
           rootLayout.setCenter(login);
+        
+          System.out.println("login");
+          //rootLayout.setCenter(person);
           PersonLoginController controller = loader.getController();
           //controller.setMainApp(this);
        } catch (IOException e) {
@@ -142,6 +145,36 @@ public class Main extends Application {
     public Stage getPrimaryStage() {
         return primaryStage;
     }
+    public boolean showPersonEditDialog(userLogin person) {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("V/PersonEditDialog.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Edit Person");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Set the person into the controller.
+            PersonLoginController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setPerson(person);
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 
     public static void main(String[] args) {
         launch(args);
