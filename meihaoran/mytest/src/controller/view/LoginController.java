@@ -15,7 +15,9 @@ public class LoginController {
 	private MainApp main;
 	private Stage dialogStage;
 	private boolean okCliked = false;
+	@FXML
 	private TextField id;
+	@FXML
 	private PasswordField password;
 	
 //	private userLogin user = new userLogin();
@@ -39,19 +41,28 @@ public class LoginController {
 	@FXML
 	private void handleOk(){
 		boolean pass = false;
-		userLogin user = new userLogin(id.getText(),password.getText());
+		/*userLogin user = new userLogin(id.getText(),password.getText());
 		ArrayList<userLogin> item = user.getBook();
 		for(int i = 0; i<item.size();i++){
 			userLogin a = item.get(i);
 			if(a.getId().equals(user.getId())&&a.getPassword().equals(user.getPassword()))
 				pass = true;
-		}
-		if(pass==false){
-			main.showDialog("Please correct invalid fields", "error");
-		}
-		else{
+		}*/
+		if(isInputvalib()){
 			okCliked = true;
+			main.showDialog("Welcome", "pass");
+			//id.setOpacity(0);
 			dialogStage.close();
 		}
+		else{
+			main.showDialog("error", "error");
+		}
+	}
+	private boolean isInputvalib(){
+		return "moment".equals(id.getText())&&"123456".equals(password.getText());
+	}
+	public void setMainApp(MainApp mainApp) {
+		// TODO Auto-generated method stub
+		this.main = mainApp;
 	}
 }

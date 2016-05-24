@@ -9,8 +9,8 @@
    <children>
       <Pane layoutX="-123.0" layoutY="-109.0" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TextField layoutX="263.0" layoutY="76.0" />
-            <PasswordField layoutX="263.0" layoutY="150.0" />
+            <TextField fx:id="id" layoutX="263.0" layoutY="76.0" />
+            <PasswordField fx:id="password" layoutX="263.0" layoutY="150.0" />
             <Label layoutX="171.0" layoutY="80.0" prefHeight="15.0" prefWidth="35.0" text="ID :" />
             <Label layoutX="171.0" layoutY="154.0" prefHeight="0.0" prefWidth="47.0" text="PW :" />
             <Button layoutX="263.0" layoutY="241.0" mnemonicParsing="false" onAction="#handleOk" prefHeight="23.0" prefWidth="87.0" text="OK" />

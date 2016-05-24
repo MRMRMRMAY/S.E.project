@@ -17,13 +17,13 @@ import controller.moder.Person;
 public class PersonEditDialogController {
 
     @FXML
-    private TextField firstNameField;
+    private TextField nameField;
     @FXML
-    private TextField lastNameField;
+    private TextField phoneNumberField;
     @FXML
-    private TextField streetField;
+    private TextField statementField;
     @FXML
-    private TextField postalCodeField;
+    private TextField placeField;
 
 
     private Stage dialogStage;
@@ -55,10 +55,10 @@ public class PersonEditDialogController {
     public void setPerson(Person person) {
         this.person = person;
 
-        firstNameField.setText(person.getFirstName());
-        lastNameField.setText(person.getLastName());
-        streetField.setText(person.getStreet());
-        postalCodeField.setText(Integer.toString(person.getPostalCode()));
+        nameField.setText(person.getname());
+        phoneNumberField.setText(person.getphoneNumber());
+        statementField.setText(person.getstatement());
+        placeField.setText(Integer.toString(person.getplace()));
     }
 
     /**
@@ -76,10 +76,10 @@ public class PersonEditDialogController {
     @FXML
     private void handleOk() {
         if (isInputValid()) {
-            person.setFirstName(firstNameField.getText());
-            person.setLastName(lastNameField.getText());
-            person.setStreet(streetField.getText());
-            person.setPostalCode(Integer.parseInt(postalCodeField.getText()));
+            person.setname(nameField.getText());
+            person.setphoneNumber(phoneNumberField.getText());
+            person.setstatement(statementField.getText());
+            person.setplace(Integer.parseInt(placeField.getText()));
 
             okClicked = true;
             dialogStage.close();
@@ -102,22 +102,22 @@ public class PersonEditDialogController {
     private boolean isInputValid() {
         String errorMessage = "";
 
-        if (firstNameField.getText() == null || firstNameField.getText().length() == 0) {
+        if (nameField.getText() == null || nameField.getText().length() == 0) {
             errorMessage += "No valid first name!\n"; 
         }
-        if (lastNameField.getText() == null || lastNameField.getText().length() == 0) {
+        if (phoneNumberField.getText() == null || phoneNumberField.getText().length() == 0) {
             errorMessage += "No valid last name!\n"; 
         }
-        if (streetField.getText() == null || streetField.getText().length() == 0) {
-            errorMessage += "No valid street!\n"; 
+        if (statementField.getText() == null || statementField.getText().length() == 0) {
+            errorMessage += "No valid statement!\n"; 
         }
 
-        if (postalCodeField.getText() == null || postalCodeField.getText().length() == 0) {
+        if (placeField.getText() == null || placeField.getText().length() == 0) {
             errorMessage += "No valid postal code!\n"; 
         } else {
             // try to parse the postal code into an int.
             try {
-                Integer.parseInt(postalCodeField.getText());
+                Integer.parseInt(placeField.getText());
             } catch (NumberFormatException e) {
                 errorMessage += "No valid postal code (must be an integer)!\n"; 
             }

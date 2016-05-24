@@ -13,7 +13,6 @@ public class MainController{
 	private MainApp main;
 	private Stage dialogStage;
 	private boolean okCliked = false;
-
 	public MainController() {
 		
 	}
@@ -37,13 +36,13 @@ public class MainController{
 	private void handleLogin(){
 		
 		boolean okClicked = main.showLoginStage();
-		if (okClicked) {
-	        main.showDialog("welcome", "pass");
+		if (okClicked == true) {
+			main.showDialog("welcome", "pass");
 		}
 	}
 	@FXML
 	private void handleInfo(){
-		
+		main.showPersonOverview();
 	}
 	@FXML
 	private void handleExit(){

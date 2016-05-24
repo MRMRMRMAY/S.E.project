@@ -4,13 +4,17 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Stage;
+
+import java.util.ArrayList;
 
 import org.controlsfx.dialog.Dialogs;
 
 import controller.MainApp;
 import controller.moder.Person;
 
-public class InfomationController {
+
+public class PersonOverviewController {
     @FXML
     private TableView<Person> personTable;
     @FXML
@@ -29,15 +33,24 @@ public class InfomationController {
 
     // Reference to the main application.
     private MainApp mainApp;
-
+    private Stage dialogStage;
+    private ArrayList<Person>information;
     /**
      * The constructor.
      * The constructor is called before the initialize() method.
      */
-    public InfomationController() {
+    public PersonOverviewController() {
     }
 
-    /**
+    public ArrayList<Person> getInformation() {
+		return information;
+	}
+
+	public void setInformation(ArrayList<Person> information) {
+		this.information = information;
+	}
+	
+	/**
      * Initializes the controller class. This method is automatically called
      * after the fxml file has been loaded.
      */
@@ -56,7 +69,9 @@ public class InfomationController {
 		personTable.getSelectionModel().selectedItemProperty().addListener(
 				(observable, oldValue, newValue) -> showPersonDetails(newValue));
     }
-
+    public void setInformation(Person person){
+    	
+    }
     /**
      * Is called by the main application to give a reference back to itself.
      * 
@@ -101,11 +116,11 @@ public class InfomationController {
 			personTable.getItems().remove(selectedIndex);
 		} else {
 			// Nothing selected.
-			Dialogs.create()
-		        .title("No Selection")
-		        .masthead("No Person Selected")
-		        .message("Please select a person in the table.")
-		        .showWarning();
+//			Dialogs.create()
+//		        .title("No Selection")
+//		        .masthead("No Person Selected")
+//		        .message("Please select a person in the table.")
+//		        .showWarning();
 		}
 	}
 	
@@ -121,17 +136,13 @@ public class InfomationController {
 			mainApp.getPersonData().add(tempPerson);
 		}
 	}
-	@FXML
-	private void handleUpDate() {
-		mainApp.upDate();
-	}
 
 	/**
 	 * Called when the user clicks the edit button. Opens a dialog to edit
 	 * details for the selected person.
 	 */
 	@FXML
-	private void handleEditPerson() {
+	private void handleUpdate() {
 		Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
 		if (selectedPerson != null) {
 			boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
@@ -141,8 +152,16 @@ public class InfomationController {
 
 		} else {
 			// Nothing selected.
-			mainApp.showDialog("Please correct invalid fields", "error");
+//			Dialogs.create()
+//				.title("No Selection")
+//				.masthead("No Person Selected")
+//				.message("Please select a person in the table.")
+//				.showWarning();
 		}
-		
+	}
+
+	public void setDialogStage(Stage dialogStage) {
+		// TODO Auto-generated method stub
+		this.dialogStage = dialogStage;
 	}
 }

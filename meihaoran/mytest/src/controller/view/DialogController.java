@@ -10,11 +10,18 @@ public class DialogController{
 	@FXML
 	private Label message;
 	private Stage dialog;
+	public DialogController(){
+		
+	}
+	@FXML
+	public void initiallize(){
+		
+	}
 	public void setStage(Stage dialog){
 		this.dialog = dialog;
 	}
-	public void setMessage(DiaLog diaLog){
-		this.message.setText(diaLog.getMessage());
+	public void setMessage(String message){
+		this.message.setText(message);
 	}
 	public void handOk(){
 		dialog.close();

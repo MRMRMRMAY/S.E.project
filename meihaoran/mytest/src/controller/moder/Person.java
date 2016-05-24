@@ -16,12 +16,10 @@ import javafx.beans.property.StringProperty;
  */
 public class Person {
 
-	private final StringProperty firstName;
-	private final StringProperty lastName;
-	private final StringProperty street;
-	private final IntegerProperty postalCode;
-	private final StringProperty city;
-	private final ObjectProperty<LocalDate> birthday;
+	private final StringProperty name;
+	private final StringProperty phoneNumber;
+	private final StringProperty statement;
+	private final IntegerProperty place;
 
 	/**
 	 * Default constructor.
@@ -33,89 +31,64 @@ public class Person {
 	/**
 	 * Constructor with some initial data.
 	 * 
-	 * @param firstName
-	 * @param lastName
+	 * @param name
+	 * @param phoneNumber
 	 */
-	public Person(String firstName, String lastName) {
-		this.firstName = new SimpleStringProperty(firstName);
-		this.lastName = new SimpleStringProperty(lastName);
+	public Person(String name, String phoneNumber) {
+		this.name = new SimpleStringProperty(name);
+		this.phoneNumber = new SimpleStringProperty(phoneNumber);
 		
 		// Some initial dummy data, just for convenient testing.
-		this.street = new SimpleStringProperty("some street");
-		this.postalCode = new SimpleIntegerProperty(1234);
-		this.city = new SimpleStringProperty("some city");
-		this.birthday = new SimpleObjectProperty<LocalDate>(LocalDate.of(1999, 2, 21));
+		this.statement = new SimpleStringProperty("some statement");
+		this.place = new SimpleIntegerProperty(1234);
 	}
 	
-	public String getFirstName() {
-		return firstName.get();
+	public String getname() {
+		return name.get();
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName.set(firstName);
+	public void setname(String name) {
+		this.name.set(name);
 	}
 	
-	public StringProperty firstNameProperty() {
-		return firstName;
+	public StringProperty nameProperty() {
+		return name;
 	}
 
-	public String getLastName() {
-		return lastName.get();
+	public String getphoneNumber() {
+		return phoneNumber.get();
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName.set(lastName);
+	public void setphoneNumber(String phoneNumber) {
+		this.phoneNumber.set(phoneNumber);
 	}
 	
-	public StringProperty lastNameProperty() {
-		return lastName;
+	public StringProperty phoneNumberProperty() {
+		return phoneNumber;
 	}
 
-	public String getStreet() {
-		return street.get();
+	public String getstatement() {
+		return statement.get();
 	}
 
-	public void setStreet(String street) {
-		this.street.set(street);
+	public void setstatement(String statement) {
+		this.statement.set(statement);
 	}
 	
-	public StringProperty streetProperty() {
-		return street;
+	public StringProperty statementProperty() {
+		return statement;
 	}
 
-	public int getPostalCode() {
-		return postalCode.get();
+	public int getplace() {
+		return place.get();
 	}
 
-	public void setPostalCode(int postalCode) {
-		this.postalCode.set(postalCode);
+	public void setplace(int place) {
+		this.place.set(place);
 	}
 	
-	public IntegerProperty postalCodeProperty() {
-		return postalCode;
-	}
-
-	public String getCity() {
-		return city.get();
-	}
-
-	public void setCity(String city) {
-		this.city.set(city);
+	public IntegerProperty placeProperty() {
+		return place;
 	}
 	
-	public StringProperty cityProperty() {
-		return city;
-	}
-
-	public LocalDate getBirthday() {
-		return birthday.get();
-	}
-
-	public void setBirthday(LocalDate birthday) {
-		this.birthday.set(birthday);
-	}
-	
-	public ObjectProperty<LocalDate> birthdayProperty() {
-		return birthday;
-	}
 }
