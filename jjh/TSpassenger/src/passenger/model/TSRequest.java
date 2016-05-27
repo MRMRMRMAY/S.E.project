@@ -1,13 +1,13 @@
 package passenger.model;
 
-import passenger.model.MapTemp.Destination_Node;
 import passenger.model.MapTemp.Starting_Node;
+import passenger.model.MapTemp.Destination_Node;
 
 public class TSRequest {
 
 	private Starting_Node starting_node;		// 출발지
 	private Destination_Node destination_node;	// 도착지
-	private int waiting_time;					// 대기 시간
+	private Waiting_Time waiting_time;			// 대기 시간
 	private boolean request;					// 요청
 	
 	
@@ -28,10 +28,10 @@ public class TSRequest {
 	}
 
 	// 대기 시간
-	public int getWaiting_time() {
+	public Waiting_Time getWaiting_time() {
 		return waiting_time;
 	}
-	public void setWaiting_time(int waiting_time) {
+	public void setWaiting_time(Waiting_Time waiting_time) {
 		this.waiting_time = waiting_time;
 	}
 
@@ -43,9 +43,13 @@ public class TSRequest {
 		this.request = request;
 	}
 
+	public enum Waiting_Time {
+		오분, 십분, 십오분, 삼십분
+	}
+	
 	
 	//
-	public TSRequest (Starting_Node sn, Destination_Node dn, int wt, boolean r) {
+	public TSRequest (Starting_Node sn, Destination_Node dn, Waiting_Time wt, boolean r) {
 		this.starting_node = sn;
 		this.destination_node = dn;
 		this.waiting_time = wt;

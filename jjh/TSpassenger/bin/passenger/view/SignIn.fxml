@@ -8,11 +8,11 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
   <!-- TODO Add Nodes -->
   <children>
-    <Label layoutX="189.0" layoutY="166.0" text="ID" />
-    <Label layoutX="151.0" layoutY="200.0" text="Password" />
-    <PasswordField layoutX="233.0" layoutY="197.0" prefWidth="200.0" text="" />
-    <TextField layoutX="233.0" layoutY="163.0" prefWidth="200.0" />
-    <Button layoutX="233.0" layoutY="269.0" mnemonicParsing="false" text="Sign in" />
-    <Button layoutX="333.0" layoutY="270.0" mnemonicParsing="false" text="Cancel" />
+    <Label layoutX="168.0" layoutY="137.0" text="ID" />
+    <Label layoutX="130.0" layoutY="171.0" text="Password" />
+    <TextField fx:id="ID_텍스트필드" layoutX="212.0" layoutY="134.0" prefWidth="200.0" />
+    <PasswordField fx:id="Password_패스워드필드" layoutX="212.0" layoutY="168.0" prefWidth="200.0" text="" />
+    <Button fx:id="로그인_버튼" layoutX="212.0" layoutY="240.0" mnemonicParsing="false" text="로그인" />
+    <Button fx:id="취소_버튼" layoutX="312.0" layoutY="241.0" mnemonicParsing="false" text="취소" />
   </children>
 </AnchorPane>
