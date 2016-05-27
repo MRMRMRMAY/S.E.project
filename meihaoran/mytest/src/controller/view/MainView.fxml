@@ -16,8 +16,8 @@
                </font>
             </Label>
             <Button layoutX="265.0" layoutY="135.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="30.0" prefWidth="70.0" text="login" />
-            <Button layoutX="265.0" layoutY="182.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Info" />
-            <Button layoutX="265.0" layoutY="235.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="exit" />
+            <Button layoutX="265.0" layoutY="182.0" mnemonicParsing="false" onAction="#handleInfo" prefHeight="30.0" prefWidth="70.0" text="Info" />
+            <Button layoutX="265.0" layoutY="235.0" mnemonicParsing="false" onAction="#handleMap" prefHeight="30.0" prefWidth="70.0" text="map" />
          </children>
       </Pane>
    </children>

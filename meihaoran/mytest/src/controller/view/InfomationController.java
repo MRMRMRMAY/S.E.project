@@ -79,15 +79,17 @@ public class InfomationController {
     	if (person != null) {
     		// Fill the labels with info from the person object.
     		nameLabel.setText(person.getname());
-    		phoneNumberLabel.setText(person.getphoneNumber());
+    		placeLabel.setText(person.getplace());
     		statementLabel.setText(person.getstatement());
-    		placeLabel.setText(Integer.toString(person.getplace()));
+    		phoneNumberLabel.setText(Integer.toString(person.getphoneNumber()));
+    		
     	} else {
     		// Person is null, remove all the text.
     		nameLabel.setText("");
     		phoneNumberLabel.setText("");
     		statementLabel.setText("");
     		placeLabel.setText("");
+  
     	}
     }
 
@@ -123,7 +125,8 @@ public class InfomationController {
 	}
 	@FXML
 	private void handleUpDate() {
-		mainApp.upDate();
+		mainApp.setPerdata();
+		personTable.setItems(mainApp.getPerdata());
 	}
 
 	/**

@@ -51,6 +51,10 @@ public class MainController{
 	public void setMainApp(MainApp main){
 		this.main = main;
 	}
+	@FXML
+	public void handleMap(){
+		main.showMap();
+	}
 //	public static void main(String[] args) {
 //		launch(args);
 //	}

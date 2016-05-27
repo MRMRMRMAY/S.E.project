@@ -2,7 +2,7 @@ package controller;
 
 import java.io.IOException;
 
-
+import controller.moder.MapStart;
 import controller.moder.Person;
 import controller.view.DialogController;
 import controller.view.InfomationController;
@@ -29,6 +29,18 @@ public class MainApp extends Application {
 		primaryStage.setTitle("Sharing App");
 	//	initRootLay();
 		showMainview();
+	}
+	public MainApp(){
+		personData.add(new Person("Hans", "Muster"));
+        personData.add(new Person("Ruth", "Mueller"));
+        personData.add(new Person("Heinz", "Kurz"));
+        personData.add(new Person("Cornelia", "Meier"));
+        personData.add(new Person("Werner", "Meyer"));
+        personData.add(new Person("Lydia", "Kunz"));
+        personData.add(new Person("Anna", "Best"));
+        personData.add(new Person("Stefan", "Meier"));
+        personData.add(new Person("Martin", "Mueller"));
+
 	}
 	public void initRootLay(){
 		try{
@@ -138,7 +150,7 @@ public class MainApp extends Application {
 			controller.setPerson(person);
 
 			// Show the dialog and wait until the user closes it
-			dialogStage.showAndWait();
+			dialogStage.show();
 
 			return controller.isOkClicked();
 		} catch (IOException e) {
@@ -151,7 +163,7 @@ public class MainApp extends Application {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("view/InformationView.fxml"));
 			AnchorPane Mainview = (AnchorPane)loader.load();
-			upDate();
+//			upDate();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Information");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -180,5 +192,12 @@ public class MainApp extends Application {
     }
 	public static void main(String[] args) {
 		launch(args);
+	}
+	public void setPerdata(){
+		ObservableList<Person> test = null;
+		personData = test;
+	}
+	public void showMap(){
+		MapStart map = new MapStart();
 	}
 }

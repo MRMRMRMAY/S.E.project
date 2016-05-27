@@ -94,9 +94,9 @@ public class PersonOverviewController {
     	if (person != null) {
     		// Fill the labels with info from the person object.
     		nameLabel.setText(person.getname());
-    		phoneNumberLabel.setText(person.getphoneNumber());
+    		placeLabel.setText(person.getplace());
     		statementLabel.setText(person.getstatement());
-    		placeLabel.setText(Integer.toString(person.getplace()));
+    		phoneNumberLabel.setText(Integer.toString(person.getphoneNumber()));
     	} else {
     		// Person is null, remove all the text.
     		nameLabel.setText("");
@@ -143,21 +143,8 @@ public class PersonOverviewController {
 	 */
 	@FXML
 	private void handleUpdate() {
-		Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
-		if (selectedPerson != null) {
-			boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
-			if (okClicked) {
-				showPersonDetails(selectedPerson);
-			}
-
-		} else {
-			// Nothing selected.
-//			Dialogs.create()
-//				.title("No Selection")
-//				.masthead("No Person Selected")
-//				.message("Please select a person in the table.")
-//				.showWarning();
-		}
+		mainApp.setPerdata();
+		personTable.setItems(mainApp.getPerdata());
 	}
 
 	public void setDialogStage(Stage dialogStage) {

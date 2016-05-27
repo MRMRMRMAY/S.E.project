@@ -56,9 +56,9 @@ public class PersonEditDialogController {
         this.person = person;
 
         nameField.setText(person.getname());
-        phoneNumberField.setText(person.getphoneNumber());
+        placeField.setText(person.getplace());
         statementField.setText(person.getstatement());
-        placeField.setText(Integer.toString(person.getplace()));
+        phoneNumberField.setText(Integer.toString(person.getphoneNumber()));
     }
 
     /**
@@ -77,9 +77,9 @@ public class PersonEditDialogController {
     private void handleOk() {
         if (isInputValid()) {
             person.setname(nameField.getText());
-            person.setphoneNumber(phoneNumberField.getText());
+            person.setplace(placeField.getText());
             person.setstatement(statementField.getText());
-            person.setplace(Integer.parseInt(placeField.getText()));
+            person.setphoneNumber(Integer.parseInt(phoneNumberField.getText()));
 
             okClicked = true;
             dialogStage.close();

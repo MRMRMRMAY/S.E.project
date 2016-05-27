@@ -17,9 +17,9 @@ import javafx.beans.property.StringProperty;
 public class Person {
 
 	private final StringProperty name;
-	private final StringProperty phoneNumber;
+	private final IntegerProperty phoneNumber;
 	private final StringProperty statement;
-	private final IntegerProperty place;
+	private final StringProperty place;
 
 	/**
 	 * Default constructor.
@@ -34,13 +34,13 @@ public class Person {
 	 * @param name
 	 * @param phoneNumber
 	 */
-	public Person(String name, String phoneNumber) {
+	public Person(String name, String statement) {
 		this.name = new SimpleStringProperty(name);
-		this.phoneNumber = new SimpleStringProperty(phoneNumber);
+		this.phoneNumber = new SimpleIntegerProperty(123123);
 		
 		// Some initial dummy data, just for convenient testing.
-		this.statement = new SimpleStringProperty("some statement");
-		this.place = new SimpleIntegerProperty(1234);
+		this.statement = new SimpleStringProperty(statement);
+		this.place = new SimpleStringProperty("12134541354");
 	}
 	
 	public String getname() {
@@ -55,15 +55,15 @@ public class Person {
 		return name;
 	}
 
-	public String getphoneNumber() {
+	public int getphoneNumber() {
 		return phoneNumber.get();
 	}
 
-	public void setphoneNumber(String phoneNumber) {
+	public void setphoneNumber(int phoneNumber) {
 		this.phoneNumber.set(phoneNumber);
 	}
 	
-	public StringProperty phoneNumberProperty() {
+	public IntegerProperty phoneNumberProperty() {
 		return phoneNumber;
 	}
 
@@ -79,15 +79,15 @@ public class Person {
 		return statement;
 	}
 
-	public int getplace() {
+	public String getplace() {
 		return place.get();
 	}
 
-	public void setplace(int place) {
+	public void setplace(String place) {
 		this.place.set(place);
 	}
 	
-	public IntegerProperty placeProperty() {
+	public StringProperty placeProperty() {
 		return place;
 	}
 	
