@@ -15,4 +15,7 @@ import java.util.ArrayList;
 */
 public class Map implements Serializable, Cloneable{
 	private ArrayList<Spot> spotList; // spot list
+	private ArrayList<Distance> distanceList; // distance list
+	
+
 }

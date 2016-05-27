@@ -1,6 +1,8 @@
 /*
  * Distance.java
  * it represents distance between spots
+ * ex) spot1's distance info
+ * 		spot1:-1, spot2:100, spot3:10, spot4:50 ..... -1 means no route
  */
 
 package problemdomain.systemdata;

@@ -4,9 +4,10 @@ package physicalarchitecture.client;
 //license found at www.lloseng.com 
 
 
-import physicalarchitecture.client.*;
-import physicalarchitecture.common.*;
-import java.io.*;
+import java.io.IOException;
+
+import physicalarchitecture.common.ChatIF;
+
 
 /**
 * This class overrides some of the methods defined in the abstract
