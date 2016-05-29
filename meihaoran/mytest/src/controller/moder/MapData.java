@@ -25,8 +25,8 @@ public class MapData {
 }
 class Point{
 	private ArrayList<Integer> to = new ArrayList<Integer>();
-	private int x;
 	private int y;
+	private int x;
 	private String place = new String();
 	public Point(ArrayList<Integer> to,int x, int y){
 		this.to.addAll(to);

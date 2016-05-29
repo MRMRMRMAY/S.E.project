@@ -55,6 +55,10 @@ public class MainController{
 	public void handleMap(){
 		main.showMap();
 	}
+	@FXML
+	public void handleTaxi(){
+		main.showTaxiOverview();;
+	}
 //	public static void main(String[] args) {
 //		launch(args);
 //	}

@@ -4,12 +4,15 @@ import java.io.IOException;
 
 import controller.moder.MapStart;
 import controller.moder.Person;
+import controller.moder.Taxi;
 import controller.view.DialogController;
 import controller.view.InfomationController;
 import controller.view.LoginController;
 import controller.view.MainController;
 import controller.view.PersonEditDialogController;
 import controller.view.PersonOverviewController;
+import controller.view.TaxiEditDialogController;
+import controller.view.TaxiInformationController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,6 +26,7 @@ public class MainApp extends Application {
 	private Stage primaryStage;
 	private BorderPane rootLayout;
 	private ObservableList<Person> personData = FXCollections.observableArrayList();
+	private ObservableList<Taxi> taxiData = FXCollections.observableArrayList();
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
@@ -40,6 +44,15 @@ public class MainApp extends Application {
         personData.add(new Person("Anna", "Best"));
         personData.add(new Person("Stefan", "Meier"));
         personData.add(new Person("Martin", "Mueller"));
+		taxiData.add(new Taxi("Hans", "1232"));
+        taxiData.add(new Taxi("Ruth", "123333"));
+        taxiData.add(new Taxi("Heinz", "232"));
+        taxiData.add(new Taxi("Cornelia", "123311"));
+        taxiData.add(new Taxi("Werner", "123322"));
+        taxiData.add(new Taxi("Lydia", "12332"));
+        taxiData.add(new Taxi("Anna", "123213"));
+        taxiData.add(new Taxi("Stefan", "123231"));
+        taxiData.add(new Taxi("Martin", "1232"));
 
 	}
 	public void initRootLay(){
@@ -129,6 +142,7 @@ public class MainApp extends Application {
 	public ObservableList<Person> getPersonData() {
     	return personData;
     }
+	
 	public boolean showPersonEditDialog(Person person) {
 		try {
 			// Load the fxml file and create a new stage for the popup dialog.
@@ -147,7 +161,6 @@ public class MainApp extends Application {
 			// Set the person into the controller.
 			PersonEditDialogController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
-			controller.setPerson(person);
 
 			// Show the dialog and wait until the user closes it
 			dialogStage.show();
@@ -182,6 +195,67 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		}
     }
+    public void showTaxiOverview() {
+        try {
+            // Load person overview.
+			//controller.setDialogStage(dialogStage);
+			
+			
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/TaxiInformation.fxml"));
+            AnchorPane taxiView = (AnchorPane) loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Taxi View");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(taxiView);
+            dialogStage.setScene(scene);
+            // Set person overview into the center of root layout.
+            
+            // Give the controller access to the main app.
+            TaxiInformationController controller = loader.getController();
+            controller.setMainApp(this);
+            dialogStage.show();
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+	public ObservableList<Taxi> getTaxiData() {
+    	return taxiData;
+    }
+    public boolean showTaxiEditDialog(Taxi taxi) {
+		try {
+			// Load the fxml file and create a new stage for the popup dialog.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("view/TaxiEditDialog.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+
+			// Create the dialog Stage.
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Edit Person");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			// Set the person into the controller.
+			TaxiEditDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+			controller.setTaxi(taxi);
+
+			// Show the dialog and wait until the user closes it
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+    
+    
+    
     public ObservableList<Person> getPerdata(){
     	return personData;
     }
