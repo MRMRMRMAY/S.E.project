@@ -12,19 +12,22 @@ import java.util.TimerTask;
 import problemdomain.member.Passenger;
 import problemdomain.systemdata.Spot;
 
-public class Request extends Observable implements Runnable {
+public class Request extends Observable {
 	private Passenger passenger; // requesting passenger
 	private Spot from; // requesting point of departure
 	private Spot to; // requesting destination
 	private LocalDateTime requestedTime; // time when requested
-	private long TTL; // time to live( miniutes )
+	private long TTL; // time to live( sec )
 	private RequestState state; // request state
-	
+
 	private Timer timer; // timer to stop waiting for matching when time expired
 	
+	
+	private MatchingQueueEntry matchingQueue; // queue for matching
+
 	// enum type for request status
 	public enum RequestState {
-		waiting, matched;
+		raw, waiting, matched, expired;
 	}
 
 	// default constructor
@@ -35,8 +38,44 @@ public class Request extends Observable implements Runnable {
 		this.to = to;
 		this.requestedTime = requestedTime;
 		this.TTL = TTL;
-		this.state = RequestState.waiting; // set default waiting
+		this.state = RequestState.raw; // set default raw
 		this.timer = new Timer(true);
+	}
+
+	// @Override
+	// public void run() {
+	// // TODO Auto-generated method stub
+	// while ( TTL >= 0 )
+	// TTL -= 1;
+	// }
+
+	// start timer
+	public synchronized void start() {
+		timer.scheduleAtFixedRate(new TimerTask() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				TTL -= 1; // decrease TTL
+				System.out.println(TTL);
+				if (TTL <= 0) {
+					// notify to observer
+					setChanged();
+					notifyObservers(MatchingSystem.signalType.REQUEST_EXPIRED);
+					stop(); // stop timer
+					System.out.println("timer stopped");
+				}
+			}
+		}, 0, 1000); // run at 1 sec period
+	}
+
+	// stop timer
+	public synchronized void stop() {
+		if (timer != null)
+		{
+			state = RequestState.expired; // set expired
+			timer.cancel();
+		}
 	}
 
 	public Passenger getPassenger() {
@@ -71,43 +110,31 @@ public class Request extends Observable implements Runnable {
 		this.requestedTime = LocalDateTime.now(); // set current time
 	}
 
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		while ( TTL >= 0 )
-			TTL -= 1;
+	public RequestState getState() {
+		return state;
 	}
 
-	// start timer
-	public synchronized void start()
-	{
-		timer.scheduleAtFixedRate(
-				new TimerTask() {
-					
-					@Override
-					public void run() {
-						// TODO Auto-generated method stub
-						TTL -= 1; // decrease TTL
-						System.out.println(TTL);
-						if ( TTL <= 0 )
-						{
-							// notify to observer
-							setChanged(); 
-							notifyObservers();
-							stop(); // stop timer
-							System.out.println("timer stopped");
-						}
-					}
-				}, 0, 1000); // run at 1 sec period
+	public void setState(RequestState state) {
+		this.state = state;
 	}
-	
-	// stop timer
-	public synchronized void stop()
-	{
-		if ( timer != null )
-			timer.cancel();
+
+	public long getTTL() {
+		return TTL;
 	}
-		
+
+	public MatchingQueueEntry getMatchingQueue() {
+		return matchingQueue;
+	}
+
+	public void setRequestedTime(LocalDateTime requestedTime) {
+		this.requestedTime = requestedTime;
+	}
+
+	public void setTTL(long tTL) {
+		TTL = tTL;
+	}
+
+	public void setMatchingQueue(MatchingQueueEntry matchingQueue) {
+		this.matchingQueue = matchingQueue;
+	}
 }
-
-

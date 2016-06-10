@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-public class Distance {
+public class Distance implements Cloneable{
 	private HashMap<Spot, Integer> distanceInfo; // spot list
 												// spot, distance fair
 												// ex) (spot1, 100), (spot2, 200), (spot3, -1)
