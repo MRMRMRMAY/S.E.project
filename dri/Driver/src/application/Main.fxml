@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+   <children>
+      <Pane layoutY="6.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Button layoutX="186.0" layoutY="137.0" mnemonicParsing="false" onAction="#State1" prefHeight="55.0" prefWidth="212.0" text="운행 대기" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="186.0" layoutY="211.0" mnemonicParsing="false" onAction="#State2" prefHeight="55.0" prefWidth="212.0" text="운행 중" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="186.0" layoutY="289.0" mnemonicParsing="false" onAction="#State3" prefHeight="55.0" prefWidth="212.0" text="운행 종료">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Label fx:id="lblState" layoutX="23.0" layoutY="7.0" prefHeight="55.0" prefWidth="396.0" text="현재 상태..." textFill="#ee0808">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label fx:id="lblLocation" layoutX="23.0" layoutY="68.0" prefHeight="55.0" prefWidth="396.0" text="location" textFill="#cd0c0c">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
