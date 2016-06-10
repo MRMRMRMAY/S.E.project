@@ -6,19 +6,18 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane stylesheets="@JMetroDarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.view.MainController">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.view.MainController">
    <children>
-      <Pane layoutX="-142.0" layoutY="-157.0" prefHeight="300.0" prefWidth="600.0" styleClass="track-background" stylesheets="@JMetroDarkTheme.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane layoutX="-142.0" layoutY="-157.0" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label layoutX="230.0" layoutY="70.0" text="Sharing">
                <font>
                   <Font size="42.0" />
                </font>
             </Label>
-            <Button layoutX="154.0" layoutY="135.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="33.0" prefWidth="108.0" text="login" />
-            <Button layoutX="154.0" layoutY="192.0" mnemonicParsing="false" onAction="#handleInfo" prefHeight="33.0" prefWidth="108.0" text="Info" />
-            <Button layoutX="329.0" layoutY="192.0" mnemonicParsing="false" onAction="#handleMap" prefHeight="33.0" prefWidth="108.0" text="map" />
-            <Button layoutX="329.0" layoutY="135.0" mnemonicParsing="false" onAction="#handleTaxi" prefHeight="33.0" prefWidth="108.0" text="taxiInfo" />
+            <Button layoutX="265.0" layoutY="135.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="30.0" prefWidth="70.0" text="login" />
+            <Button layoutX="265.0" layoutY="182.0" mnemonicParsing="false" onAction="#handleInfo" prefHeight="30.0" prefWidth="70.0" text="Info" />
+            <Button layoutX="265.0" layoutY="235.0" mnemonicParsing="false" onAction="#handleMap" prefHeight="30.0" prefWidth="70.0" text="map" />
          </children>
       </Pane>
    </children>
