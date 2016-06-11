@@ -17,9 +17,9 @@ import javafx.beans.property.StringProperty;
 public class Person {
 
 	private final StringProperty name;
-	private final IntegerProperty phoneNumber;
-	private final StringProperty statement;
-	private final StringProperty place;
+//	private final IntegerProperty phoneNumber;
+	private final StringProperty number;
+//	private final StringProperty place;
 
 	/**
 	 * Default constructor.
@@ -32,22 +32,22 @@ public class Person {
 	 * Constructor with some initial data.
 	 * 
 	 * @param name
-	 * @param phoneNumberperson.set
+	 * @param phoneNumber
 	 */
-	public Person(String name, String statement) {
+	public Person(String name, String number) {
 		this.name = new SimpleStringProperty(name);
-		this.phoneNumber = new SimpleIntegerProperty(123123);
+		//this.phoneNumber = new SimpleIntegerProperty(123123);
 		
 		// Some initial dummy data, just for convenient testing.
-		this.statement = new SimpleStringProperty(statement);
-		this.place = new SimpleStringProperty("12134541354");
+		this.number = new SimpleStringProperty(number);
+		//this.place = new SimpleStringProperty("12134541354");
 	}
 	
 	public String getname() {
 		return name.get();
 	}
 
-	public void setname(String name) {
+	public void setName(String name) {
 		this.name.set(name);
 	}
 	
@@ -55,40 +55,16 @@ public class Person {
 		return name;
 	}
 
-	public int getphoneNumber() {
-		return phoneNumber.get();
+	public String getNumber() {
+		return number.get();
 	}
 
-	public void setphoneNumber(int phoneNumber) {
-		this.phoneNumber.set(phoneNumber);
+	public void setNumber(String number) {
+		this.number.set(number);
 	}
 	
-	public IntegerProperty phoneNumberProperty() {
-		return phoneNumber;
-	}
-
-	public String getstatement() {
-		return statement.get();
-	}
-
-	public void setstatement(String statement) {
-		this.statement.set(statement);
-	}
-	
-	public StringProperty statementProperty() {
-		return statement;
-	}
-
-	public String getplace() {
-		return place.get();
-	}
-
-	public void setplace(String place) {
-		this.place.set(place);
-	}
-	
-	public StringProperty placeProperty() {
-		return place;
+	public StringProperty numberProperty() {
+		return number;
 	}
 	
 }

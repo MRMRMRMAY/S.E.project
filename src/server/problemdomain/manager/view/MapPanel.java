@@ -30,7 +30,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import server.problemdomain.manager.model.*;
-
+import server.problemdomain.systemdata.Distance;
+import server.problemdomain.systemdata.Map;
+import server.problemdomain.systemdata.Spot;
 import server.problemdomain.manager.MainApp;
 
 
@@ -65,16 +67,23 @@ public class MapPanel extends JPanel{
 	private DefaultListModel dlm = new DefaultListModel();
 	
 	MapStart main;
+	private Map map;
 	private ArrayList<Integer> count = new ArrayList<Integer>();
 	private ArrayList<String> spotNames = new ArrayList<String>();
 	private ArrayList<Spot> SpotList = new ArrayList<Spot>();
 	//private ArrayList<Distance> distanceList = new ArrayList<Distance>();
 	private HashMap<Integer,Distance> distanceList = new HashMap<Integer, Distance>();
 	public MapPanel(){
+		map = new Map();
+		//SpotList = map.getSpotList();
+		//distanceList = map.getDistanceList();
 		spotUpData();
 		init();
 	}
 	public void init(){
+
+		//SpotList = map.getSpotList();
+		//distanceList = map.getDistanceList();
 		this.setLayout(new GridLayout(3,1));
 		
 		addButton = new JButton();
@@ -155,6 +164,7 @@ public class MapPanel extends JPanel{
 						System.out.println("to : "+to+"name : "+spotNames.get(to)+"distance : "+distance);
 						
 						distanceList.put(spot.getSpotIndex(), distanceE);
+						//distanceList.add(spot.getSpotIndex(), distanceE);
 					}
 					//if(x>=0&&x<=400&&y>=0&&y<=700){
 					main.addPoint(SpotList.indexOf(spot),spot);
@@ -187,7 +197,15 @@ public class MapPanel extends JPanel{
 						if(item.getSpotName().equals(seleterText)){
 							exit = true;
 							spot = item;
+							
 							main.deletPoint(spot);
+							
+							
+							distanceList.remove(SpotList.indexOf(spot));
+							//for(Distance distance: distanceList){
+							//	if(distance.getDistance().containsKey(item))
+							//		distance.getDistance().remove(item);
+							//}
 							SpotList.remove(item);
 							count.add(item.getSpotIndex());
 							Collections.sort(count);
@@ -226,7 +244,7 @@ public class MapPanel extends JPanel{
 					for(Spot item: SpotList){
 						//if(item.getSpotName().equals(nameInput.getText())){
 						if(item.getSpotName().equals(seleterText)){
-						
+							
 							exit = true;
 							spot = item;
 							break;
@@ -237,8 +255,9 @@ public class MapPanel extends JPanel{
 					int index = spot.getSpotIndex();
 					Distance distanceE = distanceList.get(index);
 					Spot toSpot = SpotList.get(to);
-					distanceE.getDistance().replace(toSpot, distance);
+					distanceE.getDistance().put(toSpot, distance);
 					distanceList.put(index, distanceE);
+					//distanceList.set(index, distanceE);
 				}				
 			}
 			});

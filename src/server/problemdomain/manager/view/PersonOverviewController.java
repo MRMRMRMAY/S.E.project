@@ -9,6 +9,8 @@ import server.problemdomain.manager.MainApp;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 //import org.controlsfx.dialog.Dialogs;
 
 import server.problemdomain.manager.model.*;
@@ -20,16 +22,16 @@ public class PersonOverviewController {
     @FXML
     private TableColumn<Person, String> nameColumn;
     @FXML
-    private TableColumn<Person, String> statementColumn;
+    private TableColumn<Person, String> numberColumn;
 
     @FXML
     private Label nameLabel;
+   // @FXML
+   // private Label phoneNumberLabel;
     @FXML
-    private Label phoneNumberLabel;
-    @FXML
-    private Label statementLabel;
-    @FXML
-    private Label placeLabel;
+    private Label numberLabel;
+   // @FXML
+   // private Label placeLabel;
 
     // Reference to the main application.
     private MainApp mainApp;
@@ -59,8 +61,8 @@ public class PersonOverviewController {
     	// Initialize the person table with the two columns.
         nameColumn.setCellValueFactory(
         		cellData -> cellData.getValue().nameProperty());
-        statementColumn.setCellValueFactory(
-        		cellData -> cellData.getValue().statementProperty());
+        numberColumn.setCellValueFactory(
+        		cellData -> cellData.getValue().numberProperty());
         
         // Clear person details.
         showPersonDetails(null);
@@ -94,15 +96,14 @@ public class PersonOverviewController {
     	if (person != null) {
     		// Fill the labels with info from the person object.
     		nameLabel.setText(person.getname());
-    		placeLabel.setText(person.getplace());
-    		statementLabel.setText(person.getstatement());
-    		phoneNumberLabel.setText(Integer.toString(person.getphoneNumber()));
+  
+    		numberLabel.setText(person.getNumber());
+    		
     	} else {
     		// Person is null, remove all the text.
     		nameLabel.setText("");
-    		phoneNumberLabel.setText("");
-    		statementLabel.setText("");
-    		placeLabel.setText("");
+    		numberLabel.setText("");
+    		
     	}
     }
 
@@ -121,9 +122,28 @@ public class PersonOverviewController {
 //		        .masthead("No Person Selected")
 //		        .message("Please select a person in the table.")
 //		        .showWarning();
+			mainApp.showDialog("Please select a perso in the table.", "No Selection");
 		}
 	}
-	
+	@FXML
+	private void handleEditPerson() {
+		Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
+		if (selectedPerson != null) {
+			boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
+			if (okClicked) {
+				showPersonDetails(selectedPerson);
+			}
+
+		} else {
+			// Nothing selected.
+//			Dialogs.create()
+//				.title("No Selection")
+//				.masthead("No Taxi Selected")
+//				.message("Please select a Person in the table.")
+//				.showWarning();
+			mainApp.showDialog("Please select a Person in the table", "No selection");
+		}
+	}
 	/**
 	 * Called when the user clicks the new button. Opens a dialog to edit
 	 * details for a new person.
@@ -143,8 +163,8 @@ public class PersonOverviewController {
 	 */
 	@FXML
 	private void handleUpdate() {
-		mainApp.setPerdata();
-		personTable.setItems(mainApp.getPerdata());
+		//mainApp.setPerdata();
+		personTable.setItems(mainApp.getPersonData());
 	}
 
 	public void setDialogStage(Stage dialogStage) {

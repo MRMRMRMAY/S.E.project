@@ -17,7 +17,8 @@ import javax.swing.JPanel;
 import server.problemdomain.manager.MainApp;
 import server.problemdomain.manager.view.MapPanel;
 import server.problemdomain.manager.view.SpotPanel;
-public class MapStart{
+import server.problemdomain.systemdata.Spot;
+public class MapStart extends JFrame{
 	private static MapPanel mapPanle;
 	private static HashMap<Spot, JLabel>point = new HashMap<Spot,JLabel>();
 	private static boolean flag = true;
@@ -39,9 +40,9 @@ public class MapStart{
 		frame.setResizable(false);
 		frame.setVisible(true);
 	}
-	public static void addPoint(int index, Spot name){
+	public void addPoint(int index, Spot name){
 		JLabel item = new JLabel();
-		item.setIcon(new ImageIcon("D:/SE/project/mytest/src/controller/moder/Point.png"));
+		item.setIcon(new ImageIcon(getClass().getResource("Point.png")));
 		//item.setBounds(200+spotLocation.getLocationArray().get(index).getX(), spotLocation.getLocationArray().get(index).getY(),50, 50);
 		item.setText(name.getSpotName());
 		point.put(name, item);

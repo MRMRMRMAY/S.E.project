@@ -1,8 +1,11 @@
 package server.problemdomain.manager.view;
 
+import javax.swing.JOptionPane;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import server.problemdomain.manager.MainApp;
 
 //import org.controlsfx.dialog.Dialogs;
 
@@ -19,13 +22,13 @@ public class PersonEditDialogController {
     @FXML
     private TextField nameField;
     @FXML
-    private TextField phoneNumberField;
-    @FXML
-    private TextField statementField;
-    @FXML
-    private TextField placeField;
+    private TextField numberField;
+   // @FXML
+   // private TextField statementField;
+   // @FXML
+   // private TextField placeField;
 
-
+    private MainApp mainApp;
     private Stage dialogStage;
     private Person person;
     private boolean okClicked = false;
@@ -56,9 +59,9 @@ public class PersonEditDialogController {
         this.person = person;
 
         nameField.setText(person.getname());
-        placeField.setText(person.getplace());
-        statementField.setText(person.getstatement());
-        phoneNumberField.setText(Integer.toString(person.getphoneNumber()));
+    //   placeField.setText(person.getplace());
+    //    statementField.setText(person.getstatement());
+        numberField.setText(person.getNumber());
     }
 
     /**
@@ -76,10 +79,10 @@ public class PersonEditDialogController {
     @FXML
     private void handleOk() {
         if (isInputValid()) {
-            person.setname(nameField.getText());
-            person.setplace(placeField.getText());
-            person.setstatement(statementField.getText());
-            person.setphoneNumber(Integer.parseInt(phoneNumberField.getText()));
+            person.setName(nameField.getText());
+//            person.setplace(placeField.getText());
+ //           person.setstatement(statementField.getText());
+            person.setNumber(numberField.getText());
 
             okClicked = true;
             dialogStage.close();
@@ -99,33 +102,23 @@ public class PersonEditDialogController {
      * 
      * @return true if the input is valid
      */
-    private boolean isInputValid() {
+    public void setMainApp(MainApp mainApp){
+    	this.mainApp = mainApp;
+    }
+    public boolean isInputValid() {
         String errorMessage = "";
 
         if (nameField.getText() == null || nameField.getText().length() == 0) {
             errorMessage += "No valid first name!\n"; 
         }
-        if (phoneNumberField.getText() == null || phoneNumberField.getText().length() == 0) {
+        if (numberField.getText() == null || numberField.getText().length() == 0) {
             errorMessage += "No valid last name!\n"; 
-        }
-        if (statementField.getText() == null || statementField.getText().length() == 0) {
-            errorMessage += "No valid statement!\n"; 
-        }
-
-        if (placeField.getText() == null || placeField.getText().length() == 0) {
-            errorMessage += "No valid postal code!\n"; 
-        } else {
-            // try to parse the postal code into an int.
-            try {
-                Integer.parseInt(placeField.getText());
-            } catch (NumberFormatException e) {
-                errorMessage += "No valid postal code (must be an integer)!\n"; 
-            }
         }
 
         if (errorMessage.length() == 0) {
             return true;
         } else {
+        	mainApp.showDialog("Please correct invalid fields", "Invalid Fields");
             // Show the error message.
 /*        	Dialogs.create()
 		        .title("Invalid Fields")

@@ -139,6 +139,7 @@ public class TaxiInformationController {
 //				.masthead("No Taxi Selected")
 //				.message("Please select a Taxi in the table.")
 //				.showWarning();
+			mainApp.showDialog("Please select a Taxi in the table", "No selection");
 		}
 	}
 }

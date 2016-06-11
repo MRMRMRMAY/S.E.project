@@ -5,10 +5,28 @@ import java.util.ArrayList;
 public class SpotLocation{
 	private ArrayList<Location> locationArray = new ArrayList<Location>();
 	public SpotLocation(){
-		for(int i = 0; i < 30; i++){
-			for(int j = 0; j < 30; j++){
-				locationArray.add(new Location(i*50,j*50));
+		int i = 0;
+		int j = 0;
+		int count = 0;
+		while(i < 30&&j<30){
+			
+		
+			if((count%3)==0){
+				i = count/3;
+				j = count/3;
+				count++;
 			}
+			else if((count%3)==1){
+				i = count/3+1;
+				j = count/3;
+				count++;
+			}
+			else if((count%3) == 2){
+				i = count/3;
+				j = count/3+1;
+				count++;
+			}
+			locationArray.add(new Location(i*50,j*50));
 		}
 	}
 	public ArrayList<Location> getLocationArray() {
