@@ -32,8 +32,8 @@ public class MapTemp {
 
 	//
 	public MapTemp(Starting_Node sn, Destination_Node dn) {
-		this.starting_node = sn;
-		this.destination_node = dn;
+		this.starting_node = sn;		// sn: starting_node
+		this.destination_node = dn;		// dn: destination_node
 	}
 	
 	

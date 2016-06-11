@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-
 //TEST import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
