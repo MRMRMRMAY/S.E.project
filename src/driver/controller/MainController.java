@@ -1,7 +1,7 @@
 /*
  * MainController.java
  * Login and State
- * 
+ *
  * wangnan
  * */
 package driver.controller;
@@ -15,12 +15,15 @@ import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import java.io.IOException;
+import java.util.TimerTask;
+
+import driver.model.Place;
 import javafx.event.ActionEvent;
 
 
 public class MainController
 {
-	
+
 	@FXML
 	private Label lblStatus;
 	//Login status
@@ -28,20 +31,27 @@ public class MainController
 	@FXML
 	private TextField txtUserName;
 	//Login username
-	
+
 	@FXML
 	private TextField txtPassword;
 	//Login password
-	
+
 	@FXML
 	private Label lblState;
 	//Taxi state
-	
+
 	@FXML
 	private Label lblLocation;
 	//Taxi Location
-	
+
 	//private String state = "";
+
+	Place ti = new Place("경대 북문",7);
+	/*Place pla2 = new Place("경대 서문",1);
+	Place pla3 = new Place("경대 동문",1);
+	Place pla4 = new Place("대구역",1);
+	Place pla5 = new Place("home plus",1);
+    */
 
 	/*
 	 * Login
@@ -75,7 +85,7 @@ public class MainController
 	/*
 	 * State
 	 * */
-	
+
 	//waiting state
 	public void State1(ActionEvent event)
 	{
@@ -83,29 +93,40 @@ public class MainController
 
 		//mystate.setMystate(mystate.getMystate());
 		lblState.setText("상태 변합니다.지금 운행 대기 상태입니다.");
-
 	}
-	
+
 	//runing state
 	public void State2(ActionEvent event)
-	{	
+	{
 		lblState.setText("상태 변합니다.지금 운행 중 상태입니다.");
-		lblLocation.setText("지금 가고 있는중...");
+		lblLocation.setText("지금 " + ti.getPlace() + ti.getTime() + "분후 에 도착합니다.");
 	}
-	
+
 	//end state
 	public void State3(ActionEvent event)
 	{
 		lblState.setText("상태 변합니다.지금 운행 종료 상태입니다.");
 		lblLocation.setText("지금 도착한다.");
 	}
-	
+
 	/*
 	 * Location
 	 * */
 	public void Loca(ActionEvent event)
 	{
-		
-	}
 
+
+	}
+	/*
+	class MyTask extends TimerTask 
+	{  
+		
+	    @Override  
+	    public void run() 
+	    {  
+	        System.out.println(ti.getTim());  
+	  
+	    }  
+	}
+*/
 }
