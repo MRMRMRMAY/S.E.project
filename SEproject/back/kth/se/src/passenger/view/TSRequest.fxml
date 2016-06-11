@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <!-- TODO Add Nodes -->
+  <children>
+    <ComboBox fx:id="출발지_콤보박스" layoutX="391.0" layoutY="109.0" prefHeight="21.0" prefWidth="89.0" promptText="1. 출발지">
+      <items>
+        <FXCollections fx:factory="observableArrayList">
+          <String fx:value="1. 출발지" />
+          <String fx:value="동대구역" />
+          <String fx:value="수성못" />
+          <String fx:value="이월드" />
+          <String fx:value="복현오거리" />
+          <String fx:value="서문시장" />
+        </FXCollections>
+      </items>
+    </ComboBox>
+    <ComboBox fx:id="도착지_콤보박스" layoutX="392.0" layoutY="154.0" prefHeight="21.0" prefWidth="88.00009999999747" promptText="2. 도착지">
+      <items>
+        <FXCollections fx:factory="observableArrayList">
+          <String fx:value="2. 도착지" />
+          <String fx:value="동대구역" />
+          <String fx:value="수성못" />
+          <String fx:value="이월드" />
+          <String fx:value="복현오거리" />
+          <String fx:value="서문시장" />
+        </FXCollections>
+      </items>
+    </ComboBox>
+    <ComboBox fx:id="대기시간_콤보박스" layoutX="392.0" layoutY="199.0" prefHeight="21.0" prefWidth="89.0" promptText="3. 대기시간">
+      <items>
+        <FXCollections fx:factory="observableArrayList">
+          <String fx:value="3. 대기시간" />
+          <String fx:value="5분" />
+          <String fx:value="10분" />
+          <String fx:value="15분" />
+          <String fx:value="30분" />
+        </FXCollections>
+      </items>
+    </ComboBox>
+    <Button fx:id="요청하기_버튼" layoutX="229.0" layoutY="281.0" mnemonicParsing="false" text="4. 요청하기" />
+    <Button fx:id="취소_버튼" layoutX="336.0" layoutY="282.0" mnemonicParsing="false" text="취소" />
+    <ImageView fitHeight="154.68907928466797" fitWidth="252.16438200787593" focusTraversable="false" layoutX="109.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+        <Image url="@../../../../../Desktop/maptemp.jpg" />
+      </image>
+    </ImageView>
+  </children>
+</AnchorPane>

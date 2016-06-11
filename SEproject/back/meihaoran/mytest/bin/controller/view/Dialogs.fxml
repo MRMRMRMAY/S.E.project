@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.view.DialogController">
+   <children>
+      <Pane layoutX="-100.0" layoutY="37.0" prefHeight="150.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="message" layoutX="36.0" layoutY="14.0" prefHeight="82.0" prefWidth="228.0" />
+            <Button layoutX="135.0" layoutY="107.0" mnemonicParsing="false" onAction="#handOk" text="ok" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

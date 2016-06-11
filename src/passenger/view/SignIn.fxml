@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
@@ -10,9 +10,10 @@
   <children>
     <Label layoutX="168.0" layoutY="137.0" text="ID" />
     <Label layoutX="130.0" layoutY="171.0" text="Password" />
-    <TextField fx:id="ID_텍스트필드" layoutX="212.0" layoutY="134.0" prefWidth="200.0" />
-    <PasswordField fx:id="Password_패스워드필드" layoutX="212.0" layoutY="168.0" prefWidth="200.0" text="" />
-    <Button fx:id="로그인_버튼" layoutX="212.0" layoutY="240.0" mnemonicParsing="false" text="로그인" />
-    <Button fx:id="취소_버튼" layoutX="312.0" layoutY="241.0" mnemonicParsing="false" text="취소" />
+    <TextField fx:id="ID_TEXTFIELD" layoutX="212.0" layoutY="134.0" prefWidth="200.0" />
+    <PasswordField fx:id="Password_PASSWORDFIELD" layoutX="212.0" layoutY="168.0" prefWidth="200.0" text="" />
+    <Button fx:id="SIGNIN_BUTTON" layoutX="291.0" layoutY="206.0" mnemonicParsing="false" text="로그인" />
+    <Button fx:id="CANCEL_BUTTON" layoutX="368.0" layoutY="206.0" mnemonicParsing="false" text="취소" />
+    <Button fx:id="GOSIGNINPAGE_BUTTON" layoutX="291.0" layoutY="241.0" mnemonicParsing="false" prefWidth="121.0" text="회원가입 페이지로" />
   </children>
 </AnchorPane>
