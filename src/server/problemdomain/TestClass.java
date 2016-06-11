@@ -10,11 +10,14 @@ import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Timer;
 
 import server.problemdomain.matching.MatchingSystem;
 import server.problemdomain.matching.Request;
+import server.problemdomain.matching.Request.RequestState;
 import server.problemdomain.member.Passenger;
 import server.problemdomain.systemdata.Map;
+import server.problemdomain.systemdata.Spot;
 
 public class TestClass {
 
@@ -22,7 +25,7 @@ public class TestClass {
 		// TODO Auto-generated method stub
 		
 		
-//		test1 ½Ã°£ ÃøÁ¤ÇÏ±â
+//		test1 ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
 		LocalDateTime start, end;
 		start = LocalDateTime.now();
 		System.out.println(start.toEpochSecond(ZoneOffset.UTC));
@@ -140,10 +143,15 @@ public class TestClass {
 		
 		System.out.println(arr.length);
 		System.out.println(arr[0].length);*/
+		int test[] = new int[5];
 		
+		for ( int i : test)
+			System.out.print(i + " ");
+		System.out.println();
 		
 		int arr[][];
-	
+		Map map = null;
+		
 		try {
 			File fin = new File("input.txt");
 			Scanner scan;
@@ -168,9 +176,15 @@ public class TestClass {
 				System.out.println();
 			}
 			
-			Map map = new Map();
+			map = new Map();
 			map.arrayToMap(arr);
 			int arr2[][] = map.mapTo2DArray();
+			/*
+			ArrayList<Spot>spotList = map.getSpotList();
+			for ( int i = 0; i < size; i++ )
+			{
+				spotList.get(i).setSpotName(scan.next());
+			}
 			
 			for ( int i = 0; i < size; i++ )
 			{
@@ -178,17 +192,54 @@ public class TestClass {
 				{
 					System.out.print(arr2[i][j] + " ");
 				}
+				System.out.print(spotList.get(i).getSpotName());
 				System.out.println();
-			}
+			}*/
+			
+
 						
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-
-		end = LocalDateTime.now();
-		System.out.println(Duration.between(start, end).toMillis());	
+		ArrayList<Spot> spotList = map.getSpotList();
+		Request request1 = new Request(new Passenger(), spotList.get(0), spotList.get(1), LocalDateTime.now(), 11);
+		Request request2 = new Request(new Passenger(), spotList.get(0), spotList.get(1), LocalDateTime.now(), 5);
+		Request request3 = new Request(new Passenger(), spotList.get(1), spotList.get(2), LocalDateTime.now(), 15);
+		MatchingSystem sys = new MatchingSystem();
+		sys.setMap(map);
+		MatchingSystem.RouteInfo info = sys.calculateDrivingRoute(spotList.get(0), spotList.get(1));
+		System.out.println("dist : " + info.dist);
+		for ( int i : info.route )
+			System.out.print(i + " ");
+		System.out.println();
+	//	sys.pushRequest(request1);
+	//	sys.pushRequest(request2);
+	//	sys.pushRequest(request3);
+/*		for ( int i = 0)
+		
+		public Request(Passenger passenger, Spot from, Spot to, LocalDateTime requestedTime, long TTL) {
+			super();
+			this.passenger = passenger;
+			this.from = from;
+			this.to = to;
+			this.requestedTime = requestedTime;
+			this.TTL = TTL;
+			this.state = RequestState.raw; // set default raw
+			this.timer = new Timer(true);
+		}*/
+		while (true)
+		{
+			try {
+				Thread.sleep(300);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+		}
+//		end = LocalDateTime.now();
+//		System.out.println(Duration.between(start, end).toMillis());	
 	}
 
 }

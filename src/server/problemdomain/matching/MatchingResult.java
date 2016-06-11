@@ -11,17 +11,25 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import javafx.scene.effect.Light.Spot;
+import server.problemdomain.manager.model.Taxi;
+import server.problemdomain.member.Passenger;
 
 public class MatchingResult implements Serializable{
-	private ArrayList<Spot> drivingRoute; // driving route
+	private Spot[] drivingRoute; // driving route
+	private Spot from; // derived attr from drivingRoute, first element is from
+	private Spot to; // derived attr from drivingRoute, last element is to
+	private ArrayList<Passenger> passengerList; // to show passenger's information to taxi 
 	private int numOfPassenger; // numOfPassenger
 	private int distance; // distance
 	private int fare; // fare for driving
+					// for taxi, fare was itself
+					// for passenger, fare was divided by num of passenger
 	private int estimatedTimeOfDeparture; // estimated time of departure, sec unit;
 	
-	
+	//
 	public MatchingResult() {}
 	
+	//
 	public MatchingResult(MatchingQueueEntry entry)
 	{
 		this.numOfPassenger = entry.getRequests().size();
@@ -29,14 +37,17 @@ public class MatchingResult implements Serializable{
 	
 	// calculate drivingRoute
 	
+	
 	// calculate distance
 	
+	
 	// calculate fare
+	
 	
 	// calculate estimatedTimeOfDeparture
 	
 	
-	public ArrayList<Spot> getDrivingRoute() {
+	public Spot[] getDrivingRoute() {
 		return drivingRoute;
 	}
 	public int getNumOfPassenger() {
@@ -51,7 +62,7 @@ public class MatchingResult implements Serializable{
 	public int getEstimatedTimeOfDeparture() {
 		return estimatedTimeOfDeparture;
 	}
-	public void setDrivingRoute(ArrayList<Spot> drivingRoute) {
+	public void setDrivingRoute(Spot[] drivingRoute) {
 		this.drivingRoute = drivingRoute;
 	}
 	public void setNumOfPassenger(int numOfPassenger) {

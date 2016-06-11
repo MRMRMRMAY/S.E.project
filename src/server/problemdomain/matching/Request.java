@@ -51,6 +51,7 @@ public class Request extends Observable {
 
 	// start timer
 	public synchronized void start() {
+		System.out.println("request start");
 		timer.scheduleAtFixedRate(new TimerTask() {
 
 			@Override

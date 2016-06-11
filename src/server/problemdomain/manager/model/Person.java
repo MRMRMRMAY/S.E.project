@@ -32,7 +32,7 @@ public class Person {
 	 * Constructor with some initial data.
 	 * 
 	 * @param name
-	 * @param phoneNumber
+	 * @param phoneNumberperson.set
 	 */
 	public Person(String name, String statement) {
 		this.name = new SimpleStringProperty(name);

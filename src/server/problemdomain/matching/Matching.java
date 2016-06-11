@@ -12,6 +12,11 @@ import server.problemdomain.member.Passenger;
 import server.problemdomain.member.Taxi;
 import server.problemdomain.systemdata.Spot;
 
+
+/*
+ * 6.11 
+ * for simplicity we may not control matching data......
+ */
 public class Matching implements Serializable {
 	private ArrayList<Passenger> passengerList; // passenger list for matching
 	private Taxi taxi;

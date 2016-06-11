@@ -15,10 +15,13 @@ import server.problemdomain.matching.Request.RequestState;
 import server.problemdomain.systemdata.Spot;
 
 public class MatchingQueueEntry extends Observable {
+	private final long defaultWaitingTime = 30;
+	
+	private boolean isRunning;
 	private Spot from; // point of departure
 	private Spot to; // destination
 	private ArrayList<Request> requests;
-	private long waitingTime = 30; // time for waiting from second passenger sec unit
+	private long waitingTime; // time for waiting from second passenger sec unit
 									// enter this queue
 	// if it expires, this queue will be converted to Matching obj
 	// give default value to 30 sec
@@ -29,6 +32,8 @@ public class MatchingQueueEntry extends Observable {
 		// TODO Auto-generated constructor stub
 		this.timer = new Timer(true);
 		this.requests = new ArrayList<Request>(4);
+		this.isRunning = false;
+		this.waitingTime = defaultWaitingTime;
 	}
 
 	// @Override
@@ -42,7 +47,20 @@ public class MatchingQueueEntry extends Observable {
 		request.setState(RequestState.waiting); // change state
 		requests.add(request);
 		request.setMatchingQueue(this); // set matching queue
+		request.start(); // start request timer
+
 		
+		// initial state, set info
+		if ( requests.size() == 1 )
+		{
+			setFrom(request.getFrom());
+			setTo(request.getTo());
+		}
+		
+		
+		if (requests.size() == 2) {
+			start(); // start waiting timer
+		}
 		// full party
 		if (requests.size() == 4)
 		{
@@ -50,12 +68,9 @@ public class MatchingQueueEntry extends Observable {
 			System.out.println("get full party");
 			notifyObservers(MatchingSystem.signalType.MATCHING_COMPLETED);			
 		}		
+
+
 		
-		if (requests.size() == 2) {
-			start(); // start waiting timer
-		}
-
-
 		updateWaitingTime();
 		// update minimun waiting time
 	}
@@ -86,11 +101,14 @@ public class MatchingQueueEntry extends Observable {
 			requests.get(requests.size()-1).stop(); // stop request's timer
 			waitingTime = requests.get(requests.size()-1).getTTL(); // replace smaller time
 			System.out.println("time update " + waitingTime);
+			if ( !isRunning )
+				start();
 		}
 	}
 
 	// start timer
 	public synchronized void start() {
+		isRunning = true;
 		timer.scheduleAtFixedRate(new TimerTask() {
 
 			@Override
@@ -112,7 +130,10 @@ public class MatchingQueueEntry extends Observable {
 	// stop timer
 	public synchronized void stop() {
 		if (timer != null)
+		{
+			isRunning = false;
 			timer.cancel();
+		}
 	}
 
 	public Spot getFrom() {
