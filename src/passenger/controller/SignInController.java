@@ -32,9 +32,14 @@ public class SignInController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		CANCEL_BUTTON.setOnAction(e->cancelAction(e));
 		SIGNIN_BUTTON.setOnAction(e->signInAction(e));
 	}
     
+	public void cancelAction(ActionEvent e){
+		AnchorPane root = (AnchorPane) CANCEL_BUTTON.getScene().getRoot();
+		root.getChildren().remove(SignIn_ANCHOR);
+	}
 	
 	public void signInAction(ActionEvent event){
 		String passenger_ID = ID_TEXTFIELD.getText();
