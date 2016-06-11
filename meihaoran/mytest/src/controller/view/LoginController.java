@@ -53,6 +53,7 @@ public class LoginController {
 			main.showDialog("Welcome", "pass");
 			//id.setOpacity(0);
 			dialogStage.close();
+			main.showMainview();
 		}
 		else{
 			main.showDialog("error", "error");

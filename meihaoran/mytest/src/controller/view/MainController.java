@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import org.controlsfx.dialog.Dialogs;
 
 import controller.MainApp;
+import controller.moder.MapStart;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -13,8 +14,9 @@ public class MainController{
 	private MainApp main;
 	private Stage dialogStage;
 	private boolean okCliked = false;
+	private boolean mapCliked = false;
+	private MapAdd mapAdd = new MapAdd();
 	public MainController() {
-		
 	}
 	
 	
@@ -53,7 +55,14 @@ public class MainController{
 	}
 	@FXML
 	public void handleMap(){
-		main.showMap();
+		
+		new MapStart();
+	//	main.showMap();
+	}
+	@FXML
+	public void handleTaxi(){
+		main.showTaxiOverview();
+
 	}
 //	public static void main(String[] args) {
 //		launch(args);

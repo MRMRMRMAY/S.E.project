@@ -23,7 +23,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 public class MainApp extends Application {
-	private static boolean loginFlag = false;
+	private MapStart map;
+	private boolean loginFlag = false;
 	private Stage primaryStage;
 	private BorderPane rootLayout;
 	private ObservableList<Person> personData = FXCollections.observableArrayList();
@@ -272,6 +273,9 @@ public class MainApp extends Application {
 		personData = test;
 	}
 	public void showMap(){
-		MapStart map = new MapStart(this);
+		map = new MapStart();
+	}
+	public MapStart getMap(){
+		return map;
 	}
 }

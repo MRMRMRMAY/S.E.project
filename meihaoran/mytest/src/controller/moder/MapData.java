@@ -1,7 +1,7 @@
 package controller.moder;
 import java.util.ArrayList;
 public class MapData {
-	static ArrayList<Point> point = new ArrayList<Point>();
+	private ArrayList<Point> point = new ArrayList<Point>();
 	private ArrayList<Integer> to = new ArrayList<Integer>();
 	public MapData(){
 		to.add(2);
@@ -10,11 +10,11 @@ public class MapData {
 		to.add(1);
 		point.add(new Point(to,40,123));
 	}
-	public static ArrayList<Point> getPoint() {
+	public ArrayList<Point> getPoint() {
 		return point;
 	}
-	public static void setPoint(ArrayList<Point> point) {
-		MapData.point = point;
+	public void setPoint(ArrayList<Point> point) {
+		this.point = point;
 	}
 	public ArrayList<Integer> getTo() {
 		return to;
@@ -25,8 +25,8 @@ public class MapData {
 }
 class Point{
 	private ArrayList<Integer> to = new ArrayList<Integer>();
-	private int x;
 	private int y;
+	private int x;
 	private String place = new String();
 	public Point(ArrayList<Integer> to,int x, int y){
 		this.to.addAll(to);
