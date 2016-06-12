@@ -9,31 +9,30 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class Taxi {
+public class TaxiProperty {
 
 	private final StringProperty name;
-	private final StringProperty city;
-	private final StringProperty taxiNumber;
+	private final StringProperty carModel;
+	private final StringProperty contactNumber;
 
 
 	/**
 	 * Default constructor.
 	 */
-	public Taxi() {
-		this(null, null);
+	public TaxiProperty() {
+		this(null, null,null);
 	}
-	
 	/**
 	 * Constructor with some initial data.
 	 * 
 	 * @param name
 	 * @param lastName
 	 */
-	public Taxi(String name, String taxiNumber) {
+	public TaxiProperty(String name,String carModel, String contactNumber) {
 		this.name = new SimpleStringProperty(name);		
 		// Some initial dummy data, just for convenient testing.
-		this.taxiNumber = new SimpleStringProperty(taxiNumber);
-		this.city = new SimpleStringProperty("some city");
+		this.contactNumber = new SimpleStringProperty(contactNumber);
+		this.carModel = new SimpleStringProperty(carModel);
 	}
 	
 	public String getName() {
@@ -50,28 +49,28 @@ public class Taxi {
 	
 	
 
-	public String getTaxiNumber() {
-		return taxiNumber.get();
+	public String getContactNumber() {
+		return contactNumber.get();
 	}
 
-	public void setTaxiNumber(String taxiNumber) {
-		this.taxiNumber.set(taxiNumber);
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber.set(contactNumber);
 	}
 	
-	public StringProperty taxiNumberProperty() {
-		return taxiNumber;
+	public StringProperty contactNumberProperty() {
+		return contactNumber;
 	}
 
-	public String getCity() {
-		return city.get();
+	public String getCarModel() {
+		return carModel.get();
 	}
 
-	public void setCity(String city) {
-		this.city.set(city);
+	public void setCarModel(String carModel) {
+		this.carModel.set(carModel);
 	}
 	
-	public StringProperty cityProperty() {
-		return city;
+	public StringProperty carModelProperty() {
+		return carModel;
 	}
 
 

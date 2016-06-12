@@ -23,6 +23,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListModel;
+import javax.swing.ListSelectionModel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -56,14 +57,15 @@ public class MapPanel extends JPanel{
 	private JLabel xLabel;
 	private JLabel yLabel;
 	private JLabel toNumberLabel;
+	private JLabel fromNumberLabel;
 	private JLabel distanceLabel;
 	
 	private JPanel buttonPanel;
 	private JPanel inputPanel;
 	private JPanel listPanel;
 	private JScrollPane scrollPane;
-	private JList<String> spotNamesList;
-	
+	private JList<String> fromSpotNamesList;
+	private JList<String> toSpotNamesList;
 	private DefaultListModel dlm = new DefaultListModel();
 	
 	MapStart main;
@@ -73,8 +75,16 @@ public class MapPanel extends JPanel{
 	private ArrayList<Spot> SpotList = new ArrayList<Spot>();
 	//private ArrayList<Distance> distanceList = new ArrayList<Distance>();
 	private HashMap<Integer,Distance> distanceList = new HashMap<Integer, Distance>();
+	private int[][] distance2DArray;
+	//private ArrayList<ArrayList<Integer>> distance2DArray;
+	//private ArrayList<Integer>distance1DArray;
+	
+	
 	public MapPanel(){
 		map = new Map();
+		distance2DArray = new int[10000][10000];
+		//distance1DArray = new ArrayList<ArrayList>
+		//distance2DArray =new ArrayList<ArrayList<Integer>>();
 		//SpotList = map.getSpotList();
 		//distanceList = map.getDistanceList();
 		spotUpData();
@@ -82,7 +92,7 @@ public class MapPanel extends JPanel{
 	}
 	public void init(){
 
-		//SpotList = map.getSpotList();
+		SpotList = map.getSpotList();
 		//distanceList = map.getDistanceList();
 		this.setLayout(new GridLayout(3,1));
 		
@@ -103,7 +113,7 @@ public class MapPanel extends JPanel{
 		buttonPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 		inputPanel = new JPanel(new FlowLayout(FlowLayout.CENTER,10,50));
 		inputPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-		listPanel = new JPanel(new FlowLayout(FlowLayout.CENTER,5,30));
+		listPanel = new JPanel(new FlowLayout(FlowLayout.CENTER,20,5));
 		listPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 		
 		addButton.setText("Add");
@@ -124,15 +134,17 @@ public class MapPanel extends JPanel{
 				try{
 				//	x = Integer.parseInt(xInput.getText());
 				//	y = Integer.parseInt(yInput.getText());
-					if(!spotNamesList.isSelectionEmpty())
-						to = spotNamesList.getSelectedIndex();
+					if(!fromSpotNamesList.isSelectionEmpty())
+						to = fromSpotNamesList.getSelectedIndex();
+					//fromSpotNamesList.getSelectedIndices();
 					else
 						to = -1;
-					try{
-						distance = Integer.parseInt(distanceInput.getText());
-					}catch(Exception e1){
-						distance = -1;
-					}
+//					try{
+//						distance = Integer.parseInt(distanceInput.getText());
+//					}catch(Exception e1){
+//						JOptionPane.showMessageDialog(null, "Please input integer value","error",JOptionPane.ERROR_MESSAGE);
+//						distance = -1;
+//					}
 				}
 				catch(NumberFormatException exception){
 					exception.printStackTrace();
@@ -147,36 +159,41 @@ public class MapPanel extends JPanel{
 				}
 				
 				if(!exit){
+					System.out.println(SpotList.size());
 					spot.setSpotName(nameInput.getText());
-					if(count.isEmpty())
-						spot.setSpotIndex(SpotList.size());
-					else{
-						spot.setSpotIndex(count.get(0));
-						count.remove(0);
-						Collections.sort(count);
-					}
+//					if(count.isEmpty())
+//						spot.setSpotIndex(SpotList.size());
+//					else{
+//						spot.setSpotIndex(count.get(0));
+//						count.remove(0);
+//						Collections.sort(count);
+//						
+//					}
+					spot.setSpotIndex(SpotList.size());
+					for(int i = 0; i<=SpotList.size();i++){
+						distance2DArray[i][spot.getSpotIndex()] = -1;
+						distance2DArray[spot.getSpotIndex()][i] = -1;
 					
+					}
 					SpotList.add(spot.getSpotIndex(),spot);
+					
 					spotUpData();
-					if(to != -1){
+/*					if(to != -1){
 						Distance distanceE = new Distance();
 						distanceE.addSpot(SpotList.get(to), distance);
 						System.out.println("to : "+to+"name : "+spotNames.get(to)+"distance : "+distance);
 						
 						distanceList.put(spot.getSpotIndex(), distanceE);
 						//distanceList.add(spot.getSpotIndex(), distanceE);
-					}
-					//if(x>=0&&x<=400&&y>=0&&y<=700){
+					}*/
+		
 					main.addPoint(SpotList.indexOf(spot),spot);
-					//}
-					//else{
-					//	mainApp.showDialog("Input 0<=x<=400 and 0<=y<=700","InputError" );
-					//}
 					
 				}
 				else{
 					JOptionPane.showMessageDialog(MapPanel.this, "This spot has exited","error", JOptionPane.ERROR_MESSAGE, null);
 				}
+				
 			}
 			});
 		//this.add(addButton);
@@ -228,37 +245,65 @@ public class MapPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e){	
 				int distance = 0;
-				int to = 0;
+				int from = 0;
+				int[] to;
 				System.out.println(0);
 				boolean exit = false;
 				Spot spot = new Spot();
-				try{
-					//to = Integer.parseInt(toNumberInput.getText());
-					to = spotNamesList.getSelectedIndex();
+				if(fromSpotNamesList.isSelectionEmpty()){
+					JOptionPane.showMessageDialog(null, "Please select a in the from table.","error",JOptionPane.ERROR_MESSAGE);
 				}
-				catch(NumberFormatException exception){
-					exception.printStackTrace();
+				else if(toSpotNamesList.isSelectionEmpty()){
+					JOptionPane.showMessageDialog(null, "Please select a in the to table.","error",JOptionPane.ERROR_MESSAGE);
+				}
+				else if(toSpotNamesList.getSelectedIndex()==fromSpotNamesList.getSelectedIndex()){
+					JOptionPane.showMessageDialog(null, "Please select difference in the to table.","error",JOptionPane.ERROR_MESSAGE);
+				}
+				else{
+					try{
+						//to = Integer.parseInt(toNumberInput.getText());
+						from = fromSpotNamesList.getSelectedIndex();
+						to = toSpotNamesList.getSelectedIndices();
+						for(int i:to){
+							distance2DArray[from][i] = Integer.parseInt(distanceInput.getText());
+							distance2DArray[i][from] = Integer.parseInt(distanceInput.getText());
+						
+						}
+						for(int i = 0; i<spotNames.size();i++){
+							for(int j = 0; j<spotNames.size(); j++){
+								System.out.printf("%d ",distance2DArray[i][j]);
+							}
+							System.out.println("");
+						}
+						
+					}
+					catch(NumberFormatException exception){
+			
+						exception.printStackTrace();
+					}
+				
+					
 				}
 				
-				if(!SpotList.isEmpty()){
-					for(Spot item: SpotList){
-						//if(item.getSpotName().equals(nameInput.getText())){
-						if(item.getSpotName().equals(seleterText)){
-							
-							exit = true;
-							spot = item;
-							break;
-						}
-					}
-				}
-				if(exit){
-					int index = spot.getSpotIndex();
-					Distance distanceE = distanceList.get(index);
-					Spot toSpot = SpotList.get(to);
-					distanceE.getDistance().put(toSpot, distance);
-					distanceList.put(index, distanceE);
-					//distanceList.set(index, distanceE);
-				}				
+//				if(!SpotList.isEmpty()){
+//					for(Spot item: SpotList){
+//						//if(item.getSpotName().equals(nameInput.getText())){
+//						if(item.getSpotName().equals(seleterText)){
+//							
+//							exit = true;
+//							spot = item;
+//							break;
+//						}
+//					}
+//				}
+//				if(exit){
+//					int index = spot.getSpotIndex();
+//					Distance distanceE = distanceList.get(index);
+//					Spot toSpot = SpotList.get(to);
+//					distanceE.getDistance().put(toSpot, distance);
+//					distanceList.put(index, distanceE);
+//					//distanceList.set(index, distanceE);
+//				}				
 			}
 			});
 		//this.add(edit);
@@ -305,14 +350,32 @@ public class MapPanel extends JPanel{
 		//this.add(distanceInput);
 		inputPanel.add(distanceInput);
 		this.add(inputPanel);
-		spotNamesList = new JList<String>(dlm);
-		spotNamesList.setFixedCellWidth(150);
-		spotNamesList.setFixedCellHeight(15);
-		spotNamesList.setVisibleRowCount(10);
-		spotNamesList.addMouseListener(new ListMouseAdapter(this));
-		scrollPane = new JScrollPane(spotNamesList);
-		scrollPane.setSize(new Dimension(200,200));
+		fromNumberLabel= new JLabel();
+		fromNumberLabel.setText("from : ");
+		listPanel.add(fromNumberLabel);
+		
+		fromSpotNamesList = new JList<String>(dlm);
+		fromSpotNamesList.setFixedCellWidth(140);
+		fromSpotNamesList.setFixedCellHeight(13);
+		fromSpotNamesList.setVisibleRowCount(5);
+		fromSpotNamesList.addMouseListener(new ListMouseAdapter(this));
+		fromSpotNamesList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		scrollPane = new JScrollPane(fromSpotNamesList);
+		//scrollPane.setSize(new Dimension(200,75));
 		listPanel.add(scrollPane);
+		
+		
+		toNumberLabel = new JLabel();
+		toNumberLabel.setText("to : ");
+		listPanel.add(toNumberLabel);
+		toSpotNamesList = new JList<String>(dlm);
+		toSpotNamesList.setFixedCellWidth(140);
+		toSpotNamesList.setFixedCellHeight(13);
+		toSpotNamesList.setVisibleRowCount(5);
+		toSpotNamesList.addMouseListener(new ListMouseAdapter(this));
+		fromSpotNamesList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		listPanel.add(new JScrollPane(toSpotNamesList));
+		
 		
 		this.add(listPanel);
 		
@@ -329,15 +392,17 @@ public class MapPanel extends JPanel{
 				dlm.addElement(item.getSpotName());
 			}
 			
-			spotNamesList.setModel(dlm);
+			fromSpotNamesList.setModel(dlm);
+			toSpotNamesList.setModel(dlm);
 		}
-		//spotNamesList.removeAll();
+		//map.setSpotList(SpotList);
+		//fromSpotNamesList.removeAll();
 		
 	}
 	
 	
 	public void listMouseClicked(MouseEvent e){
-		seleterText = (String)spotNamesList.getSelectedValue();
+		seleterText = (String)fromSpotNamesList.getSelectedValue();
 	}
 	
 	

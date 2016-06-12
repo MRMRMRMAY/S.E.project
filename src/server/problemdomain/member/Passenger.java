@@ -15,6 +15,12 @@ public class Passenger extends Member implements Serializable, Cloneable {
 	private String name; // name
 	private String contactNumber; // phone number
 
+	public Passenger(String name, String number) {
+		// TODO Auto-generated constructor stub
+		this.name = name;
+		this.contactNumber = number;
+	}
+
 	public String getName() {
 		return name;
 	}

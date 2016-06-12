@@ -5,6 +5,7 @@ package server.problemdomain.manager.view;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import server.problemdomain.manager.MainApp;
 
 //import org.controlsfx.dialog.Dialogs;
 
@@ -20,13 +21,13 @@ public class TaxiEditDialogController {
     @FXML
     private TextField nameField;
     @FXML
-    private TextField taxiNumberField;
+    private TextField contactNumberField;
     @FXML
-    private TextField cityField;
-
-
+    private TextField carModelField;
+    
+    private MainApp mainApp;
     private Stage dialogStage;
-    private Taxi taxi;
+    private TaxiProperty taxi;
     private boolean okClicked = false;
 
     /**
@@ -51,12 +52,12 @@ public class TaxiEditDialogController {
      * 
      * @param Taxi
      */
-    public void setTaxi(Taxi Taxi) {
+    public void setTaxi(TaxiProperty Taxi) {
         this.taxi = Taxi;
 
         nameField.setText(taxi.getName());
-        taxiNumberField.setText(taxi.getTaxiNumber());
-        cityField.setText(taxi.getCity());
+        contactNumberField.setText(taxi.getContactNumber());
+        carModelField.setText(taxi.getCarModel());
     }
 
     /**
@@ -75,8 +76,8 @@ public class TaxiEditDialogController {
     private void handleOk() {
         if (isInputValid()) {
             taxi.setName(nameField.getText());
-            taxi.setTaxiNumber(taxiNumberField.getText());
-            taxi.setCity(cityField.getText());
+            taxi.setContactNumber(contactNumberField.getText());
+            taxi.setCarModel(carModelField.getText());
 
             okClicked = true;
             dialogStage.close();
@@ -90,7 +91,9 @@ public class TaxiEditDialogController {
     private void handleCancel() {
         dialogStage.close();
     }
-
+    public void setMainApp(MainApp mainApp){
+    	this.mainApp = mainApp;
+    }
     /**
      * Validates the user input in the text fields.
      * 
@@ -100,20 +103,28 @@ public class TaxiEditDialogController {
         String errorMessage = "";
 
         if (nameField.getText() == null || nameField.getText().length() == 0) {
-            errorMessage += "No valid first name!\n"; 
+            errorMessage += "No valid  name!\n"; 
         }
-        if (taxiNumberField.getText() == null || taxiNumberField.getText().length() == 0) {
-            errorMessage += "No valid last name!\n"; 
+        if (contactNumberField.getText() == null || contactNumberField.getText().length() == 0) {
+            errorMessage += "No valid contact number!\n"; 
         }
 
-        if (cityField.getText() == null || cityField.getText().length() == 0) {
-            errorMessage += "No valid city!\n"; 
+        if (carModelField.getText() == null || carModelField.getText().length() == 0) {
+            errorMessage += "No valid carModel!\n"; 
+        }else {
+            // try to parse the postal code into an int.
+            try {
+                Integer.parseInt(carModelField.getText());
+            } catch (NumberFormatException e) {
+                errorMessage += "No valid postal code (must be an integer)!\n"; 
+            }
         }
 
         if (errorMessage.length() == 0) {
             return true;
         } else {
             // Show the error message.
+        	mainApp.showDialog(errorMessage+"Please correct invalid fields", "Invalid Fels");
 //        	Dialogs.create()
 //		        .title("Invalid Fields")
 //		        .masthead("Please correct invalid fields")

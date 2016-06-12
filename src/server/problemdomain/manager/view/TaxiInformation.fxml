@@ -30,7 +30,7 @@
                               <TableView fx:id="TaxiTable" layoutX="-40.0" layoutY="-21.0" prefHeight="303.0" prefWidth="160.0" stylesheets="@JMetroDarkTheme.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columns>
                                   <TableColumn fx:id="nameColumn" prefWidth="77.0" text="name" />
-                                  <TableColumn fx:id="taxiNumberColumn" prefWidth="81.0" text="taxiNumber" />
+                                  <TableColumn fx:id="contactNumberColumn" prefWidth="81.0" text="contactNumber" />
                                 </columns>
                               </TableView>
                            </children>
@@ -56,19 +56,19 @@
                                        <font>
                                           <Font name="Batang" size="19.0" />
                                        </font></Label>
-                                    <Label text="taxi number" GridPane.rowIndex="1">
+                                    <Label text="contact number" GridPane.rowIndex="1">
                                        <font>
                                           <Font name="Batang" size="19.0" />
                                        </font></Label>
-                                    <Label fx:id="taxiNumberLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <Label fx:id="contactNumberLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <font>
                                           <Font name="Batang" size="19.0" />
                                        </font></Label>
-                                    <Label text="place" GridPane.rowIndex="2">
+                                    <Label text="carModel" GridPane.rowIndex="2">
                                        <font>
                                           <Font name="Batang" size="19.0" />
                                        </font></Label>
-                                    <Label fx:id="cityLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <Label fx:id="carModelLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                        <font>
                                           <Font name="Batang" size="19.0" />
                                        </font></Label>

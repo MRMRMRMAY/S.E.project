@@ -1,9 +1,12 @@
 package server.problemdomain.manager;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import server.problemdomain.manager.model.*;
 import server.problemdomain.manager.view.*;
+import server.problemdomain.member.Passenger;
+import server.problemdomain.member.Taxi;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,7 +22,10 @@ public class MainApp extends Application {
 	private Stage primaryStage;
 	private BorderPane rootLayout;
 	private ObservableList<Person> personData = FXCollections.observableArrayList();
-	private ObservableList<Taxi> taxiData = FXCollections.observableArrayList();
+	private ObservableList<TaxiProperty> taxiData = FXCollections.observableArrayList();
+	
+	private ArrayList<Passenger> passengerData = new ArrayList<Passenger>();
+	private ArrayList<Taxi> serverTaxiData = new ArrayList<Taxi>();
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
@@ -28,25 +34,69 @@ public class MainApp extends Application {
 		showMainview();
 	}
 	public MainApp(){
-		personData.add(new Person("Hans", "Muster"));
-        personData.add(new Person("Ruth", "Mueller"));
-        personData.add(new Person("Heinz", "Kurz"));
-        personData.add(new Person("Cornelia", "Meier"));
-        personData.add(new Person("Werner", "Meyer"));
-        personData.add(new Person("Lydia", "Kunz"));
-        personData.add(new Person("Anna", "Best"));
-        personData.add(new Person("Stefan", "Meier"));
-        personData.add(new Person("Martin", "Mueller"));
-		taxiData.add(new Taxi("Hans", "1232"));
-        taxiData.add(new Taxi("Ruth", "123333"));
-        taxiData.add(new Taxi("Heinz", "232"));
-        taxiData.add(new Taxi("Cornelia", "123311"));
-        taxiData.add(new Taxi("Werner", "123322"));
-        taxiData.add(new Taxi("Lydia", "12332"));
-        taxiData.add(new Taxi("Anna", "123213"));
-        taxiData.add(new Taxi("Stefan", "123231"));
-        taxiData.add(new Taxi("Martin", "1232"));
+		
+		//passengerToPerson();
+		
+//		personData.add(new Person("Hans", "Muster"));
+//        personData.add(new Person("Ruth", "Mueller"));
+//        personData.add(new Person("Heinz", "Kurz"));
+//        personData.add(new Person("Cornelia", "Meier"));
+//        personData.add(new Person("Werner", "Meyer"));
+//        personData.add(new Person("Lydia", "Kunz"));
+//        personData.add(new Person("Anna", "Best"));
+//        personData.add(new Person("Stefan", "Meier"));
+//        personData.add(new Person("Martin", "Mueller"));
+		passengerData.add(new Passenger("Hans", "Muster"));
+		passengerData.add(new Passenger("Ruth", "Mueller"));
+		passengerData.add(new Passenger("Heinz", "Kurz"));
+		passengerData.add(new Passenger("Cornelia", "Meier"));
+		passengerData.add(new Passenger("Werner", "Meyer"));
+		passengerData.add(new Passenger("Lydia", "Kunz"));
+		passengerData.add(new Passenger("Anna", "Best"));
+		passengerData.add(new Passenger("Stefan", "Meier"));
+		passengerData.add(new Passenger("Martin", "Mueller"));
+		passengerToPerson();
+		taxiData.add(new TaxiProperty("Hans","Hans", "1232"));
+        taxiData.add(new TaxiProperty("Ruth","Hans", "123333"));
+        taxiData.add(new TaxiProperty("Heinz","Hans", "232"));
+        taxiData.add(new TaxiProperty("Cornelia","Hans", "123311"));
+        taxiData.add(new TaxiProperty("Werner","Hans", "123322"));
+        taxiData.add(new TaxiProperty("Lydia","Hans", "12332"));
+        taxiData.add(new TaxiProperty("Anna", "Hans","123213"));
+        taxiData.add(new TaxiProperty("Stefan","Hans", "123231"));
+        taxiData.add(new TaxiProperty("Martin", "Hans","1232"));
 	}
+	
+	public void personToPassenger(){
+		if(!passengerData.isEmpty())
+			passengerData.clear();
+		for(Person person : personData){
+			passengerData.add(new Passenger(person.getname(),person.getNumber()));
+		}
+	}
+	public void passengerToPerson(){
+		if(!personData.isEmpty())
+			personData.clear();
+		for(Passenger passenger : passengerData){
+			personData.add(new Person(passenger.getName(),passenger.getContactNumber()));
+		}
+	}
+	
+	public void taxiToServerTaxi(){
+		serverTaxiData.clear();
+		
+		for(TaxiProperty taxi:taxiData){
+			serverTaxiData.add(new Taxi(taxi.getName(),taxi.getCarModel(),taxi.getContactNumber()));
+		}
+	}
+	
+	public void serverTaxiToTaxi(){
+		taxiData.clear();
+		for(Taxi taxi:serverTaxiData){
+			taxiData.add(new TaxiProperty(taxi.getDriverName(),taxi.getCarModel(),taxi.getContactNumber()))
+		}
+	}
+	
 	public void initRootLay(){
 		try{
 			FXMLLoader loader = new FXMLLoader();
@@ -213,10 +263,10 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
-	public ObservableList<Taxi> getTaxiData() {
+	public ObservableList<TaxiProperty> getTaxiData() {
     	return taxiData;
     }
-    public boolean showTaxiEditDialog(Taxi taxi) {
+    public boolean showTaxiEditDialog(TaxiProperty taxi) {
 		try {
 			// Load the fxml file and create a new stage for the popup dialog.
 			FXMLLoader loader = new FXMLLoader();
@@ -235,7 +285,7 @@ public class MainApp extends Application {
 			TaxiEditDialogController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 			controller.setTaxi(taxi);
-
+			controller.setMainApp(this);
 			// Show the dialog and wait until the user closes it
 			dialogStage.showAndWait();
 

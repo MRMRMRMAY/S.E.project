@@ -51,6 +51,15 @@ public class MapStart extends JFrame{
 		spotPanel.addSpotPanel(item);
 		item.reshape(spotLocation.getLocationArray().get(index).getX(), spotLocation.getLocationArray().get(index).getY(),50, 50);
 	}
+	
+	
+	
+	public static SpotPanel getSpotPanel() {
+		return spotPanel;
+	}
+	public static void setSpotPanel(SpotPanel spotPanel) {
+		MapStart.spotPanel = spotPanel;
+	}
 	public void deletPoint(Spot name){
 		if(flag){
 			JLabel item = point.get(name);

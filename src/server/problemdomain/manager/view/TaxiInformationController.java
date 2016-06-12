@@ -15,20 +15,20 @@ import server.problemdomain.manager.model.*;
 
 public class TaxiInformationController {
     @FXML
-    private TableView<Taxi> TaxiTable;
+    private TableView<TaxiProperty> TaxiTable;
     @FXML
-    private TableColumn<Taxi, String> nameColumn;
+    private TableColumn<TaxiProperty, String> nameColumn;
     @FXML
-    private TableColumn<Taxi, String> cityColumn;
+    private TableColumn<TaxiProperty, String> carModelColumn;
     @FXML
-    private TableColumn<Taxi, String> taxiNumberColumn;
+    private TableColumn<TaxiProperty, String> contactNumberColumn;
 
     @FXML
     private Label nameLabel;
     @FXML
-    private Label taxiNumberLabel;
+    private Label contactNumberLabel;
     @FXML
-    private Label cityLabel;
+    private Label carModelLabel;
 
     // Reference to the main application.
     private MainApp mainApp;
@@ -49,10 +49,10 @@ public class TaxiInformationController {
     	// Initialize the Taxi table with the two columns.
         nameColumn.setCellValueFactory(
         		cellData -> cellData.getValue().nameProperty());
-//        cityColumn.setCellValueFactory(
-//        		cellData -> cellData.getValue().cityProperty());
-        taxiNumberColumn.setCellValueFactory(
-        		cellData -> cellData.getValue().taxiNumberProperty());
+//        carModelColumn.setCellValueFactory(
+//        		cellData -> cellData.getValue().carModelProperty());
+        contactNumberColumn.setCellValueFactory(
+        		cellData -> cellData.getValue().contactNumberProperty());
         // Clear Taxi details.
         showTaxiDetails(null);
 
@@ -79,17 +79,17 @@ public class TaxiInformationController {
      * 
      * @param Taxi the Taxi or null
      */
-    private void showTaxiDetails(Taxi taxi) {
+    private void showTaxiDetails(TaxiProperty taxi) {
     	if (taxi != null) {
     		// Fill the labels with info from the Taxi object.
     		nameLabel.setText(taxi.getName());
-    		taxiNumberLabel.setText(taxi.getTaxiNumber());
-    		cityLabel.setText(taxi.getCity());
+    		contactNumberLabel.setText(taxi.getContactNumber());
+    		carModelLabel.setText(taxi.getCarModel());
     	} else {
     		// Taxi is null, remove all the text.
     		nameLabel.setText("");
-    		taxiNumberLabel.setText("");
-    		cityLabel.setText("");
+    		contactNumberLabel.setText("");
+    		carModelLabel.setText("");
     	}
     }
 
@@ -102,7 +102,8 @@ public class TaxiInformationController {
 		if (selectedIndex >= 0) {
 			TaxiTable.getItems().remove(selectedIndex);
 		} else {
-			// Nothing selected.
+			mainApp.showDialog("Please select a Taxi in the table", "No selection");
+
 		}
 	}
 	
@@ -112,7 +113,7 @@ public class TaxiInformationController {
 	 */
 	@FXML
 	private void handleNewTaxi() {
-		Taxi tempTaxi = new Taxi();
+		TaxiProperty tempTaxi = new TaxiProperty();
 		boolean okClicked = mainApp.showTaxiEditDialog(tempTaxi);
 		if (okClicked) {
 			mainApp.getTaxiData().add(tempTaxi);
@@ -125,7 +126,7 @@ public class TaxiInformationController {
 	 */
 	@FXML
 	private void handleEditTaxi() {
-		Taxi selectedTaxi = TaxiTable.getSelectionModel().getSelectedItem();
+		TaxiProperty selectedTaxi = TaxiTable.getSelectionModel().getSelectedItem();
 		if (selectedTaxi != null) {
 			boolean okClicked = mainApp.showTaxiEditDialog(selectedTaxi);
 			if (okClicked) {

@@ -15,7 +15,7 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
-<children><Label text="name" /><TextField fx:id="nameField" GridPane.columnIndex="1" /><Label text="taxi number" GridPane.rowIndex="1" /><Label text="Place" GridPane.rowIndex="2" /><TextField fx:id="taxiNumberField" GridPane.columnIndex="1" GridPane.rowIndex="1" /><TextField fx:id="cityField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+<children><Label text="name" /><TextField fx:id="nameField" GridPane.columnIndex="1" /><Label text="contact" GridPane.rowIndex="1" /><Label text="carModel" GridPane.rowIndex="2" /><TextField fx:id="contactNumberField" GridPane.columnIndex="1" GridPane.rowIndex="1" /><TextField fx:id="carModelField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 </children>
 </GridPane>
 <HBox layoutX="197.1875" layoutY="241.0" spacing="5.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
