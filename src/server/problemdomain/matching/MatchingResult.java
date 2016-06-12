@@ -10,9 +10,9 @@ package server.problemdomain.matching;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import javafx.scene.effect.Light.Spot;
-import server.problemdomain.manager.model.Taxi;
 import server.problemdomain.member.Passenger;
+import server.problemdomain.member.Taxi;
+import server.problemdomain.systemdata.Spot;
 
 public class MatchingResult implements Serializable{
 	private Spot[] drivingRoute; // driving route
@@ -24,16 +24,19 @@ public class MatchingResult implements Serializable{
 	private int fare; // fare for driving
 					// for taxi, fare was itself
 					// for passenger, fare was divided by num of passenger
-	private int estimatedTimeOfDeparture; // estimated time of departure, sec unit;
+//	private int estimatedTimeOfDeparture; // estimated time of departure, sec unit;
+	private Taxi taxi; // matched taxi
 	
 	//
-	public MatchingResult() {}
+	public MatchingResult() {
+		passengerList = new ArrayList<Passenger>();
+	}
 	
 	//
-	public MatchingResult(MatchingQueueEntry entry)
+/*	public MatchingResult(MatchingQueueEntry entry)
 	{
 		this.numOfPassenger = entry.getRequests().size();
-	}
+	}*/
 	
 	// calculate drivingRoute
 	
@@ -59,9 +62,9 @@ public class MatchingResult implements Serializable{
 	public int getFare() {
 		return fare;
 	}
-	public int getEstimatedTimeOfDeparture() {
+	/*public int getEstimatedTimeOfDeparture() {
 		return estimatedTimeOfDeparture;
-	}
+	}*/
 	public void setDrivingRoute(Spot[] drivingRoute) {
 		this.drivingRoute = drivingRoute;
 	}
@@ -74,8 +77,41 @@ public class MatchingResult implements Serializable{
 	public void setFare(int fare) {
 		this.fare = fare;
 	}
-	public void setEstimatedTimeOfDeparture(int estimatedTimeOfDeparture) {
+/*	public void setEstimatedTimeOfDeparture(int estimatedTimeOfDeparture) {
 		this.estimatedTimeOfDeparture = estimatedTimeOfDeparture;
+	}*/
+
+	public Spot getFrom() {
+		return from;
+	}
+
+	public Spot getTo() {
+		return to;
+	}
+
+	public ArrayList<Passenger> getPassengerList() {
+		return passengerList;
+	}
+
+	public void setFrom(Spot from) {
+		this.from = from;
+	}
+
+	public void setTo(Spot to) {
+		this.to = to;
+	}
+
+	public void addPassenger(Passenger passenger)
+	{
+		passengerList.add(passenger);
+	}
+
+	public Taxi getTaxi() {
+		return taxi;
+	}
+
+	public void setTaxi(Taxi taxi) {
+		this.taxi = taxi;
 	}
 
 	

@@ -12,6 +12,8 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Timer;
 
+import datamanagement.MapDataManager;
+import physicalarchitecture.Server;
 import server.problemdomain.matching.MatchingSystem;
 import server.problemdomain.matching.Request;
 import server.problemdomain.matching.Request.RequestState;
@@ -203,20 +205,25 @@ public class TestClass {
 			e.printStackTrace();
 		}
 		
+		MapDataManager man = new MapDataManager();
+		Server server = new Server(5555);
+		
+		//man.saveData(map);
+		Map map2 = man.loadData();
+		
 		ArrayList<Spot> spotList = map.getSpotList();
 		Request request1 = new Request(new Passenger(), spotList.get(0), spotList.get(1), LocalDateTime.now(), 11);
 		Request request2 = new Request(new Passenger(), spotList.get(0), spotList.get(1), LocalDateTime.now(), 5);
 		Request request3 = new Request(new Passenger(), spotList.get(1), spotList.get(2), LocalDateTime.now(), 15);
-		MatchingSystem sys = new MatchingSystem();
-		sys.setMap(map);
+		MatchingSystem sys = new MatchingSystem(server);
 		MatchingSystem.RouteInfo info = sys.calculateDrivingRoute(spotList.get(0), spotList.get(1));
 		System.out.println("dist : " + info.dist);
-		for ( int i : info.route )
-			System.out.print(i + " ");
+		for ( Spot i : info.route )
+			System.out.print(i.getSpotIndex() + " ");
 		System.out.println();
-	//	sys.pushRequest(request1);
-	//	sys.pushRequest(request2);
-	//	sys.pushRequest(request3);
+		sys.pushRequest(request1);
+		sys.pushRequest(request2);
+		sys.pushRequest(request3);
 /*		for ( int i = 0)
 		
 		public Request(Passenger passenger, Spot from, Spot to, LocalDateTime requestedTime, long TTL) {

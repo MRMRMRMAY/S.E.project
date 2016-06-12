@@ -14,6 +14,8 @@ import java.io.Serializable;
 public class Passenger extends Member implements Serializable, Cloneable {
 	private String name; // name
 	private String contactNumber; // phone number
+	
+	public Passenger() {}
 
 	public Passenger(String name, String number) {
 		// TODO Auto-generated constructor stub

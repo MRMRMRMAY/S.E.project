@@ -35,6 +35,7 @@ public class Packet implements Serializable {
 		// between taxi and server
 		// Request(t->s)
 		T_UPDATE_TAXI_STATE,
+		T_UPDATE_TAXI_LOCATION,
 		
 		// Reply(s->t)
 		T_NEW_MATCHING;

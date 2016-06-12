@@ -10,7 +10,7 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="passenger.controller.TSRequestController">
   <!-- TODO Add Nodes -->
   <children>
-    <ComboBox fx:id="STARTINGNODE_COMBOBOX" layoutX="391.0" layoutY="109.0" prefHeight="21.0" prefWidth="89.0" promptText="1. 출발지">
+    <ComboBox fx:id="STARTINGNODE_COMBOBOX" layoutX="391.0" layoutY="109.0" prefHeight="21.0" prefWidth="117.0" promptText="1. 출발지">
       <items>
         <FXCollections fx:factory="observableArrayList">
           <String fx:value="1. 출발지" />
@@ -22,7 +22,7 @@
         </FXCollections>
       </items>
     </ComboBox>
-    <ComboBox fx:id="DESTINATION_COMBOBOX" layoutX="392.0" layoutY="154.0" prefHeight="21.0" prefWidth="88.00009999999747" promptText="2. 도착지">
+    <ComboBox fx:id="DESTINATION_COMBOBOX" layoutX="392.0" layoutY="154.0" prefHeight="21.0" prefWidth="117.0" promptText="2. 도착지">
       <items>
         <FXCollections fx:factory="observableArrayList">
           <String fx:value="2. 도착지" />
@@ -34,7 +34,7 @@
         </FXCollections>
       </items>
     </ComboBox>
-    <ComboBox fx:id="WAITINGTIME_COMBOBOX" layoutX="392.0" layoutY="199.0" prefHeight="21.0" prefWidth="89.0" promptText="3. 대기시간">
+    <ComboBox fx:id="WAITINGTIME_COMBOBOX" layoutX="392.0" layoutY="199.0" prefHeight="21.0" prefWidth="117.0" promptText="3. 대기시간">
       <items>
         <FXCollections fx:factory="observableArrayList">
           <String fx:value="3. 대기시간" />

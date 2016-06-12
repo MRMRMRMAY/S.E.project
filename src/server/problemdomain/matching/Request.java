@@ -9,6 +9,7 @@ import java.util.Observable;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import physicalarchitecture.server.ConnectionToClient;
 import server.problemdomain.member.Passenger;
 import server.problemdomain.systemdata.Spot;
 
@@ -21,6 +22,8 @@ public class Request extends Observable {
 	private RequestState state; // request state
 
 	private Timer timer; // timer to stop waiting for matching when time expired
+	
+	private ConnectionToClient client; // client is set at server
 	
 	
 	private MatchingQueueEntry matchingQueue; // queue for matching
@@ -137,5 +140,13 @@ public class Request extends Observable {
 
 	public void setMatchingQueue(MatchingQueueEntry matchingQueue) {
 		this.matchingQueue = matchingQueue;
+	}
+
+	public ConnectionToClient getClient() {
+		return client;
+	}
+
+	public void setClient(ConnectionToClient client) {
+		this.client = client;
 	}
 }

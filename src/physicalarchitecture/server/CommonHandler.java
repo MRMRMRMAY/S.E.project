@@ -11,8 +11,10 @@ import java.io.IOException;
 import physicalarchitecture.Server;
 import physicalarchitecture.common.Packet;
 import physicalarchitecture.common.Packet.PacketType;
+import server.problemdomain.member.Enum.MemberType;
 import server.problemdomain.member.Passenger;
 import server.problemdomain.member.Taxi;
+import server.problemdomain.systemdata.Spot;
 
 public class CommonHandler {
 	private static CommonHandler commonHandler;
@@ -60,7 +62,7 @@ public class CommonHandler {
 	/*
 	 * login
 	 * 
-	 * @param id: id pw: pw
+	 * @param id: id pw: pw, spot(opt if taxi)
 	 */
 	public void processLogin(Packet packet, ConnectionToClient client) {
 		boolean isSuccess = false;
@@ -71,13 +73,17 @@ public class CommonHandler {
 		for (Passenger passenger : server.getPassengerList()) {
 			if (passenger.getId().equals(id) && passenger.getPw().equals(pw)) {
 				isSuccess = true;
+				client.setInfo("type", MemberType.PASSENGER); // set member type
+				client.setInfo("id", id); // set id
 				break;
 			}
 		}
 		if (!isSuccess) {
 			for (Taxi taxi : server.getTaxi()) {
 				if (taxi.getId().equals(id) && taxi.getPw().equals(pw)) {
-					isSuccess = false;
+					isSuccess = true;
+					client.setInfo("type", MemberType.TAXI); // set member type
+					client.setInfo("data", taxi); // set id
 					break;
 				}
 			}

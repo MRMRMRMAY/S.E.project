@@ -7,11 +7,12 @@
 
 package server.problemdomain.systemdata;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-public class Distance implements Cloneable{
+public class Distance implements Serializable, Cloneable{
 	private HashMap<Spot, Integer> distanceInfo; // spot list
 												// spot, distance fair
 												// ex) (spot1, 100), (spot2, 200), (spot3, -1)

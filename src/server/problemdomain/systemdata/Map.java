@@ -9,8 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import server.problemdomain.manager.model.Distance;
-import server.problemdomain.manager.model.Spot;
+
 
 /*
  * Serializable - to directly save object  
@@ -117,6 +116,7 @@ public class Map implements Serializable, Cloneable {
 	public void setSpotList(ArrayList<Spot> spotList) {
 		this.spotList = spotList;
 	}
+
 	public ArrayList<Distance> getDistanceList() {
 		return distanceList;
 	}
@@ -136,6 +136,12 @@ public class Map implements Serializable, Cloneable {
 	public void addSpot(int index, Spot element){
 		if(!spotList.contains(element))
 			this.spotList.set(index, element);
+	}
+
+
+
+	public ArrayList<Spot> getSpotList() {
+		return spotList;
 	}
 
 }

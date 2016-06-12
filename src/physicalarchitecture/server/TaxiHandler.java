@@ -8,6 +8,8 @@ package physicalarchitecture.server;
 
 import physicalarchitecture.Server;
 import physicalarchitecture.common.Packet;
+import server.problemdomain.member.Enum.TaxiState;
+import server.problemdomain.systemdata.Spot;
 
 public class TaxiHandler {
 	private static TaxiHandler taxiHandler;
@@ -37,12 +39,28 @@ public class TaxiHandler {
 		switch ( packet.getpacketType() )
 		{
 		case T_UPDATE_TAXI_STATE:
+			processUpdateState(packet, client);
+			break;
+		case T_UPDATE_TAXI_LOCATION:
+			processUpdateLocation(packet, client);
 			break;
 		}
 	}
 	
+	// update taxi state
 	public void processUpdateState(Packet packet, ConnectionToClient client)
 	{
+		TaxiState state = (TaxiState)packet.getParms().get(0);
 		
+		client.setInfo("state", state);
+	}
+	
+	
+	// update taxi location
+	public void processUpdateLocation(Packet packet, ConnectionToClient client)
+	{
+		Spot currentLocation = (Spot)packet.getParms().get(0);
+		
+		client.setInfo("location", currentLocation);
 	}
 }

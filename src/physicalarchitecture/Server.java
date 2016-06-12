@@ -12,6 +12,7 @@ import datamanagement.PassengerDataManager;
 import datamanagement.TaxiDataManager;
 import physicalarchitecture.common.Packet;
 import physicalarchitecture.server.*;
+import server.problemdomain.matching.MatchingSystem;
 import server.problemdomain.member.Passenger;
 import server.problemdomain.member.Taxi;
 import server.problemdomain.systemdata.Map;
@@ -44,6 +45,14 @@ public class Server extends AbstractServer {
 	private PassengerHandler passengerHandler;
 	private TaxiHandler taxiHandler;
 	
+	// matching system
+	private MatchingSystem matchingSystem;
+	
+	// fare rate
+	private int fareRate;
+	private final int defaultFareRate = 300;
+	
+	
 	// Constructors ****************************************************
 
 	/**
@@ -63,6 +72,10 @@ public class Server extends AbstractServer {
 		
 		passengerHandler = PassengerHandler.getInstance(this);
 		taxiHandler = TaxiHandler.getInstance(this);		
+		
+		matchingSystem = new MatchingSystem(this);
+		
+		fareRate = defaultFareRate; // default value
 	}
 
 	// Instance methods ************************************************
@@ -154,6 +167,18 @@ public class Server extends AbstractServer {
 		}
 
 		return packet;
+	}
+
+	public MatchingSystem getMatchingSystem() {
+		return matchingSystem;
+	}
+
+	public int getFareRate() {
+		return fareRate;
+	}
+
+	public void setFareRate(int fareRate) {
+		this.fareRate = fareRate;
 	}	
 }
 // End of EchoServer class

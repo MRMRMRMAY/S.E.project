@@ -7,6 +7,7 @@ package physicalarchitecture.server;
 
 import physicalarchitecture.Server;
 import physicalarchitecture.common.Packet;
+import server.problemdomain.matching.Request;
 import server.problemdomain.member.Passenger;
 
 public class PassengerHandler {
@@ -54,6 +55,11 @@ public class PassengerHandler {
 	
 	public void processRequestMatching(Packet packet, ConnectionToClient client )
 	{
+		Request request = (Request)packet.getParms().get(0);
+		
+		request.setClient(client);
+		
+		server.getMatchingSystem().pushRequest(request); // push request
 		
 	}
 }

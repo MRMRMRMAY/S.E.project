@@ -8,6 +8,7 @@
 
 package datamanagement;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -39,7 +40,7 @@ public class MapDataManager {
 		Map map = null;
 		
 		try {
-			fin = new FileInputStream("map.dat");
+			fin = new FileInputStream(new File("map.dat"));
 			ofin = new ObjectInputStream(fin);
 			
 			// error

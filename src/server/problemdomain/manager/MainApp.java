@@ -93,7 +93,7 @@ public class MainApp extends Application {
 	public void serverTaxiToTaxi(){
 		taxiData.clear();
 		for(Taxi taxi:serverTaxiData){
-			taxiData.add(new TaxiProperty(taxi.getDriverName(),taxi.getCarModel(),taxi.getContactNumber()))
+			taxiData.add(new TaxiProperty(taxi.getDriverName(),taxi.getCarModel(),taxi.getContactNumber()));
 		}
 	}
 	
