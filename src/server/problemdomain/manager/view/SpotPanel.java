@@ -13,10 +13,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import driver.model.Location;
+import server.problemdomain.manager.model.SpotLocation;
+
+
 
 public class SpotPanel extends JPanel{
-	private ArrayList<Location> locationArray = new ArrayList<Location>();
+	private Color[] color = {Color.black,Color.red,Color.green,Color.blue,Color.magenta,Color.yellow,Color.orange};
+	private SpotLocation location = new SpotLocation();
+	private int[][] distance2DArray = null;
 	public SpotPanel(){
 		this.setLayout(null);
 		this.setBorder(BorderFactory.createLineBorder(Color.gray));
@@ -61,17 +65,22 @@ public class SpotPanel extends JPanel{
 //			g.setColor(Color.blue);
 //			g.fillOval(i*30, i*30, 20, 20);
 //		}
-		for(Location location:locationArray){
-			for(int i = 1;i<3;i++){
-				Line2D lin = new Line2D.Float((float)( (i-1)*30),(float)((i-1)*30),(float)(i*30),(float)(i*30));
-				g2.draw(lin);
+		if(distance2DArray!=null)
+		for(int i = 0; i<distance2DArray.length;i++)
+		{
+			for(int j = i; j < distance2DArray[i].length;j++){
+				if(distance2DArray[i][j]>0){
+					Line2D lin = new Line2D.Float((float)location.getLocationArray().get(i).getX()+15,(float)location.getLocationArray().get(i).getY()+25,(float)location.getLocationArray().get(j).getX()+15,(float)location.getLocationArray().get(j).getY()+25);
+					g2.setColor(color[i%color.length]);
+					g2.draw(lin);
+				}
 			}
 		}
 	}
-	public ArrayList<Location> getLocationArray() {
-		return locationArray;
+	public int[][] getDistance2DArray() {
+		return this.distance2DArray;
 	}
-	public void setLocationArray(ArrayList<Location> locationArray) {
-		this.locationArray = locationArray;
+	public void setDistance2DArray(int[][] distance2DArray) {
+		this.distance2DArray = distance2DArray;
 	}
 }

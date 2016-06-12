@@ -250,6 +250,7 @@ public class MapPanel extends JPanel{
 				System.out.println(0);
 				boolean exit = false;
 				Spot spot = new Spot();
+				if(distanceInput.getText().trim().length()!=0){
 				if(fromSpotNamesList.isSelectionEmpty()){
 					JOptionPane.showMessageDialog(null, "Please select a in the from table.","error",JOptionPane.ERROR_MESSAGE);
 				}
@@ -269,6 +270,7 @@ public class MapPanel extends JPanel{
 							distance2DArray[i][from] = Integer.parseInt(distanceInput.getText());
 						
 						}
+						main.setMap(distance2DArray);
 						for(int i = 0; i<spotNames.size();i++){
 							for(int j = 0; j<spotNames.size(); j++){
 								System.out.printf("%d ",distance2DArray[i][j]);
@@ -284,7 +286,10 @@ public class MapPanel extends JPanel{
 				
 					
 				}
-				
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "error");
+				}
 //				if(!SpotList.isEmpty()){
 //					for(Spot item: SpotList){
 //						//if(item.getSpotName().equals(nameInput.getText())){

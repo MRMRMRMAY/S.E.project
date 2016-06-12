@@ -25,6 +25,7 @@ public class MapStart extends JFrame{
 	private static JFrame frame;
 	private static SpotPanel spotPanel;
 	private static SpotLocation spotLocation = new SpotLocation();
+	private int[][] map;
 	public MapStart(){
 		frame = new JFrame();
 		mapPanle = new MapPanel();
@@ -67,10 +68,19 @@ public class MapStart extends JFrame{
 			spotPanel.deletPoint(item);
 		}
 	}
+	public int[][] getMap() {
+		return map;
+	}
+	public void setMap(int[][] map) {
+		this.map = map;
+		spotPanel.setDistance2DArray(map);
+		spotPanel.repaint();
+	}
 	public class myMouseMotion extends MouseAdapter{
 		@Override
 		public void mouseMoved(MouseEvent e){
-			;
+	
+			
 		}
 	}
 }
