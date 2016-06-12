@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import datamanagement.MapDataManager;
 import datamanagement.PassengerDataManager;
 import datamanagement.TaxiDataManager;
+import physicalarchitecture.common.Packet;
 import physicalarchitecture.server.*;
 import server.problemdomain.member.Passenger;
 import server.problemdomain.member.Taxi;
@@ -140,5 +141,19 @@ public class Server extends AbstractServer {
 	public ArrayList<Taxi> getTaxi() {
 		return taxiList;
 	}
+	
+	// 패킷 생성하여 반환
+	public Packet createPacket(Packet.PacketType type, Object... objs) {
+		Packet packet = new Packet();
+
+		packet.setPacketType(type);
+		for (Object obj : objs) {
+			// if (obj == null)
+			// break;
+			packet.addParammeter(obj);
+		}
+
+		return packet;
+	}	
 }
 // End of EchoServer class

@@ -20,7 +20,7 @@ public class Packet implements Serializable {
 
 	public enum PacketType {
 		// common
-		LOGIN, LOGOUT,
+		LOGIN, LOGOUT, REPLY_LOGIN,
 		REQUEST_MAP, REPLY_MAP,
 		NOTICE, //(s->p)
 		NONE,
@@ -48,13 +48,15 @@ public class Packet implements Serializable {
 		return params;
 	}
 
-	public void setpacketType(PacketType packetType) {
+	public void setPacketType(PacketType packetType) {
 		this.packetType = packetType;
 	}
 
 	public void addParammeter(Object obj) {
 		params.add(obj);
 	}
+	
+	
 
 }
 

@@ -7,6 +7,7 @@ package physicalarchitecture.server;
 
 import physicalarchitecture.Server;
 import physicalarchitecture.common.Packet;
+import server.problemdomain.member.Passenger;
 
 public class PassengerHandler {
 	private static PassengerHandler passengerHandler;
@@ -36,15 +37,19 @@ public class PassengerHandler {
 		switch ( packet.getpacketType() )
 		{
 		case P_SIGNIN:
+			processSignIn(packet, client);
 			break;
 		case P_REQUEST_MATCHING:
+			processRequestMatching(packet, client);
 			break;
 		}
 	}
 	
 	public void processSignIn(Packet packet, ConnectionToClient client)
 	{
+		Passenger newPassenger = (Passenger)packet.getParms().get(0);
 		
+		server.getPassengerList().add(newPassenger);
 	}
 	
 	public void processRequestMatching(Packet packet, ConnectionToClient client )
