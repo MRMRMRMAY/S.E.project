@@ -14,8 +14,7 @@ public class PassengerMain extends Application {
 	@Override
 	public void start(Stage primaryStage){
 		try {
-			//Open SignIn.fxml
-			Parent root = FXMLLoader.load(getClass().getResource("/passenger/view/SignUp.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/passenger/view/TSRequest.fxml"));
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.show();
