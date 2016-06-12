@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
@@ -17,7 +17,7 @@
     <TextField fx:id="NAME_TEXTFIELD" layoutX="220.0" layoutY="160.0" prefWidth="200.0" />
     <TextField fx:id="CONTACT_TEXTFIELD" layoutX="220.0" layoutY="197.0" prefWidth="200.0" text="010XXXXXXXX 형식" />
     <CheckBox fx:id="AGREE_CHECKBOX" layoutX="215.0" layoutY="248.0" mnemonicParsing="false" text="연락처 제공에 동의합니다." />
-    <Button fx:id="SIGNUP_BUTTON" layoutX="252.0" layoutY="295.0" mnemonicParsing="false" text="회원가입" />
-    <Button fx:id="CANCEL_BUTTON" layoutX="332.0" layoutY="296.0" mnemonicParsing="false" text="취소" />
+    <Button fx:id="SIGNUP_BUTTON" layoutX="252.0" layoutY="295.0" mnemonicParsing="false" onAction="#signUpAction" text="회원가입" />
+    <Button fx:id="CANCEL_BUTTON" layoutX="332.0" layoutY="296.0" mnemonicParsing="false" onAction="#cancelAction" text="취소" />
   </children>
 </AnchorPane>
