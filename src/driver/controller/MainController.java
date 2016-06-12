@@ -44,8 +44,14 @@ public class MainController
 	private Label lblLocation;
 	//Taxi Location
 
+	private Main main;
+	
+	
+	
 	//private String state = "";
 
+	
+	
 	Place ti = new Place("경대 북문",7);
 	/*Place pla2 = new Place("경대 서문",1);
 	Place pla3 = new Place("경대 동문",1);
@@ -129,4 +135,8 @@ public class MainController
 	    }  
 	}
 */
+
+	public void setMain(Main main) {
+		this.main = main;
+	}
 }
