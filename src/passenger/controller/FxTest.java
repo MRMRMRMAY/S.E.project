@@ -1,4 +1,4 @@
-﻿package passenger.controller;
+﻿/*package passenger.controller;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -35,4 +35,4 @@ public class FxTest extends Application {
   public static void main(String[] args) {
     launch(args);
   }
-}
+}*/

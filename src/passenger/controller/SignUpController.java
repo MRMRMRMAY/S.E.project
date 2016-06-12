@@ -23,8 +23,8 @@ public class SignUpController implements Initializable{
 	@FXML private TextField NAME_TEXTFIELD;		// 이름_텍스트필드
 	@FXML private TextField CONTACT_TEXTFIELD;	// 연락처_텍스트필드
 	@FXML private CheckBox AGREE_CHECKBOX;		// 동의_체크박스
-	@FXML private Button SIGNUP_BUTTON;		// 회원가입_버튼
-	@FXML private Button CANCEL_BUTTON;		// 취소_버튼
+	@FXML private Button SIGNUP_BUTTON;			// 회원가입_버튼
+	@FXML private Button CANCEL_BUTTON;			// 취소_버튼
     
 
 	@Override
@@ -41,7 +41,7 @@ public class SignUpController implements Initializable{
 	public void signUpAction(ActionEvent event){
 		String passenger_ID = ID_TEXTFIELD.getText();
 		String passenger_Password = Password_PASSWORDFIELD.getText();
-		String passenger_Name = NAME_TEXTFIELD.getText();		// passenger_이름
+		String passenger_Name = NAME_TEXTFIELD.getText();			// passenger_이름
 		String passenger_Contact = CONTACT_TEXTFIELD.getText();		// passenger_연락처
 		 
 	    // MySQL path, port: 3306, DB name: ts_member (TS=Taxi Sharing)

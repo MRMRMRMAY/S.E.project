@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-//TEST import javafx.application.Application;
+import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,8 +24,8 @@ public class SignInController implements Initializable{
 	@FXML private AnchorPane SignIn_ANCHOR;
 	@FXML private TextField ID_TEXTFIELD;
 	@FXML private PasswordField Password_PASSWORDFIELD;
-	@FXML private Button SIGNIN_BUTTON;	// 로그인_버튼
-	@FXML private Button CANCEL_BUTTON;	// 취소_버튼
+	@FXML private Button SIGNIN_BUTTON;			// 로그인_버튼
+	@FXML private Button CANCEL_BUTTON;			// 취소_버튼
 	@FXML private Button GOSIGNUPPAGE_BUTTON;	// 회원가입페이지로_버튼
 	// 
 
@@ -58,7 +58,7 @@ public class SignInController implements Initializable{
 			// DB 
 			conn = DriverManager.getConnection(jdbcUrl, dbId, dbPw);	     
 			
-			sql = "select id,password from ts_member_passenger where id = ? and pwd = ?";
+			sql = "select id,password from ts_member.passenger where id = ? and pwd = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, passenger_ID);
 			pstmt.setString(2, passenger_Password);
@@ -88,7 +88,7 @@ public class SignInController implements Initializable{
 		Platform.exit();
 	}
 	
-	public static void main(String[] args) {
-		// for test.. launch(args);
+/*	public static void main(String[] args) {
+		launch(args);
 	  }
-}
+*/}
