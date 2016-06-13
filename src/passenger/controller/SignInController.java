@@ -50,10 +50,10 @@ public class SignInController implements Initializable{
 		String passenger_ID = ID_TEXTFIELD.getText();
 		String passenger_Password = Password_PASSWORDFIELD.getText();
 		
-		// MySQL path , port: 3306, DB name: ts_member (TS=Taxi Sharing)
-		String jdbcUrl = "jdbc:MySQL57://localhost:3306/ts_member";
+		// MySQL path, port: 3306, DB name: ts_member (TS=Taxi Sharing)
+		String jdbcUrl = "jdbc:mysql://localhost:3306/ts_member";
 		String dbId = "root";
-		String dbPw = "aktlwk";	
+		String dbPw = "tsts";	
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -64,7 +64,7 @@ public class SignInController implements Initializable{
 			// DB 
 			conn = DriverManager.getConnection(jdbcUrl, dbId, dbPw);	     
 			
-			sql = "select id,password from ts_member.passengers where id = ? and pwd = ?";
+			sql = "select id,password from ts_member.passenger where id = ? and pwd = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, passenger_ID);
 			pstmt.setString(2, passenger_Password);

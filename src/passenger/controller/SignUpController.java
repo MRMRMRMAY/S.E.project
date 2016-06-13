@@ -55,9 +55,9 @@ public class SignUpController implements Initializable{
 		String passenger_Contact = CONTACT_TEXTFIELD.getText();		// passenger_연락처
 		 
 	    // MySQL path, port: 3306, DB name: ts_member (TS=Taxi Sharing)
-		String jdbcUrl = "jdbc:MySQL57://localhost:3306/ts_member";
+		String jdbcUrl = "jdbc:MysSQL57://localhost:3306/ts_member";
 		String dbId = "root";
-		String dbPw = "aktlwk";	  
+		String dbPw = "tsts";	  
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		  
@@ -75,13 +75,13 @@ public class SignUpController implements Initializable{
 			//DB
 			conn = DriverManager.getConnection(jdbcUrl, dbId, dbPw);
 			
-			sql = "insert into passengers values(?,?,?,?)";
+			sql = "insert into ts_member values(?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
-//			pstmt.setInt(1, num);
-			pstmt.setString(1, ID);
-			pstmt.setString(2, Password);
-			pstmt.setString(3, Name);
-			pstmt.setString(4, Contact);
+			pstmt.setInt(1, num);
+			pstmt.setString(2, ID);
+			pstmt.setString(3, Password);
+			pstmt.setString(4, Name);
+			pstmt.setString(5, Contact);
 			pstmt.executeUpdate();
 			}
 		catch (Exception e) {
