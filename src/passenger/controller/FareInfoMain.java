@@ -9,12 +9,12 @@ import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 
 
-public class PassengerMain extends Application {
+public class FareInfoMain extends Application {
 
 	@Override
 	public void start(Stage primaryStage){
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/passenger/view/TSRequest.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/passenger/view/FareInfo.fxml"));
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.show();

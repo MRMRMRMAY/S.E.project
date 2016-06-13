@@ -4,14 +4,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="passenger.controller.FareInfoController">
   <!-- TODO Add Nodes -->
   <children>
-    <TitledPane animated="false" layoutX="198.0" layoutY="97.0" text="요금 정보">
+    <TitledPane animated="false" layoutX="198.0" layoutY="119.0" text="요금 정보">
       <content>
         <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
       </content>
     </TitledPane>
+    <Label layoutX="202.0" layoutY="45.0" text="운행 요금 안내입니다.">
+      <font>
+        <Font size="20.0" />
+      </font>
+    </Label>
   </children>
 </AnchorPane>

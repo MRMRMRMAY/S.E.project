@@ -4,26 +4,32 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="passenger.controller.">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="passenger.controller.MatchingInfoController">
   <!-- TODO Add Nodes -->
   <children>
-    <Accordion layoutX="198.0" layoutY="86.0">
+    <Accordion layoutX="198.0" layoutY="109.0">
       <expandedPane>
-        <TitledPane fx:id="x1" animated="false" text="택시 정보">
+        <TitledPane fx:id="x2" animated="false" text="동승 인원">
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
           </content>
         </TitledPane>
       </expandedPane>
       <panes>
-        <TitledPane animated="false" text="동승 인원">
+        <fx:reference source="x2" />
+        <TitledPane fx:id="x1" animated="false" text="택시 정보">
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
           </content>
         </TitledPane>
-        <fx:reference source="x1" />
       </panes>
     </Accordion>
+    <Label layoutX="182.0" layoutY="47.0" text="매칭 정보를 확인해주세요.">
+      <font>
+        <Font size="20.0" />
+      </font>
+    </Label>
   </children>
 </AnchorPane>
