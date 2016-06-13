@@ -114,7 +114,7 @@ public class TaxiEditDialogController {
         }else {
             // try to parse the postal code into an int.
             try {
-                Integer.parseInt(carModelField.getText());
+                Integer.parseInt(contactNumberField.getText());
             } catch (NumberFormatException e) {
                 errorMessage += "No valid postal code (must be an integer)!\n"; 
             }

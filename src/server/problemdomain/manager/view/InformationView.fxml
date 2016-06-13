@@ -41,12 +41,10 @@
                      </children>
                   </GridPane>
                   <Label layoutX="31.0" layoutY="14.0" text="Information" />
-                  <HBox layoutX="66.0" layoutY="254.0" spacing="30.0">
+                  <HBox layoutX="230.0" layoutY="254.0" spacing="30.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#handleUpdate" text="upData" />
-                        <Button mnemonicParsing="false" onAction="#handleNewPerson" prefHeight="23.0" prefWidth="67.0" text="new" />
-                        <Button layoutX="256.0" layoutY="246.0" mnemonicParsing="false" onAction="#handleDeletePerson" text="deleter" />
-                        <Button layoutX="338.0" layoutY="246.0" mnemonicParsing="false" onAction="#handleEditPerson" prefHeight="21.0" prefWidth="61.0" text="exit" />
+                        <Button mnemonicParsing="false" onAction="#handleUpdate" text="UpData" />
+                        <Button layoutX="338.0" layoutY="246.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="21.0" prefWidth="61.0" text="Cencel" />
                      </children>
                   </HBox>
                </children>

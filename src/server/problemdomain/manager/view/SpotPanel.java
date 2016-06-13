@@ -13,6 +13,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.sun.javafx.scene.traversal.WeightedClosestCorner;
+
 import server.problemdomain.manager.model.SpotLocation;
 
 
@@ -20,6 +22,7 @@ import server.problemdomain.manager.model.SpotLocation;
 public class SpotPanel extends JPanel{
 	private Color[] color = {Color.black,Color.red,Color.green,Color.blue,Color.magenta,Color.yellow,Color.orange};
 	private SpotLocation location = new SpotLocation();
+	private JLabel[][] labels = new JLabel[100][100];
 	private int[][] distance2DArray = null;
 	public SpotPanel(){
 		this.setLayout(null);
@@ -71,6 +74,11 @@ public class SpotPanel extends JPanel{
 			for(int j = i; j < distance2DArray[i].length;j++){
 				if(distance2DArray[i][j]>0){
 					Line2D lin = new Line2D.Float((float)location.getLocationArray().get(i).getX()+15,(float)location.getLocationArray().get(i).getY()+25,(float)location.getLocationArray().get(j).getX()+15,(float)location.getLocationArray().get(j).getY()+25);
+					labels[i][j] = new JLabel();
+					labels[i][j].setText(String.format("dist:%d",distance2DArray[i][j]));
+					labels[i][j].reshape((location.getLocationArray().get(i).getX()+location.getLocationArray().get(j).getX())/2,
+							(location.getLocationArray().get(i).getY()+location.getLocationArray().get(j).getY())/2+5,150,50);
+					this.add(labels[i][j]);
 					g2.setColor(color[i%color.length]);
 					g2.draw(lin);
 				}

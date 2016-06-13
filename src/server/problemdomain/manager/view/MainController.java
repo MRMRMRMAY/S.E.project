@@ -36,16 +36,23 @@ public class MainController{
 	}
 	@FXML
 	private void handleLogin(){
-		
-		boolean okClicked = main.showLoginStage();
-		if (okClicked == true) {
+		dialogStage.close();
+		main.showLoginStage();
+		main.showDialog("Log out", "Log out");
+//		boolean okClicked = main.showLoginStage();
+/*		if (okClicked == true) {
 			main.showDialog("welcome", "pass");
-		}
+		}*/
 	}
 	@FXML
 	private void handleInfo(){
 		main.showPersonOverview();
 	}
+	@FXML
+	private void handleMoney(){
+		main.showMoneyview();
+	}
+	
 	@FXML
 	private void handleExit(){
 		dialogStage.close();

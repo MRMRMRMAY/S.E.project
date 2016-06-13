@@ -166,7 +166,10 @@ public class PersonOverviewController {
 		//mainApp.setPerdata();
 		personTable.setItems(mainApp.getPersonData());
 	}
-
+	@FXML
+	private void handleCancel(){
+		dialogStage.close();
+	}
 	public void setDialogStage(Stage dialogStage) {
 		// TODO Auto-generated method stub
 		this.dialogStage = dialogStage;
