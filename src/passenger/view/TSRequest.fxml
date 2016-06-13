@@ -11,6 +11,11 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="passenger.controller.TSRequestController">
   <!-- TODO Add Nodes -->
   <children>
+    <Label layoutX="224.0" layoutY="47.0" text="Taxi Sharing 요청">
+      <font>
+        <Font size="20.0" />
+      </font>
+    </Label>
     <ComboBox fx:id="STARTINGNODE_COMBOBOX" layoutX="381.0" layoutY="134.0" prefHeight="21.0" prefWidth="117.0" promptText="1. 출발지">
       <items>
         <FXCollections fx:factory="observableArrayList">
@@ -53,10 +58,5 @@
         <Image url="@maptemp.jpg" />
       </image>
     </ImageView>
-    <Label layoutX="224.0" layoutY="47.0" text="Taxi Sharing 요청">
-      <font>
-        <Font size="20.0" />
-      </font>
-    </Label>
   </children>
 </AnchorPane>

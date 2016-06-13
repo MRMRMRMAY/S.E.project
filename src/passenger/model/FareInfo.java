@@ -1,5 +1,7 @@
 ﻿package passenger.model;
 
+import passenger.controller.FareInfoController;
+
 public class FareInfo {
 	
 	private int lead_time;				// 도착지까지 가는데 걸린 시간
@@ -8,6 +10,16 @@ public class FareInfo {
 	private int total_fare;				// 총 요금
 	private int captitation_fare;		// 개별 요금
 	
+	private int total_fare_test = 20000;		// 테스트용
+	private int captication_fare_test = 5000;	// 테스트용
+	
+	public int getTotal_fare_test() {
+		return total_fare_test;
+	}
+	
+	public int getCaptication_fare_test() {
+		return captication_fare_test;
+	}
 	
 	// 도착지까지 가는데 걸린 시간
 	public int getLead_time() {
