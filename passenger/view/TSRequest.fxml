@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
 <?import javafx.collections.*?>
@@ -6,17 +6,11 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="passenger.controller.TSRequestController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
   <!-- TODO Add Nodes -->
   <children>
-    <Label layoutX="224.0" layoutY="47.0" text="Taxi Sharing 요청">
-      <font>
-        <Font size="20.0" />
-      </font>
-    </Label>
-    <ComboBox fx:id="STARTINGNODE_COMBOBOX" layoutX="381.0" layoutY="134.0" prefHeight="21.0" prefWidth="117.0" promptText="1. 출발지">
+    <ComboBox fx:id="STARTINGNODE_COMBOBOX" layoutX="391.0" layoutY="109.0" prefHeight="21.0" prefWidth="89.0" promptText="1. 출발지">
       <items>
         <FXCollections fx:factory="observableArrayList">
           <String fx:value="1. 출발지" />
@@ -28,7 +22,7 @@
         </FXCollections>
       </items>
     </ComboBox>
-    <ComboBox fx:id="DESTINATION_COMBOBOX" layoutX="382.0" layoutY="179.0" prefHeight="21.0" prefWidth="117.0" promptText="2. 도착지">
+    <ComboBox fx:id="DESTINATION_COMBOBOX" layoutX="392.0" layoutY="154.0" prefHeight="21.0" prefWidth="88.00009999999747" promptText="2. 도착지">
       <items>
         <FXCollections fx:factory="observableArrayList">
           <String fx:value="2. 도착지" />
@@ -40,7 +34,7 @@
         </FXCollections>
       </items>
     </ComboBox>
-    <ComboBox fx:id="WAITINGTIME_COMBOBOX" layoutX="382.0" layoutY="224.0" prefHeight="21.0" prefWidth="117.0" promptText="3. 대기시간">
+    <ComboBox fx:id="WAITINGTIME_COMBOBOX" layoutX="392.0" layoutY="199.0" prefHeight="21.0" prefWidth="89.0" promptText="3. 대기시간">
       <items>
         <FXCollections fx:factory="observableArrayList">
           <String fx:value="3. 대기시간" />
@@ -51,11 +45,11 @@
         </FXCollections>
       </items>
     </ComboBox>
-    <Button fx:id="REQUEST_BUTTON" layoutX="219.0" layoutY="306.0" mnemonicParsing="false" text="4. 요청하기" />
-    <Button fx:id="CANCEL_BUTTON" layoutX="326.0" layoutY="307.0" mnemonicParsing="false" text="취소" />
-    <ImageView fitHeight="154.68907928466797" fitWidth="252.16438200787593" focusTraversable="false" layoutX="99.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+    <Button fx:id="REQUEST_BUTTON" layoutX="229.0" layoutY="281.0" mnemonicParsing="false" text="4. 요청하기" />
+    <Button fx:id="CANCEL_BUTTON" layoutX="336.0" layoutY="282.0" mnemonicParsing="false" text="취소" />
+    <ImageView fitHeight="154.68907928466797" fitWidth="252.16438200787593" focusTraversable="false" layoutX="109.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
       <image>
-        <Image url="@maptemp.jpg" />
+        <Image url="@../../../../../Desktop/maptemp.jpg" />
       </image>
     </ImageView>
   </children>

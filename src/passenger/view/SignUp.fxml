@@ -4,11 +4,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="passenger.controller.SignUpController">
   <!-- TODO Add Nodes -->
   <children>
-<<<<<<< HEAD
     <Label layoutX="246.0" layoutY="49.0" text="회원가입">
       <font>
         <Font size="20.0" />
@@ -25,18 +25,5 @@
     <CheckBox fx:id="AGREE_CHECKBOX" layoutX="215.0" layoutY="272.0" mnemonicParsing="false" text="연락처 제공에 동의합니다." />
     <Button fx:id="SIGNUP_BUTTON" layoutX="252.0" layoutY="319.0" mnemonicParsing="false" onAction="#signUpAction" text="회원가입" />
     <Button fx:id="CANCEL_BUTTON" layoutX="332.0" layoutY="320.0" mnemonicParsing="false" onAction="#cancelAction" text="취소" />
-=======
-    <Label layoutX="183.0" layoutY="94.0" text="ID" />
-    <Label layoutX="145.0" layoutY="126.0" text="Password" />
-    <Label layoutX="171.0" layoutY="163.0" text="이름" />
-    <Label layoutX="159.0" layoutY="200.0" text="연락처" />
-    <TextField fx:id="ID_TEXTFIELD" layoutX="220.0" layoutY="91.0" prefWidth="200.0" text="영어 소문자와 숫자 4~8자리" />
-    <PasswordField fx:id="Password_PASSWORDFIELD" layoutX="220.0" layoutY="123.0" prefWidth="200.0" />
-    <TextField fx:id="NAME_TEXTFIELD" layoutX="220.0" layoutY="160.0" prefWidth="200.0" />
-    <TextField fx:id="CONTACT_TEXTFIELD" layoutX="220.0" layoutY="197.0" prefWidth="200.0" text="010XXXXXXXX 형식" />
-    <CheckBox fx:id="AGREE_CHECKBOX" layoutX="215.0" layoutY="248.0" mnemonicParsing="false" text="연락처 제공에 동의합니다." />
-    <Button fx:id="SIGNUP_BUTTON" layoutX="252.0" layoutY="295.0" mnemonicParsing="false" onAction="#signUpAction" text="회원가입" />
-    <Button fx:id="CANCEL_BUTTON" layoutX="332.0" layoutY="296.0" mnemonicParsing="false" onAction="#cancelAction" text="취소" />
->>>>>>> parent of 9ce3ba4... .
   </children>
 </AnchorPane>

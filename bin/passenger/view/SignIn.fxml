@@ -4,11 +4,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="passenger.controller.SignInController">
   <!-- TODO Add Nodes -->
   <children>
-<<<<<<< HEAD
     <Label layoutX="215.0" layoutY="83.0" text="로그인을 해주세요.">
       <font>
         <Font size="20.0" />
@@ -21,14 +21,5 @@
     <Button fx:id="SIGNIN_BUTTON" layoutX="291.0" layoutY="227.0" mnemonicParsing="false" onAction="#signInAction" text="로그인" />
     <Button fx:id="CANCEL_BUTTON" layoutX="368.0" layoutY="227.0" mnemonicParsing="false" onAction="#cancelAction" text="취소" />
     <Button fx:id="GOSIGNINPAGE_BUTTON" layoutX="291.0" layoutY="262.0" mnemonicParsing="false" prefWidth="121.0" text="회원가입 페이지로" />
-=======
-    <Label layoutX="168.0" layoutY="137.0" text="ID" />
-    <Label layoutX="130.0" layoutY="171.0" text="Password" />
-    <TextField fx:id="ID_TEXTFIELD" layoutX="212.0" layoutY="134.0" prefWidth="200.0" />
-    <PasswordField fx:id="Password_PASSWORDFIELD" layoutX="212.0" layoutY="168.0" prefWidth="200.0" text="" />
-    <Button fx:id="SIGNIN_BUTTON" layoutX="291.0" layoutY="206.0" mnemonicParsing="false" onAction="#signInAction" text="로그인" />
-    <Button fx:id="CANCEL_BUTTON" layoutX="368.0" layoutY="206.0" mnemonicParsing="false" onAction="#cancelAction" text="취소" />
-    <Button fx:id="GOSIGNINPAGE_BUTTON" layoutX="291.0" layoutY="241.0" mnemonicParsing="false" prefWidth="121.0" text="회원가입 페이지로" />
->>>>>>> parent of 9ce3ba4... .
   </children>
 </AnchorPane>
