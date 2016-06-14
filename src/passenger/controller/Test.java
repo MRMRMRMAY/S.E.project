@@ -1,4 +1,4 @@
-﻿package passenger.controller;
+package passenger.controller;
 
 import passenger.model.TSRequest;
 import passenger.view.*;
@@ -26,7 +26,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 
-public class TSRequestController implements Initializable{
+public class Test implements Initializable{
 
 	@FXML private AnchorPane TSRequest_ANCHOR;					// TSRequest_앵커
 	@FXML private ComboBox<String> STARTINGNODE_COMBOBOX;		// 출발지_콤보박스
@@ -44,46 +44,19 @@ public class TSRequestController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		assert CheckImage1 != null : "fx:id=\"CheckImage1\" was not injected: check your FXML file 'TSRequest.fxml'.";
-//		assert CheckImage2 != null : "fx:id=\"CheckImage2\" was not injected: check your FXML file 'TSRequest.fxml'.";
-		assert STARTINGNODE_COMBOBOX != null : "fx:id=\"STARTINGNODE_COMBOBOX\" was not injected: check your FXML file 'TSRequest.fxml'.";
-//		assert DESTINATIONNODE_COMBOBOX != null : "fx:id=\"DESTINATIONNODE_COMBOBOX\" was not injected: check your FXML file 'TSRequest.fxml'.";
+		
+		assert CheckImage2 != null : "fx:id=\"CheckImage2\" was not injected: check your FXML file 'TSRequest.fxml'.";
+		
+		assert DESTINATIONNODE_COMBOBOX != null : "fx:id=\"DESTINATIONNODE_COMBOBOX\" was not injected: check your FXML file 'TSRequest.fxml'.";
 
 		// bind the selected STARTINGNODE_COMBOBOX label to the selected Starting Node in the combo box.
-		SELECTEDSTARTINGNODE_LABEL.textProperty().bind(STARTINGNODE_COMBOBOX.getSelectionModel().selectedItemProperty());
-//		SELECTEDDESTINATIONNODE_LABEL.textProperty().bind(DESTINATIONNODE_COMBOBOX.getSelectionModel().selectedItemProperty());
+		
+		SELECTEDDESTINATIONNODE_LABEL.textProperty().bind(DESTINATIONNODE_COMBOBOX.getSelectionModel().selectedItemProperty());
 
-		// listen for changes to the STARTINGNODE_COMBOBOX selection (and update the displayed fruit image accordingly).
-		STARTINGNODE_COMBOBOX.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-		
-			@Override 
-			public void changed(ObservableValue<? extends String> selected, String oldSTARTINGNODE, String newSTARTINGNODE) {
-				if (oldSTARTINGNODE != null) {
-					switch(oldSTARTINGNODE) {
-					case "동대구역": CheckImage1.setVisible(false); break;
-					case "수성못": CheckImage1.setVisible(false); break;
-					case "이월드": CheckImage1.setVisible(false); break;
-					case "복현오거리": CheckImage1.setVisible(false); break;
-					case "서문시장": CheckImage1.setVisible(false); break;
-					}
-				}
-			
-				if (newSTARTINGNODE != null) {
-					switch(newSTARTINGNODE) {
-					case "동대구역": CheckImage1.setVisible(true); break;
-					case "수성못": CheckImage1.setVisible(true); break;
-					case "이월드": CheckImage1.setVisible(true); break;
-					case "복현오거리": CheckImage1.setVisible(true); break; 
-					case "서문시장": CheckImage1.setVisible(true); break;
-					}
-				}  
-			}
-		});
+				
 		
 		
-		
-		
-/*		DESTINATIONNODE_COMBOBOX.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+		DESTINATIONNODE_COMBOBOX.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 			
 			@Override 
 			public void changed(ObservableValue<? extends String> selected, String oldDESTINATIONNODE, String newDESTINATIONNODE) {
@@ -107,6 +80,7 @@ public class TSRequestController implements Initializable{
 					}
 				}  
 			}
-		});	*/
+		});	
 	}
+	
 }
