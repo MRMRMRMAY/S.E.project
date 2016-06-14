@@ -7,6 +7,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.ImageIcon;
@@ -15,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import server.problemdomain.manager.MainApp;
+import server.problemdomain.manager.view.DistanceInformationView;
 import server.problemdomain.manager.view.MapPanel;
 import server.problemdomain.manager.view.SpotPanel;
 import server.problemdomain.systemdata.Spot;
@@ -25,6 +27,8 @@ public class MapStart extends JFrame{
 	private static JFrame frame;
 	private static SpotPanel spotPanel;
 	private static SpotLocation spotLocation = new SpotLocation();
+	private static DistanceInformationView distancePanel;
+	
 	private int[][] map;
 	//private JLabel[][] labels = new JLabel[100][100];
 
@@ -32,9 +36,17 @@ public class MapStart extends JFrame{
 		frame = new JFrame();
 		mapPanle = new MapPanel();
 		spotPanel = new SpotPanel();
+		
+		distancePanel = new DistanceInformationView ();
+		distancePanel.setMapStart(this);
+		spotPanel.setDistancePanel(distancePanel);
+		
+		spotPanel.setDlm(distancePanel.getDlm());
+		spotPanel.setDistanceList(distancePanel.getDistanceList());
 		//frame.setSize(800, 600);
-		frame.setSize(new Dimension(800,600));
+		frame.setSize(new Dimension(1000,800));
 		frame.add(spotPanel,BorderLayout.EAST);
+		frame.add(distancePanel,BorderLayout.SOUTH);
 		frame.add(mapPanle,BorderLayout.WEST);
 		mapPanle.setMainFrame(this);
 		frame.pack();
@@ -48,13 +60,18 @@ public class MapStart extends JFrame{
 		item.setIcon(new ImageIcon(getClass().getResource("Point.png")));
 		//item.setBounds(200+spotLocation.getLocationArray().get(index).getX(), spotLocation.getLocationArray().get(index).getY(),50, 50);
 		item.setText(name.getSpotName());
+		item.setToolTipText(name.getSpotName());
 		point.put(name, item);
 	//	frame.add(item);
 	//	frame.repaint();
 		spotPanel.addSpotPanel(item);
-		item.reshape(spotLocation.getLocationArray().get(index).getX(), spotLocation.getLocationArray().get(index).getY(),50, 50);
+		
+		item.reshape(spotLocation.getLocationArray().get(index).getX(), spotLocation.getLocationArray().get(index).getY(),100, 50);
 	}
-	
+	public void setDistanceInformation(String[][] labels){
+		//distancePanel.setDistanceInformation(labels);
+		//distancePanel.distanceUpData();
+	}
 	
 	
 	public static SpotPanel getSpotPanel() {
@@ -73,9 +90,9 @@ public class MapStart extends JFrame{
 	public int[][] getMap() {
 		return map;
 	}
-	public void setMap(int[][] map) {
+	public void setMap(int[][] map,ArrayList<String> spotNames) {
 		this.map = map;
-		
+		spotPanel.setSpotNames(spotNames);
 		spotPanel.setDistance2DArray(map);
 		spotPanel.repaint();
 /*		for(int i = 0; i<map.length;i++)

@@ -80,7 +80,9 @@ public class TaxiEditDialogController {
             taxi.setCarModel(carModelField.getText());
 
             okClicked = true;
+           
             dialogStage.close();
+           
         }
     }
 
