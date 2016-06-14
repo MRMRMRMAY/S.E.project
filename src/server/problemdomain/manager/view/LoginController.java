@@ -1,5 +1,6 @@
 package server.problemdomain.manager.view;
 
+import server.problemdomain.member.Member;
 import java.util.ArrayList;
 
 //import org.controlsfx.dialog.Dialogs;
@@ -19,10 +20,13 @@ public class LoginController {
 	private TextField id;
 	@FXML
 	private PasswordField password;
+	private ArrayList<LoginInformation> loginInformation = new ArrayList<LoginInformation>();
 	
 //	private userLogin user = new userLogin();
 	public LoginController() {
-		
+		loginInformation.add(new LoginInformation("moment","123456"));
+		loginInformation.add(new LoginInformation("aaaaa","aaaaa"));
+		loginInformation.add(new LoginInformation("mmmmm","123"));
 	}
 	@FXML
 	public void initiallize(){
@@ -61,10 +65,22 @@ public class LoginController {
 		}
 	}
 	private boolean isInputvalib(){
-		return "moment".equals(id.getText())&&"123456".equals(password.getText());
+		for(LoginInformation item : loginInformation){
+			if(item.getId().equals(id.getText())&&item.getPw().equals(password.getText())){
+				return true;
+			}
+		}
+		//return "moment".equals(id.getText())&&"123456".equals(password.getText());
+		return false;
 	}
 	public void setMainApp(MainApp mainApp) {
 		// TODO Auto-generated method stub
 		this.main = mainApp;
+	}
+}
+class LoginInformation extends Member{
+	public LoginInformation(String id, String pw){
+		super.setId(id);
+		super.setPw(pw);
 	}
 }
