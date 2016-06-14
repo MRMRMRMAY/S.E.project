@@ -36,6 +36,11 @@ public class MainApp extends Application {
 		showLoginStage();
 	}
 	public MainApp(){
+		/* init*/
+		//accept server's data
+		//passengerData = 
+		
+		
 		
 		//passengerToPerson();
 		
@@ -76,12 +81,19 @@ public class MainApp extends Application {
 			passengerData.add(new Passenger(person.getname(),person.getNumber()));
 		}
 	}
+	
+	
 	public void passengerToPerson(){
 		if(!personData.isEmpty())
 			personData.clear();
 		for(Passenger passenger : passengerData){
 			personData.add(new Person(passenger.getName(),passenger.getContactNumber()));
 		}
+	}
+	
+	public void testUpData(){
+		TestUpData test = new TestUpData(passengerData);
+		passengerToPerson();
 	}
 	
 	public void taxiToServerTaxi(){
@@ -331,7 +343,6 @@ public class MainApp extends Application {
     }
     //personData from client
     public void upDate(){
-    	
     	personData.setAll(personData);
     }
 	public static void main(String[] args) {

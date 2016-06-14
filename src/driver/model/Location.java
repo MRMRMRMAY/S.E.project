@@ -49,7 +49,7 @@ public class Location
 	}
 
 		/*
-		 * cur  
+		 * cur
 		 * visited
 		 */
 	void deptFisrtSearch(NodeT cur,List<NodeT> visited)
@@ -58,8 +58,14 @@ public class Location
 		if(visited.contains(cur))
 			return;
 		visited.add(cur);
-
-		System.out.print("-> "+cur.word);
+		System.out.println("지금 위치 -> "+cur.word);
+		try {
+        	Thread.sleep(5000);
+		}
+	catch (InterruptedException e)
+	{
+        e.printStackTrace();
+	}
 		for(int i=0;i<cur.outgoing.size();i++)
 		{
 			//end

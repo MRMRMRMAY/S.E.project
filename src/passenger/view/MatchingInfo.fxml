@@ -9,27 +9,37 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="passenger.controller.MatchingInfoController">
   <!-- TODO Add Nodes -->
   <children>
-    <Accordion layoutX="198.0" layoutY="109.0">
-      <expandedPane>
-        <TitledPane fx:id="x2" animated="false" text="동승 인원">
-          <content>
-            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-          </content>
-        </TitledPane>
-      </expandedPane>
-      <panes>
-        <fx:reference source="x2" />
-        <TitledPane fx:id="x1" animated="false" text="택시 정보">
-          <content>
-            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-          </content>
-        </TitledPane>
-      </panes>
-    </Accordion>
     <Label layoutX="182.0" layoutY="47.0" text="매칭 정보를 확인해주세요.">
       <font>
         <Font size="20.0" />
       </font>
     </Label>
+    <Accordion layoutX="198.0" layoutY="109.0">
+      <expandedPane>
+        <TitledPane fx:id="x1" animated="false" text="택시 정보">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <Label id="TaxiInFo_LABEL" fx:id="TaxiInfo_LABEL" layoutX="14.0" layoutY="14.0" prefHeight="152.0" prefWidth="172.0" text="차량 조회 버튼을 누르세요." />
+              </children>
+            </AnchorPane>
+          </content>
+        </TitledPane>
+      </expandedPane>
+      <panes>
+        <TitledPane fx:id="x2" animated="false" text="동승 인원">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <Label fx:id="Passengers_LABEL" layoutX="14.0" layoutY="14.0" prefHeight="154.0" prefWidth="172.0" text="매칭 완료 버튼을 누르세요." />
+              </children>
+            </AnchorPane>
+          </content>
+        </TitledPane>
+        <fx:reference source="x1" />
+      </panes>
+    </Accordion>
+    <Button fx:id="Matching_BUTTON" layoutX="73.0" layoutY="131.0" mnemonicParsing="false" onAction="#popPassengersInfo" text="매칭 완료" />
+    <Button id="PlateChech_BUTTON" fx:id="PlateCheck_BUTTON" layoutX="73.0" layoutY="234.0" mnemonicParsing="false" onAction="#popTaxiInfo" text="차량 조회" />
   </children>
 </AnchorPane>
