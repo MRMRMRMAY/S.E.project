@@ -35,6 +35,8 @@ public class FareInfoController implements Initializable {
 	
 	FareInfo FareInfo1 = new FareInfo();
 	
+	
+	// 운행 요금 안내
 	public void popFareInfo (ActionEvent event) throws Exception {
 		FareInfo_LABEL.setText("운행 요금은 \n\n총 " + FareInfo1.getTotal_fare_test() + "원이며 \n\n개인당 " + FareInfo1.getCaptication_fare_test() + "원씩 \n\n부담되겠습니다.");
 //		FareInfo_LABEL.setWrapText(true);

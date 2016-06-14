@@ -53,7 +53,7 @@ public class SignInController implements Initializable{
 		// MySQL path, port: 3306, DB name: ts_member (TS=Taxi Sharing)
 		String jdbcUrl = "jdbc:mysql://localhost:3306/ts_member";
 		String dbId = "root";
-		String dbPw = "tsts";	
+		String dbPw = "aktlwk";	
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
