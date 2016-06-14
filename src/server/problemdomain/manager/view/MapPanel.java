@@ -92,7 +92,7 @@ public class MapPanel extends JPanel{
 	}
 	public void init(){
 
-		SpotList = map.getSpotList();
+		//SpotList = map.getSpotList();
 		//distanceList = map.getDistanceList();
 		this.setLayout(new GridLayout(3,1));
 		
@@ -131,6 +131,7 @@ public class MapPanel extends JPanel{
 				
 				
 				System.out.println(0);
+				if(nameInput.getText().trim().length()!=0){
 				try{
 				//	x = Integer.parseInt(xInput.getText());
 				//	y = Integer.parseInt(yInput.getText());
@@ -192,6 +193,11 @@ public class MapPanel extends JPanel{
 				}
 				else{
 					JOptionPane.showMessageDialog(MapPanel.this, "This spot has exited","error", JOptionPane.ERROR_MESSAGE, null);
+				}
+				}
+				else{
+					JOptionPane.showMessageDialog(MapPanel.this, "Please Input name","error", JOptionPane.ERROR_MESSAGE, null);
+
 				}
 				
 			}
@@ -378,7 +384,7 @@ public class MapPanel extends JPanel{
 		toSpotNamesList.setFixedCellHeight(13);
 		toSpotNamesList.setVisibleRowCount(5);
 		toSpotNamesList.addMouseListener(new ListMouseAdapter(this));
-		fromSpotNamesList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		fromSpotNamesList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		listPanel.add(new JScrollPane(toSpotNamesList));
 		
 		

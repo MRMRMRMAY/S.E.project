@@ -10,15 +10,16 @@
    <children>
       <Pane layoutX="-142.0" layoutY="-157.0" prefHeight="300.0" prefWidth="600.0" styleClass="track-background" stylesheets="@JMetroDarkTheme.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="230.0" layoutY="70.0" text="Sharing">
+            <Label layoutX="229.0" layoutY="48.0" text="Sharing">
                <font>
                   <Font size="42.0" />
                </font>
             </Label>
-            <Button layoutX="154.0" layoutY="135.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="33.0" prefWidth="108.0" text="login" />
+            <Button layoutX="463.0" layoutY="245.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="33.0" prefWidth="108.0" text="logout" />
             <Button layoutX="154.0" layoutY="192.0" mnemonicParsing="false" onAction="#handleInfo" prefHeight="33.0" prefWidth="108.0" text="Info" />
             <Button layoutX="329.0" layoutY="192.0" mnemonicParsing="false" onAction="#handleMap" prefHeight="33.0" prefWidth="108.0" text="map" />
             <Button layoutX="329.0" layoutY="135.0" mnemonicParsing="false" onAction="#handleTaxi" prefHeight="33.0" prefWidth="108.0" text="taxiInfo" />
+            <Button layoutX="154.0" layoutY="135.0" mnemonicParsing="false" onAction="#handleMoney" prefHeight="33.0" prefWidth="108.0" text="money" />
          </children>
       </Pane>
    </children>

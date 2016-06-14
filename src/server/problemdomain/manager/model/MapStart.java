@@ -26,6 +26,8 @@ public class MapStart extends JFrame{
 	private static SpotPanel spotPanel;
 	private static SpotLocation spotLocation = new SpotLocation();
 	private int[][] map;
+	//private JLabel[][] labels = new JLabel[100][100];
+
 	public MapStart(){
 		frame = new JFrame();
 		mapPanle = new MapPanel();
@@ -73,9 +75,22 @@ public class MapStart extends JFrame{
 	}
 	public void setMap(int[][] map) {
 		this.map = map;
+		
 		spotPanel.setDistance2DArray(map);
 		spotPanel.repaint();
-	}
+/*		for(int i = 0; i<map.length;i++)
+		{
+			for(int j = i; j < map[i].length;j++){
+				if(map[i][j]>0){
+					labels[i][j] = new JLabel();
+					labels[i][j].setText(String.format("%d to %d distance:%d",i,j,map[i][j]));
+					labels[i][j].reshape((spotLocation.getLocationArray().get(i).getX()+spotLocation.getLocationArray().get(j).getX())/2,
+							(spotLocation.getLocationArray().get(i).getY()+spotLocation.getLocationArray().get(j).getY())/2,WIDTH,HEIGHT);
+					this.add(labels[i][j]);
+				}
+			}
+		}
+*/	}
 	public class myMouseMotion extends MouseAdapter{
 		@Override
 		public void mouseMoved(MouseEvent e){

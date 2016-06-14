@@ -26,12 +26,14 @@ public class MainApp extends Application {
 	
 	private ArrayList<Passenger> passengerData = new ArrayList<Passenger>();
 	private ArrayList<Taxi> serverTaxiData = new ArrayList<Taxi>();
+	private int money;
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		primaryStage.setTitle("Sharing App");
 	//	initRootLay();
-		showMainview();
+		//showMainview();
+		showLoginStage();
 	}
 	public MainApp(){
 		
@@ -295,7 +297,33 @@ public class MainApp extends Application {
 			return false;
 		}
 	}
-    
+    public void showMoneyview() {
+        try {
+            // Load person overview.
+			//controller.setDialogStage(dialogStage);
+			
+			
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/MoneyView.fxml"));
+            AnchorPane moneyView = (AnchorPane) loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Money View");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(moneyView);
+            dialogStage.setScene(scene);
+            // Set person overview into the center of root layout.
+            
+            // Give the controller access to the main app.
+            MoneyController controller = loader.getController();
+            controller.setMainApp(this);
+            controller.setDialogStage(dialogStage);
+            dialogStage.showAndWait();
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
     
     public ObservableList<Person> getPerdata(){
@@ -318,5 +346,11 @@ public class MainApp extends Application {
 	}
 	public MapStart getMap(){
 		return map;
+	}
+	public int getMoney() {
+		return money;
+	}
+	public void setMoney(int money) {
+		this.money = money;
 	}
 }

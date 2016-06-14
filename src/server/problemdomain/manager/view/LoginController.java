@@ -50,10 +50,11 @@ public class LoginController {
 		}*/
 		if(isInputvalib()){
 			okCliked = true;
-			main.showDialog("Welcome", "pass");
 			//id.setOpacity(0);
 			dialogStage.close();
 			main.showMainview();
+			main.showDialog("Welcome", "pass");
+
 		}
 		else{
 			main.showDialog("error", "error");
