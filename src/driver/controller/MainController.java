@@ -92,7 +92,6 @@ public class MainController
 
 
 
-
 	//Taxi Message
 	private Taxi taxi;
 	private Taxi taxi1;
