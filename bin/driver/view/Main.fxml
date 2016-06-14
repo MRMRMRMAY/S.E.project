@@ -69,7 +69,7 @@
                   <Label text="전화번호 D" GridPane.rowIndex="4" />
                   <Label text="출발지" GridPane.rowIndex="5" />
                   <Label text="목적지" GridPane.rowIndex="6" />
-                  <Label text="시간" GridPane.rowIndex="7" />
+                  <Label text="거리" GridPane.rowIndex="7" />
                   <Label text="경로" GridPane.rowIndex="8" />
                   <Label text="예상요금" GridPane.rowIndex="9" />
                   <Label fx:id="lblpassenger" text="..." GridPane.columnIndex="1" />

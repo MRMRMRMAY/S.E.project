@@ -36,18 +36,15 @@ public class MainApp extends Application {
 		showLoginStage();
 	}
 	public MainApp(){
-		
+		/* init*/
+		//accept server's data
+		//passengerData =
+		/*test*/
+		//MenegerTestServer test = new MenegerTestServer(1);
+		//passengerData = test.getPassengerList();
 		//passengerToPerson();
-		
-//		personData.add(new Person("Hans", "Muster"));
-//        personData.add(new Person("Ruth", "Mueller"));
-//        personData.add(new Person("Heinz", "Kurz"));
-//        personData.add(new Person("Cornelia", "Meier"));
-//        personData.add(new Person("Werner", "Meyer"));
-//        personData.add(new Person("Lydia", "Kunz"));
-//        personData.add(new Person("Anna", "Best"));
-//        personData.add(new Person("Stefan", "Meier"));
-//        personData.add(new Person("Martin", "Mueller"));
+		//serverTaxiData = test.getTaxi();
+		//serverTaxiToTaxi();
 		passengerData.add(new Passenger("Hans", "Muster"));
 		passengerData.add(new Passenger("Ruth", "Mueller"));
 		passengerData.add(new Passenger("Heinz", "Kurz"));
@@ -58,7 +55,7 @@ public class MainApp extends Application {
 		passengerData.add(new Passenger("Stefan", "Meier"));
 		passengerData.add(new Passenger("Martin", "Mueller"));
 		passengerToPerson();
-		taxiData.add(new TaxiProperty("Hans","Hans", "1232"));
+		/*taxiData.add(new TaxiProperty("Hans","Hans", "1232"));
         taxiData.add(new TaxiProperty("Ruth","Hans", "123333"));
         taxiData.add(new TaxiProperty("Heinz","Hans", "232"));
         taxiData.add(new TaxiProperty("Cornelia","Hans", "123311"));
@@ -66,7 +63,17 @@ public class MainApp extends Application {
         taxiData.add(new TaxiProperty("Lydia","Hans", "12332"));
         taxiData.add(new TaxiProperty("Anna", "Hans","123213"));
         taxiData.add(new TaxiProperty("Stefan","Hans", "123231"));
-        taxiData.add(new TaxiProperty("Martin", "Hans","1232"));
+        taxiData.add(new TaxiProperty("Martin", "Hans","1232"));*/
+		serverTaxiData.add(new Taxi("Hans","Hans", "1232"));
+		serverTaxiData.add(new Taxi("Ruth","Hans", "123333"));
+		serverTaxiData.add(new Taxi("Heinz","Hans", "232"));
+		serverTaxiData.add(new Taxi("Cornelia","Hans", "123311"));
+		serverTaxiData.add(new Taxi("Werner","Hans", "123322"));
+		serverTaxiData.add(new Taxi("Lydia","Hans", "12332"));
+		serverTaxiData.add(new Taxi("Anna", "Hans","123213"));
+		serverTaxiData.add(new Taxi("Stefan","Hans", "123231"));
+		serverTaxiData.add(new Taxi("Martin", "Hans","1232"));
+        serverTaxiToTaxi();
 	}
 	
 	public void personToPassenger(){
@@ -76,6 +83,8 @@ public class MainApp extends Application {
 			passengerData.add(new Passenger(person.getname(),person.getNumber()));
 		}
 	}
+	
+	
 	public void passengerToPerson(){
 		if(!personData.isEmpty())
 			personData.clear();
@@ -84,21 +93,36 @@ public class MainApp extends Application {
 		}
 	}
 	
+	public void testUpData(){
+		TestUpData test = new TestUpData(passengerData);
+		passengerToPerson();
+	}
+	
+	
 	public void taxiToServerTaxi(){
-		serverTaxiData.clear();
+		if(!serverTaxiData.isEmpty())
+			serverTaxiData.clear();
 		
 		for(TaxiProperty taxi:taxiData){
 			serverTaxiData.add(new Taxi(taxi.getName(),taxi.getCarModel(),taxi.getContactNumber()));
+			System.out.println("name : " + taxi.getName()+ "contact number :" +taxi.getContactNumber() + "car model : " + taxi.getCarModel());
 		}
+		System.out.println();
 	}
 	
 	public void serverTaxiToTaxi(){
-		taxiData.clear();
+		if(!taxiData.isEmpty())
+			taxiData.clear();
 		for(Taxi taxi:serverTaxiData){
 			taxiData.add(new TaxiProperty(taxi.getDriverName(),taxi.getCarModel(),taxi.getContactNumber()));
+			
 		}
 	}
 	
+	/*taxi information test updata */
+	public void taxiTestUpData(){
+		
+	}
 	public void initRootLay(){
 		try{
 			FXMLLoader loader = new FXMLLoader();
@@ -331,7 +355,6 @@ public class MainApp extends Application {
     }
     //personData from client
     public void upDate(){
-    	
     	personData.setAll(personData);
     }
 	public static void main(String[] args) {

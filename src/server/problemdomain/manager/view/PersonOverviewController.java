@@ -164,6 +164,7 @@ public class PersonOverviewController {
 	@FXML
 	private void handleUpdate() {
 		//mainApp.setPerdata();
+		mainApp.testUpData();
 		personTable.setItems(mainApp.getPersonData());
 	}
 	@FXML

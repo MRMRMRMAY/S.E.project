@@ -204,46 +204,46 @@ public class MapPanel extends JPanel{
 			});
 		//this.add(addButton);
 		buttonPanel.add(addButton);
-		delet.setText("Del");
-		delet.setHorizontalAlignment(delet.CENTER);
-		delet.setVerticalAlignment(delet.CENTER);
-		delet.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){	
-				System.out.println(seleterText);
-				boolean exit = false;
-				Spot spot = new Spot();
-				
-				if(!SpotList.isEmpty()){
-					for(Spot item: SpotList){
-						//if(item.getSpotName().equals(nameInput.getText())){
-						if(item.getSpotName().equals(seleterText)){
-							exit = true;
-							spot = item;
-							
-							main.deletPoint(spot);
-							
-							
-							distanceList.remove(SpotList.indexOf(spot));
-							//for(Distance distance: distanceList){
-							//	if(distance.getDistance().containsKey(item))
-							//		distance.getDistance().remove(item);
-							//}
-							SpotList.remove(item);
-							count.add(item.getSpotIndex());
-							Collections.sort(count);
-							spotUpData();
-							//13.20
-							//while(distanceList.)
-							break;
-						}
-					}
-				}
-				
-			}
-			});
-		//this.add(delet);
-		buttonPanel.add(delet);
+//		delet.setText("Del");
+//		delet.setHorizontalAlignment(delet.CENTER);
+//		delet.setVerticalAlignment(delet.CENTER);
+//		delet.addActionListener(new ActionListener(){
+//			@Override
+//			public void actionPerformed(ActionEvent e){	
+//				System.out.println(seleterText);
+//				boolean exit = false;
+//				Spot spot = new Spot();
+//				
+//				if(!SpotList.isEmpty()){
+//					for(Spot item: SpotList){
+//						//if(item.getSpotName().equals(nameInput.getText())){
+//						if(item.getSpotName().equals(seleterText)){
+//							exit = true;
+//							spot = item;
+//							
+//							main.deletPoint(spot);
+//							
+//							
+//							distanceList.remove(SpotList.indexOf(spot));
+//							//for(Distance distance: distanceList){
+//							//	if(distance.getDistance().containsKey(item))
+//							//		distance.getDistance().remove(item);
+//							//}
+//							SpotList.remove(item);
+//							count.add(item.getSpotIndex());
+//							Collections.sort(count);
+//							spotUpData();
+//							//13.20
+//							//while(distanceList.)
+//							break;
+//						}
+//					}
+//				}
+//				
+//			}
+//			});
+//		//this.add(delet);
+//		buttonPanel.add(delet);
 		edit.setText("Edit");
 		edit.setHorizontalAlignment(edit.CENTER);
 		edit.setVerticalAlignment(edit.CENTER);
@@ -276,14 +276,15 @@ public class MapPanel extends JPanel{
 							distance2DArray[i][from] = Integer.parseInt(distanceInput.getText());
 						
 						}
-						main.setMap(distance2DArray);
+						
 						for(int i = 0; i<spotNames.size();i++){
 							for(int j = 0; j<spotNames.size(); j++){
 								System.out.printf("%d ",distance2DArray[i][j]);
 							}
 							System.out.println("");
 						}
-						
+						main.setMap(distance2DArray,spotNames);
+						//map.arrayToMap(distance2DArray, (String [])spotNames.toArray());
 					}
 					catch(NumberFormatException exception){
 			
@@ -393,7 +394,8 @@ public class MapPanel extends JPanel{
 	}
 	public void spotUpData(){
 		int count = 0;
-		spotNames.clear();
+		if(!spotNames.isEmpty())
+			spotNames.clear();
 		if(!dlm.isEmpty())
 			dlm.removeAllElements();
 		if(!SpotList.isEmpty()){
@@ -412,6 +414,12 @@ public class MapPanel extends JPanel{
 	}
 	
 	
+	public ArrayList<Spot> getSpotList() {
+		return SpotList;
+	}
+	public void setSpotList(ArrayList<Spot> spotList) {
+		SpotList = spotList;
+	}
 	public void listMouseClicked(MouseEvent e){
 		seleterText = (String)fromSpotNamesList.getSelectedValue();
 	}

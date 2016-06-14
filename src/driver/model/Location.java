@@ -2,19 +2,33 @@ package driver.model;
 
 import java.util.*;
 
+import server.problemdomain.matching.Matching;
+
 public class Location
 {
+	//private static Matching match;
+
 	public static void main(String args[])
 	{
-		//构造需要点对象
-		NodeT a=new NodeT("1");
-		NodeT b=new NodeT("2");
-		NodeT c=new NodeT("3");
-		NodeT d=new NodeT("4");
-		NodeT e=new NodeT("5");
-		NodeT f=new NodeT("6");
-		NodeT g=new NodeT("7");
-		NodeT h=new NodeT("8");
+
+		//match.getFrom();  출발지
+		//match.getTo();  도착지
+
+		/*
+		 * 매칭 정보 어떻게 받아요.....
+		 *
+		 * */
+
+
+		//Node
+		NodeT a=new NodeT("A");
+		NodeT b=new NodeT("B");
+		NodeT c=new NodeT("C");
+		NodeT d=new NodeT("D");
+		NodeT e=new NodeT("E");
+		NodeT f=new NodeT("F");
+		NodeT g=new NodeT("G");
+		NodeT h=new NodeT("H");
 		ArcT ab=new ArcT(a,b);
 		ArcT ac=new ArcT(a,c);
 		ArcT ad=new ArcT(a,d);
@@ -49,7 +63,7 @@ public class Location
 	}
 
 		/*
-		 * cur  
+		 * cur
 		 * visited
 		 */
 	void deptFisrtSearch(NodeT cur,List<NodeT> visited)
@@ -58,8 +72,14 @@ public class Location
 		if(visited.contains(cur))
 			return;
 		visited.add(cur);
-
-		System.out.print("-> "+cur.word);
+		System.out.println("지금 위치 -> "+cur.word);
+		try {
+        	Thread.sleep(1500);
+		}
+	catch (InterruptedException e)
+	{
+        e.printStackTrace();
+	}
 		for(int i=0;i<cur.outgoing.size();i++)
 		{
 			//end
@@ -75,9 +95,9 @@ public class Location
 	  */
 class NodeT
 {
-	/* 点的所有关系的集合 */
+	/* List of outgoing */
 	List<ArcT> outgoing;
-	//点的字母
+	//node word
 	String word;
 	public NodeT(String word)
 	{
@@ -91,7 +111,7 @@ class NodeT
 	  */
 class ArcT
 {
-	NodeT start,end;/* 开始点，结束点 */
+	NodeT start,end;/* start node, end node */
 	public ArcT(NodeT start,NodeT end)
 	{
 		this.start=start;

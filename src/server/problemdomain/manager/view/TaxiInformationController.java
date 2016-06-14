@@ -103,8 +103,10 @@ public class TaxiInformationController {
 			TaxiTable.getItems().remove(selectedIndex);
 		} else {
 			mainApp.showDialog("Please select a Taxi in the table", "No selection");
-
+			
 		}
+		//mainApp.getTaxiData().remove(selectedIndex-1);
+		mainApp.taxiToServerTaxi();
 	}
 	
 	/**
@@ -117,6 +119,7 @@ public class TaxiInformationController {
 		boolean okClicked = mainApp.showTaxiEditDialog(tempTaxi);
 		if (okClicked) {
 			mainApp.getTaxiData().add(tempTaxi);
+			mainApp.taxiToServerTaxi();
 		}
 	}
 
@@ -131,6 +134,7 @@ public class TaxiInformationController {
 			boolean okClicked = mainApp.showTaxiEditDialog(selectedTaxi);
 			if (okClicked) {
 				showTaxiDetails(selectedTaxi);
+				mainApp.taxiToServerTaxi();
 			}
 
 		} else {

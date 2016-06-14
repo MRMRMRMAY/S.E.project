@@ -8,32 +8,73 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="driver.controller.MainController">
    <children>
-      <Pane layoutY="6.0" prefHeight="400.0" prefWidth="600.0">
+      <Pane layoutY="3.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.topAnchor="3.0">
          <children>
-            <Button layoutX="186.0" layoutY="137.0" mnemonicParsing="false" onAction="#State1" prefHeight="55.0" prefWidth="212.0" text="운행 대기" textAlignment="CENTER">
+            <Button layoutX="29.0" layoutY="357.0" mnemonicParsing="false" onAction="#State1" prefHeight="36.0" prefWidth="109.0" text="운행 대기" textAlignment="CENTER">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Button>
-            <Button layoutX="186.0" layoutY="211.0" mnemonicParsing="false" onAction="#State2" prefHeight="55.0" prefWidth="212.0" text="운행 중" textAlignment="CENTER">
+            <Button layoutX="155.0" layoutY="357.0" mnemonicParsing="false" onAction="#State2" prefHeight="36.0" prefWidth="109.0" text="운행 중" textAlignment="CENTER">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Button>
-            <Button layoutX="186.0" layoutY="289.0" mnemonicParsing="false" onAction="#State3" prefHeight="55.0" prefWidth="212.0" text="운행 종료">
+            <Button layoutX="453.0" layoutY="357.0" mnemonicParsing="false" onAction="#State3" prefHeight="36.0" prefWidth="109.0" text="운행 종료">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Button>
-            <Label fx:id="lblState" layoutX="23.0" layoutY="7.0" prefHeight="55.0" prefWidth="396.0" text="현재 상태..." textFill="#ee0808">
+            <Label fx:id="lblState" layoutX="21.0" prefHeight="55.0" prefWidth="396.0" text="현재 상태..." textFill="#ee0808">
                <font>
                   <Font size="18.0" />
                </font></Label>
-            <Label fx:id="lblLocation" layoutX="23.0" layoutY="68.0" prefHeight="55.0" prefWidth="396.0" text="location" textFill="#cd0c0c">
+            <Button fx:id="lblButton" layoutX="277.0" layoutY="357.0" mnemonicParsing="false" onAction="#State4" prefHeight="36.0" prefWidth="165.0" text="출발">
                <font>
-                  <Font size="14.0" />
+                  <Font size="18.0" />
                </font>
-            </Label>
+            </Button>
+            <GridPane layoutX="87.0" layoutY="46.0" prefHeight="292.0" prefWidth="461.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="승개(분)" />
+                  <Label GridPane.columnIndex="1" />
+                  <Label fx:id="lblnum1" text="..." GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="lblnum2" text="..." GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="lblnum3" text="..." GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label fx:id="lblnum4" text="..." GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label fx:id="lblstart" text="..." GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Label fx:id="lblarrive" text="..." GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <Label fx:id="lbltime" text="..." GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <Label fx:id="lblway" text="..." GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <Label fx:id="lblcost" text="..." GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                  <Label text="전화번호 A" GridPane.rowIndex="1" />
+                  <Label text="전화번호 B" GridPane.rowIndex="2" />
+                  <Label text="전화번호 C" GridPane.rowIndex="3" />
+                  <Label text="전화번호 D" GridPane.rowIndex="4" />
+                  <Label text="출발지" GridPane.rowIndex="5" />
+                  <Label text="목적지" GridPane.rowIndex="6" />
+                  <Label text="시간" GridPane.rowIndex="7" />
+                  <Label text="경로" GridPane.rowIndex="8" />
+                  <Label text="예상요금" GridPane.rowIndex="9" />
+                  <Label fx:id="lblpassenger" text="..." GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
          </children>
       </Pane>
    </children>

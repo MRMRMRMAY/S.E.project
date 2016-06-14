@@ -26,7 +26,7 @@ public class SpotLocation{
 				j = count/3+1;
 				count++;
 			}
-			locationArray.add(new Location(i*100,j*100));
+			locationArray.add(new Location(i*90,j*90));
 		}
 	}
 	public ArrayList<Location> getLocationArray() {

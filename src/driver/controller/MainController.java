@@ -20,6 +20,7 @@ import java.util.TimerTask;
 import driver.model.PessengerM;
 import javafx.event.ActionEvent;
 import server.problemdomain.member.*;
+import server.problemdomain.matching.*;
 
 
 public class MainController
@@ -84,14 +85,14 @@ public class MainController
 	private Label lblcost;
 
 
-	PessengerM pe = new PessengerM(4, "010-3264-1776", "010-2547-3698",
-			"010-2580-0365", "010-2547-8014", "경대 북문", "대구역", 15, "2->3->1", 6000);
+	//PessengerM pe = new PessengerM(4, "010-3264-1776", "010-2547-3698",
+			//"010-2580-0365", "010-2547-8014", "경대 북문", "대구역", 15, "2->3->1", 6000);
 
 
 /*******      Passenger Message    end             *******/
 
-
-
+	private MatchingResult result;
+	private Matching match;
 
 	//Taxi Message
 	private Taxi taxi;
@@ -140,6 +141,16 @@ public class MainController
 		taxi4.setDriverName("Jack");
 		taxi4.setCarModel("Car5");
 		taxi4.setContactNumber("1874");
+
+
+		result.getDrivingRoute();
+		result.getNumOfPassenger();
+		result.getDistance();
+		result.getFare();
+		match.getFrom();
+		match.getTo();
+		match.getPassengerList();
+		match.getPath();
 	}
 
 <<<<<<< HEAD
@@ -160,6 +171,9 @@ public class MainController
 =======
 
 >>>>>>> refs/remotes/origin/master
+
+
+
 
 	/*
 	 * Login
@@ -216,9 +230,7 @@ public class MainController
 	//waiting state
 	public void State1(ActionEvent event)
 	{
-		//String value = ((Button)event.getSource()).getText();
 
-		//mystate.setMystate(mystate.getMystate());
 		lblState.setText("상태 변합니다.지금 운행 대기 상태입니다.");
 	}
 
@@ -228,18 +240,24 @@ public class MainController
 	{
 		lblState.setText("상태 변합니다.지금 운행 중 상태입니다.");
 
-		/*
-		try {
-	        	Thread.sleep(5000);
-			}
-		catch (InterruptedException e)
-		{
-	        e.printStackTrace();
-		}*/
 
 
 		/*Passenger Message */
-		lblpassenger.setText(pe.getPassenger()+"");
+
+		/*이 부분이 있으면 실행이 안된다*/
+		lblpassenger.setText(match.getPassengerList()+"");
+		lblnum1.setText(result.getNumOfPassenger()+"");
+		lblnum2.setText(result.getNumOfPassenger()+"");
+		lblnum3.setText(result.getNumOfPassenger()+"");
+		lblnum4.setText(result.getNumOfPassenger()+"");
+		lblstart.setText(match.getFrom()+"");
+		lblarrive.setText(match.getTo()+"");
+		lbltime.setText(result.getDistance()+"");
+		lblway.setText(result.getDrivingRoute()+"");
+		lblcost.setText(result.getFare()+"");
+
+		/*이 부분하면 실행 된다.*/
+		/*lblpassenger.setText(pe.getPassenger()+"");
 		lblnum1.setText(pe.getNum1());
 		lblnum2.setText(pe.getNum2());
 		lblnum3.setText(pe.getNum3());
@@ -248,7 +266,7 @@ public class MainController
 		lblarrive.setText(pe.getArrive());
 		lbltime.setText(pe.getTime()+"");
 		lblway.setText(pe.getWay());
-		lblcost.setText(pe.getCost()+"");
+		lblcost.setText(pe.getCost()+"");*/
 	}
 
 
@@ -273,7 +291,8 @@ public class MainController
 	}
 
 	RunningState sta = RunningState.s1;//next state
-	RunningState sta1 = RunningState.s1;//now
+	RunningState sta1 = RunningState.s1;//to sever
+	private Main main;
 
 	public void State4(ActionEvent event)
 	{
@@ -284,7 +303,7 @@ public class MainController
 		case s1:
 			lblButton.setText("출발지 도착");
 			lblState.setText("지금 출발지 가고있습니다.");
-			sta1= RunningState.s1;
+			sta1= RunningState.s1;//sever
 			sta = RunningState.s2;
 			break;
 
@@ -292,7 +311,7 @@ public class MainController
 		case s2:
 			lblButton.setText("목적지 도착");
 			lblState.setText("지금 목적지 가고있습니다.");
-			sta1= RunningState.s2;
+			sta1= RunningState.s2;//sever
 			sta = RunningState.s3;
 			break;
 
@@ -300,13 +319,17 @@ public class MainController
 		case s3:
 			lblButton.setText("출발");
 			lblState.setText("목적지도착합니다.");
-			sta1= RunningState.s3;
+			sta1= RunningState.s3;//sever
 			sta = RunningState.s1;
 			break;
 
 		}
 
 
+	}
+
+	public void setMain(Main main) {
+		this.main = main;
 	}
 
 	/*
