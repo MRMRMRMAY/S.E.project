@@ -1,7 +1,11 @@
 package passenger.controller;
 
 
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
 
 //import org.controlsfx.dialog.Dialogs;
 
@@ -23,12 +27,20 @@ public class SignInController {
 	@FXML
 	private PasswordField password;
 	private ArrayList<LoginInformation> loginInformation = new ArrayList<LoginInformation>();
-	
+	ReadTestFile read;
 //	private userLogin user = new userLogin();
 	public SignInController() {
-		loginInformation.add(new LoginInformation("moment","123456"));
+		
+		read = new ReadTestFile();
+		
+		loginInformation = read.getLoginInformation();
+		for(LoginInformation item : loginInformation){
+			System.out.printf("%s %s %s %s \n", item.getId(), item.getPassword(), item.getName(),item.getpassenger_contact());
+		}
+		/*loginInformation.add(new LoginInformation("moment","123456"));
 		loginInformation.add(new LoginInformation("aaaaa","aaaaa"));
-		loginInformation.add(new LoginInformation("mmmmm","123"));
+		loginInformation.add(new LoginInformation("mmmmm","123"));*/
+		
 	}
 	@FXML
 	public void initiallize(){
@@ -68,7 +80,7 @@ public class SignInController {
 	}
 	private boolean isInputvalib(){
 		for(LoginInformation item : loginInformation){
-			if(item.getId().equals(id.getText())&&item.getPw().equals(password.getText())){
+			if(item.getId().equals(id.getText())&&item.getPassword().equals(password.getText())){
 				return true;
 			}
 		}
@@ -80,11 +92,58 @@ public class SignInController {
 		this.main = mainApp;
 	}
 }
-class LoginInformation extends Member{
+class LoginInformation extends Passenger{
 	
-	public LoginInformation(String id, String pw){
-		super.setId(id);
-		super.setPw(pw);
+	public LoginInformation(String id, String pw,String name,String number){
+		super(id,pw,name,number);
+	}
+}
+
+class ReadTestFile{
+	
+	private Scanner input;
+	private ArrayList<LoginInformation> loginInformation = new ArrayList<LoginInformation>();
+	
+	public ReadTestFile(){
+		openFile();
+		readRecords();
+		closeFile();
+	}
+	public void openFile(){
+		try{
+			input = new Scanner(Paths.get("information.txt"));
+			
+		}
+		catch(IOException ioException){
+			System.err.println("Error opening file. Terminating.");
+			System.exit(1);
+		}
+	}
+	public void readRecords(){
+		System.out.printf("%-10s%-12s%-12s%10s%n","Account","First Name","Last Name","Balance");
+		try{
+			while(input.hasNext()){
+				//System.out.printf("%-10d%-12s%-12s%10.2f%n",input.nextInt(),input.next(),input.next(),input.nextDouble());
+				loginInformation.add(new LoginInformation(input.next(),input.next(),input.next(),input.next()));
+			}
+		}
+		catch(NoSuchElementException elementException){
+			System.err.println("File improperly formed. Terminating.");
+		}
+		catch(IllegalStateException stateException){
+			System.err.println("Error reading from file. Terminating.");
+		}
+	}
+	public void closeFile(){
+		if(input != null){
+			input.close();
+		}
+	}
+	public ArrayList<LoginInformation> getLoginInformation() {
+		return loginInformation;
+	}
+	public void setLoginInformation(ArrayList<LoginInformation> loginInformation) {
+		this.loginInformation = loginInformation;
 	}
 }
 
