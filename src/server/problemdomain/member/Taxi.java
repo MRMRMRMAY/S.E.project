@@ -15,6 +15,8 @@ public class Taxi extends Member implements Serializable, Cloneable {
 	private String carModel; // car model
 	private String contactNumber; // phone number
 
+	public Taxi() {}
+	
 	public Taxi(String name, String carModel, String contactNumber) {
 		// TODO Auto-generated constructor stub
 		this.driverName = name;

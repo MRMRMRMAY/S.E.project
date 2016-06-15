@@ -90,6 +90,8 @@ public class MapPanel extends JPanel{
 		spotUpData();
 		init();
 	}
+	
+	
 	public void init(){
 
 		//SpotList = map.getSpotList();
@@ -367,6 +369,9 @@ public class MapPanel extends JPanel{
 		listPanel.add(fromNumberLabel);
 		
 		fromSpotNamesList = new JList<String>(dlm);
+		toSpotNamesList = new JList<String>(dlm);
+		spotUpData();
+		
 		fromSpotNamesList.setFixedCellWidth(140);
 		fromSpotNamesList.setFixedCellHeight(13);
 		fromSpotNamesList.setVisibleRowCount(5);
@@ -380,7 +385,7 @@ public class MapPanel extends JPanel{
 		toNumberLabel = new JLabel();
 		toNumberLabel.setText("to : ");
 		listPanel.add(toNumberLabel);
-		toSpotNamesList = new JList<String>(dlm);
+
 		toSpotNamesList.setFixedCellWidth(140);
 		toSpotNamesList.setFixedCellHeight(13);
 		toSpotNamesList.setVisibleRowCount(5);

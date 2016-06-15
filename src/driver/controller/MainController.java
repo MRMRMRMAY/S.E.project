@@ -143,34 +143,17 @@ public class MainController
 		taxi4.setContactNumber("1874");
 
 
-		result.getDrivingRoute();
-		result.getNumOfPassenger();
-		result.getDistance();
-		result.getFare();
-		match.getFrom();
-		match.getTo();
-		match.getPassengerList();
-		match.getPath();
+//		result.getDrivingRoute();
+//		result.getNumOfPassenger();
+//		result.getDistance();
+//		result.getFare();
+//		match.getFrom();
+//		match.getTo();
+//		match.getPassengerList();
+//		match.getPath();
 	}
 
-<<<<<<< HEAD
-	private Main main;
-	
-	
-	
-	//private String state = "";
 
-	
-	
-	Place ti = new Place("경대 북문",7);
-	/*Place pla2 = new Place("경대 서문",1);
-	Place pla3 = new Place("경대 동문",1);
-	Place pla4 = new Place("대구역",1);
-	Place pla5 = new Place("home plus",1);
-    */
-=======
-
->>>>>>> refs/remotes/origin/master
 
 
 
@@ -333,29 +316,9 @@ public class MainController
 	}
 
 	/*
-<<<<<<< HEAD
-	class MyTask extends TimerTask 
-	{  
-		
-	    @Override  
-	    public void run() 
-	    {  
-	        System.out.println(ti.getTim());  
-	  
-	    }  
-	}
-*/
-
-	public void setMain(Main main) {
-		this.main = main;
-	}
-=======
 	 * Location
 	 *
 	public void Loca(ActionEvent event)
 	{
-
-
 	}*/
->>>>>>> refs/remotes/origin/master
 }

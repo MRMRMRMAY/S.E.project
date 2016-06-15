@@ -143,5 +143,15 @@ public class Map implements Serializable, Cloneable {
 	public ArrayList<Spot> getSpotList() {
 		return spotList;
 	}
+	
+	public ArrayList<String> getSpotNameList()
+	{
+		ArrayList<String> spotNameList = new ArrayList<String>();
+		
+		for ( Spot spot : getSpotList() )
+			spotNameList.add((String) spot.getSpotName());
+		
+		return spotNameList;
+	}
 
 }

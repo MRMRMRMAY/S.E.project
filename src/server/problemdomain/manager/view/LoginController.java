@@ -24,9 +24,9 @@ public class LoginController {
 	
 //	private userLogin user = new userLogin();
 	public LoginController() {
-		loginInformation.add(new LoginInformation("moment","123456"));
-		loginInformation.add(new LoginInformation("aaaaa","aaaaa"));
-		loginInformation.add(new LoginInformation("mmmmm","123"));
+//		loginInformation.add(new LoginInformation("moment","123456"));
+		loginInformation.add(new LoginInformation("admin","admin"));
+//		loginInformation.add(new LoginInformation("mmmmm","123"));
 	}
 	@FXML
 	public void initiallize(){

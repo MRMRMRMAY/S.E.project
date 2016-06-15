@@ -7,6 +7,7 @@ package physicalarchitecture.client;
 import java.io.IOException;
 
 import physicalarchitecture.common.ChatIF;
+import physicalarchitecture.common.Packet;
 
 /**
  * This class overrides some of the methods defined in the abstract superclass
@@ -81,6 +82,26 @@ public class ChatClient extends AbstractClient {
 		} catch (IOException e) {
 		}
 		System.exit(0);
+	}
+	
+	// 패킷 생성하여 반환
+	public Packet createPacket(Packet.PacketType type, Object... objs) {
+		Packet packet = new Packet();
+
+		packet.setPacketType(type);
+		for (Object obj : objs) {
+			// System.out.println(obj);
+			// if (obj == null)
+			// break;
+			packet.addParammeter(obj);
+		}
+
+		return packet;
+	}
+	
+	public void sendLogin(String id, String pw)
+	{
+		
 	}
 }
 // End of ChatClient class

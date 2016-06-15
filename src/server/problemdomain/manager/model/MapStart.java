@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import physicalarchitecture.Server;
 import server.problemdomain.manager.MainApp;
 import server.problemdomain.manager.view.DistanceInformationView;
 import server.problemdomain.manager.view.MapPanel;
@@ -28,11 +29,13 @@ public class MapStart extends JFrame{
 	private static SpotPanel spotPanel;
 	private static SpotLocation spotLocation = new SpotLocation();
 	private static DistanceInformationView distancePanel;
+	private Server server;
 	
 	private int[][] map;
 	//private JLabel[][] labels = new JLabel[100][100];
 
-	public MapStart(){
+	public MapStart(Server server){
+		this.server = server;
 		frame = new JFrame();
 		mapPanle = new MapPanel();
 		spotPanel = new SpotPanel();
@@ -54,6 +57,7 @@ public class MapStart extends JFrame{
 		
 		frame.setResizable(false);
 		frame.setVisible(true);
+		setMap(server.getMap().mapTo2DArray(), server.getMap().getSpotNameList());
 	}
 	public void addPoint(int index, Spot name){
 		JLabel item = new JLabel();
@@ -91,6 +95,10 @@ public class MapStart extends JFrame{
 		return map;
 	}
 	public void setMap(int[][] map,ArrayList<String> spotNames) {
+		for ( String s : spotNames )
+		{
+			System.out.println( "spot: " + s );
+		}
 		this.map = map;
 		spotPanel.setSpotNames(spotNames);
 		spotPanel.setDistance2DArray(map);

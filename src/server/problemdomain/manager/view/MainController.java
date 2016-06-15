@@ -63,7 +63,7 @@ public class MainController{
 	@FXML
 	public void handleMap(){
 		
-		new MapStart();
+		new MapStart(main.getSv());
 	//	main.showMap();
 	}
 	@FXML

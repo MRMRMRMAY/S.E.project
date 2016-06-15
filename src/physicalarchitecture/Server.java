@@ -12,6 +12,7 @@ import datamanagement.PassengerDataManager;
 import datamanagement.TaxiDataManager;
 import physicalarchitecture.common.Packet;
 import physicalarchitecture.server.*;
+import server.problemdomain.manager.MainApp;
 import server.problemdomain.matching.MatchingSystem;
 import server.problemdomain.member.Passenger;
 import server.problemdomain.member.Taxi;
@@ -44,6 +45,7 @@ public class Server extends AbstractServer {
 	// packet handler
 	private PassengerHandler passengerHandler;
 	private TaxiHandler taxiHandler;
+	private CommonHandler commonHandler;
 	
 	// matching system
 	private MatchingSystem matchingSystem;
@@ -51,6 +53,9 @@ public class Server extends AbstractServer {
 	// fare rate
 	private int fareRate;
 	private final int defaultFareRate = 300;
+	
+	// ui
+	private MainApp mainApp;
 	
 	
 	// Constructors ****************************************************
@@ -68,14 +73,18 @@ public class Server extends AbstractServer {
 		map = MapDataManager.getInstance().loadData();
 		passengerList = PassengerDataManager.getInstance().loadData();
 		taxiList = TaxiDataManager.getInstance().loadData();
+		
 		System.out.println("load Data Success");
 		
 		passengerHandler = PassengerHandler.getInstance(this);
 		taxiHandler = TaxiHandler.getInstance(this);		
+		commonHandler = CommonHandler.getInstance(this);
 		
 		matchingSystem = new MatchingSystem(this);
 		
 		fareRate = defaultFareRate; // default value
+		
+		
 	}
 
 	// Instance methods ************************************************
@@ -89,8 +98,31 @@ public class Server extends AbstractServer {
 	 *            The connection from which the message originated.
 	 */
 	public void handleMessageFromClient(Object msg, ConnectionToClient client) {
+		Packet packet = (Packet)msg;
+		
 		System.out.println("Message received: " + msg + " from " + client);
-		this.sendToAllClients(msg);
+		
+		switch (packet.getpacketType()) {
+		case LOGIN:
+		case LOGOUT:
+		case REQUEST_MAP:
+/*		case NOTICE:
+			processNotice(packet, client);
+			break;*/
+		case NONE:
+			commonHandler.processPacket(packet, client);
+			break;
+		case P_SIGNIN:
+		case P_REQUEST_MATCHING:
+			passengerHandler.processPacket(packet, client);
+			break;
+		case T_UPDATE_TAXI_STATE:
+		case T_UPDATE_TAXI_LOCATION:
+			taxiHandler.processPacket(packet, client);
+			break;
+		}
+		
+//		this.sendToAllClients(msg);
 	}
 
 	/**
@@ -137,6 +169,7 @@ public class Server extends AbstractServer {
 		Server sv = new Server(port);
 
 		try {
+			
 			sv.listen(); // Start listening for connections
 		} catch (Exception ex) {
 			System.out.println("ERROR - Could not listen for clients!");
@@ -179,6 +212,10 @@ public class Server extends AbstractServer {
 
 	public void setFareRate(int fareRate) {
 		this.fareRate = fareRate;
+	}
+
+	public MainApp getMainApp() {
+		return mainApp;
 	}	
 }
 // End of EchoServer class
