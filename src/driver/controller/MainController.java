@@ -92,7 +92,7 @@ public class MainController
 /*******      Passenger Message    end             *******/
 
 	private MatchingResult result;
-	private Matching match;
+//	private Matching match;
 
 	//Taxi Message
 	private Taxi taxi;
@@ -229,13 +229,13 @@ public class MainController
 		/*Passenger Message */
 
 		/*이 부분이 있으면 실행이 안된다*/
-		lblpassenger.setText(match.getPassengerList()+"");
+		lblpassenger.setText(result.getPassengerList()+"");
 		lblnum1.setText(result.getNumOfPassenger()+"");
 		lblnum2.setText(result.getNumOfPassenger()+"");
 		lblnum3.setText(result.getNumOfPassenger()+"");
 		lblnum4.setText(result.getNumOfPassenger()+"");
-		lblstart.setText(match.getFrom()+"");
-		lblarrive.setText(match.getTo()+"");
+		lblstart.setText(result.getFrom()+"");
+		lblarrive.setText(result.getTo()+"");
 		lbltime.setText(result.getDistance()+"");
 		lblway.setText(result.getDrivingRoute()+"");
 		lblcost.setText(result.getFare()+"");
