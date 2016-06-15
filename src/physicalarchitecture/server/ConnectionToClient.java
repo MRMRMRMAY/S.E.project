@@ -64,6 +64,7 @@ public class ConnectionToClient extends Thread {
 	 * client. Used by the setInfo and getInfo methods.
 	 */
 	private HashMap savedInfo = new HashMap(10);
+	
 
 	// CONSTRUCTORS *****************************************************
 
@@ -257,6 +258,10 @@ public class ConnectionToClient extends Thread {
 			closeAll();
 		} catch (IOException e) {
 		}
+	}
+
+	public void setSavedInfo(HashMap savedInfo) {
+		this.savedInfo = savedInfo;
 	}
 }
 // End of ConnectionToClient class

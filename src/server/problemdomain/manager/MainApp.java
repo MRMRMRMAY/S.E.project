@@ -32,6 +32,7 @@ public class MainApp extends Application {
 	private int money;
 	@Override
 	public void start(Stage primaryStage) {
+		
 		this.primaryStage = primaryStage;
 		primaryStage.setTitle("Sharing App");
 	//	initRootLay();
@@ -42,9 +43,9 @@ public class MainApp extends Application {
 		int port = 0; // Port to listen on
 
 		try {
-			port = Integer.parseInt("5555"); // Get port from command line
+			port = Integer.parseInt("6666"); // Get port from command line
 		} catch (Throwable t) {
-			port = 5555; // Set port to 5555
+			port = 6666; // Set port to 5555
 		}
 
 		sv = new Server(port);

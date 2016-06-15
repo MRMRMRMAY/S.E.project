@@ -7,6 +7,7 @@
 package physicalarchitecture.server;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import physicalarchitecture.Server;
 import physicalarchitecture.common.Packet;
@@ -69,15 +70,19 @@ public class CommonHandler {
 
 		String id = (String) packet.getParms().get(0);
 		String pw = (String) packet.getParms().get(1);
-
+		System.out.println("id, pw  "  + id + "  "+ pw);
+		System.out.println(server.getPassengerList().size());
 		for (Passenger passenger : server.getPassengerList()) {
-			if (passenger.getId().equals(id) && passenger.getPw().equals(pw)) {
+			System.out.println("111");
+			if (passenger.getId() == id && passenger.getPw() == pw) {
 				isSuccess = true;
 				client.setInfo("type", MemberType.PASSENGER); // set member type
 				client.setInfo("id", id); // set id
 				break;
 			}
+			System.out.println("111");
 		}
+		System.out.println("222");
 		if (!isSuccess) {
 			for (Taxi taxi : server.getTaxi()) {
 				if (taxi.getId().equals(id) && taxi.getPw().equals(pw)) {
@@ -91,9 +96,16 @@ public class CommonHandler {
 
 		try {
 			if (isSuccess)
+			{
+				System.out.println("suc");
 				client.sendToClient(server.createPacket(PacketType.REPLY_LOGIN, true));
+				System.out.println("suc");
+			}
 			else
+			{System.out.println("fail");
 				client.sendToClient(server.createPacket(PacketType.REPLY_LOGIN, false));
+				System.out.println("fail");
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -108,6 +120,7 @@ public class CommonHandler {
 
 	public void processLogout(Packet packet, ConnectionToClient client) {
 		System.out.println("Logout");
+		client.setSavedInfo(new HashMap(10));
 	}
 
 	public void processRequestMap(Packet packet, ConnectionToClient client) {

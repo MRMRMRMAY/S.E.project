@@ -107,40 +107,40 @@ public class MainController
 	 * */
 	public MainController()
 	{
-		taxi = new Taxi();
-		taxi.setId("user");
-		taxi.setPw("pass");
-		taxi.setDriverName("Sam");
-		taxi.setCarModel("Car1");
-		taxi.setContactNumber("0055");
-
-		taxi1 = new Taxi();
-		taxi1.setId("wang");
-		taxi1.setPw("nan");
-		taxi1.setDriverName("Amy");
-		taxi1.setCarModel("Car2");
-		taxi1.setContactNumber("6894");
-
-		taxi2 = new Taxi();
-		taxi2.setId("1234");
-		taxi2.setPw("5678");
-		taxi2.setDriverName("Ben");
-		taxi2.setCarModel("Car3");
-		taxi2.setContactNumber("1579");
-
-		taxi3 = new Taxi();
-		taxi3.setId("1111");
-		taxi3.setPw("3333");
-		taxi3.setDriverName("Kim");
-		taxi3.setCarModel("Car4");
-		taxi3.setContactNumber("7842");
-
-		taxi4 = new Taxi();
-		taxi4.setId("2222");
-		taxi4.setPw("4444");
-		taxi4.setDriverName("Jack");
-		taxi4.setCarModel("Car5");
-		taxi4.setContactNumber("1874");
+//		taxi = new Taxi();
+//		taxi.setId("user");
+//		taxi.setPw("pass");
+//		taxi.setDriverName("Sam");
+//		taxi.setCarModel("Car1");
+//		taxi.setContactNumber("0055");
+//
+//		taxi1 = new Taxi();
+//		taxi1.setId("wang");
+//		taxi1.setPw("nan");
+//		taxi1.setDriverName("Amy");
+//		taxi1.setCarModel("Car2");
+//		taxi1.setContactNumber("6894");
+//
+//		taxi2 = new Taxi();
+//		taxi2.setId("1234");
+//		taxi2.setPw("5678");
+//		taxi2.setDriverName("Ben");
+//		taxi2.setCarModel("Car3");
+//		taxi2.setContactNumber("1579");
+//
+//		taxi3 = new Taxi();
+//		taxi3.setId("1111");
+//		taxi3.setPw("3333");
+//		taxi3.setDriverName("Kim");
+//		taxi3.setCarModel("Car4");
+//		taxi3.setContactNumber("7842");
+//
+//		taxi4 = new Taxi();
+//		taxi4.setId("2222");
+//		taxi4.setPw("4444");
+//		taxi4.setDriverName("Jack");
+//		taxi4.setCarModel("Car5");
+//		taxi4.setContactNumber("1874");
 
 
 //		result.getDrivingRoute();
@@ -167,11 +167,14 @@ public class MainController
 		//if(txtUserName.getText().equals("user") && txtPassword.getText().equals("pass")
 				//|| txtUserName.getText().equals("wang") && txtPassword.getText().equals("nan"))
 
-		if(txtUserName.getText().equals(taxi.getId()) && txtPassword.getText().equals(taxi.getPw())
-				|| txtUserName.getText().equals(taxi1.getId()) && txtPassword.getText().equals(taxi1.getPw())
-				|| txtUserName.getText().equals(taxi2.getId()) && txtPassword.getText().equals(taxi2.getPw())
-				|| txtUserName.getText().equals(taxi3.getId()) && txtPassword.getText().equals(taxi3.getPw())
-				|| txtUserName.getText().equals(taxi4.getId()) && txtPassword.getText().equals(taxi4.getPw()))
+//		if(txtUserName.getText().equals(taxi.getId()) && txtPassword.getText().equals(taxi.getPw())
+//				|| txtUserName.getText().equals(taxi1.getId()) && txtPassword.getText().equals(taxi1.getPw())
+//				|| txtUserName.getText().equals(taxi2.getId()) && txtPassword.getText().equals(taxi2.getPw())
+//				|| txtUserName.getText().equals(taxi3.getId()) && txtPassword.getText().equals(taxi3.getPw())
+//				|| txtUserName.getText().equals(taxi4.getId()) && txtPassword.getText().equals(taxi4.getPw()))
+		System.out.println("start");
+		main.getClass();
+		if ( main.getClient().sendLogin(txtUserName.getText(), txtPassword.getText()))
 		{
 			//right
 			lblStatus.setText("Login Success");

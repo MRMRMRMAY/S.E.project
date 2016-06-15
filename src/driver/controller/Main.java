@@ -35,7 +35,7 @@ public class Main extends Application {
 			ClientConsole cc = new ClientConsole();
 			try {
 //				client = new ChatClient(str.get(0), str.get(1), this);
-				client = new ChatClient("localhost", 5555, cc);
+				client = new ChatClient("localhost", 6666, cc);
 			} catch (IOException exception) {
 				System.out.println("Error: Can't setup connection!" + " Terminating client.");
 				System.exit(1);
@@ -85,10 +85,13 @@ public class Main extends Application {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	public static void main(String[] args) {
 		launch(args);
+	}
+
+	public ChatClient getClient() {
+		return client;
 	}
 }
