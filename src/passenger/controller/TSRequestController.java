@@ -55,7 +55,7 @@ public class TSRequestController implements Initializable{
 		// bind the selected STARTINGNODE_COMBOBOX label to the selected Starting Node in the combo box.
 		SELECTEDSTARTINGNODE_LABEL.textProperty().bind(STARTINGNODE_COMBOBOX.getSelectionModel().selectedItemProperty());
 //		SELECTEDDESTINATIONNODE_LABEL.textProperty().bind(DESTINATIONNODE_COMBOBOX.getSelectionModel().selectedItemProperty());
-
+		{
 		// listen for changes to the STARTINGNODE_COMBOBOX selection (and update the displayed fruit image accordingly).
 		STARTINGNODE_COMBOBOX.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 		
@@ -85,8 +85,8 @@ public class TSRequestController implements Initializable{
 		
 		
 		
-		
-/*		DESTINATIONNODE_COMBOBOX.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+		}
+		{		DESTINATIONNODE_COMBOBOX.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 			
 			@Override 
 			public void changed(ObservableValue<? extends String> selected, String oldDESTINATIONNODE, String newDESTINATIONNODE) {
@@ -110,7 +110,8 @@ public class TSRequestController implements Initializable{
 					}
 				}  
 			}
-		});	*/
+		});	
+		}
 	}
 
 
