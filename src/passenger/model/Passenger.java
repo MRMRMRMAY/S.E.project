@@ -40,10 +40,6 @@ public class Passenger {
 	public void setpassenger_contact(String passenger_contact) {
 		this.passenger_contact = passenger_contact;
 	}
-	public Passenger(String id,String pw){
-		this.id = id;
-		this.password = pw;
-	}
 	
 	//
 	public Passenger(String id, String pw, String name, String pc) {
