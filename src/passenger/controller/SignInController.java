@@ -58,8 +58,8 @@ public class SignInController {
 			okCliked = true;
 			//id.setOpacity(0);
 			dialogStage.close();
-			//main.showMainview();
-			main.showDialog("Welcome", "pass");
+			main.showTSrequestPage();
+			
 
 		}
 		else{

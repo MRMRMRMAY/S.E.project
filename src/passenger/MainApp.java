@@ -12,7 +12,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import passenger.controller.MatchingInfoController;
 import passenger.controller.SignInController;
+import passenger.controller.TSRequestController;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXMLLoader;
@@ -124,23 +126,25 @@ public class MainApp extends Application {
 			return false;
 		}
 	}
-    public void showPersonOverview() {
+    public void showTSrequestPage() {
 		try{
+			
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("view/InformationView.fxml"));
+			loader.setLocation(MainApp.class.getResource("view/TSRequest.fxml"));
 			AnchorPane Mainview = (AnchorPane)loader.load();
 //			upDate();
 			Stage dialogStage = new Stage();
-			dialogStage.setTitle("Information");
+			dialogStage.setTitle("TSR");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 	        dialogStage.initOwner(primaryStage);
 	        Scene scene = new Scene(Mainview);
 	        dialogStage.setScene(scene);
-			PersonOverviewController controller = loader.getController();
+			TSRequestController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 			controller.setMainApp(this);
 //			controller.setInformation();
-			dialogStage.show();
+			dialogStage.showAndWait();
+			
 //			primaryStage.setScene(scene);
 //			primaryStage.show();
 		}
@@ -148,17 +152,17 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		}
     }
-    public void showTaxiOverview() {
+    public void showMatchingInfo() {
         try {
             // Load person overview.
 			//controller.setDialogStage(dialogStage);
 			
 			
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/TaxiInformation.fxml"));
+            loader.setLocation(MainApp.class.getResource("/passenger/view/MatchingInfo.fxml"));
             AnchorPane taxiView = (AnchorPane) loader.load();
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Taxi View");
+            dialogStage.setTitle("MatchingInfo View");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(taxiView);
@@ -166,65 +170,9 @@ public class MainApp extends Application {
             // Set person overview into the center of root layout.
             
             // Give the controller access to the main app.
-            TaxiInformationController controller = loader.getController();
+            MatchingInfoController controller = loader.getController();
             controller.setMainApp(this);
             dialogStage.show();
-            
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public boolean showTaxiEditDialog(TaxiProperty taxi) {
-		try {
-			// Load the fxml file and create a new stage for the popup dialog.
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("view/TaxiEditDialog.fxml"));
-			AnchorPane page = (AnchorPane) loader.load();
-
-			// Create the dialog Stage.
-			Stage dialogStage = new Stage();
-			dialogStage.setTitle("Edit Person");
-			dialogStage.initModality(Modality.WINDOW_MODAL);
-			dialogStage.initOwner(primaryStage);
-			Scene scene = new Scene(page);
-			dialogStage.setScene(scene);
-
-			// Set the person into the controller.
-			TaxiEditDialogController controller = loader.getController();
-			controller.setDialogStage(dialogStage);
-			controller.setTaxi(taxi);
-			controller.setMainApp(this);
-			// Show the dialog and wait until the user closes it
-			dialogStage.showAndWait();
-
-			return controller.isOkClicked();
-		} catch (IOException e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
-    public void showMoneyview() {
-        try {
-            // Load person overview.
-			//controller.setDialogStage(dialogStage);
-			
-			
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/MoneyView.fxml"));
-            AnchorPane moneyView = (AnchorPane) loader.load();
-            Stage dialogStage = new Stage();
-            dialogStage.setTitle("Money View");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(primaryStage);
-            Scene scene = new Scene(moneyView);
-            dialogStage.setScene(scene);
-            // Set person overview into the center of root layout.
-            
-            // Give the controller access to the main app.
-            MoneyController controller = loader.getController();
-            controller.setMainApp(this);
-            controller.setDialogStage(dialogStage);
-            dialogStage.showAndWait();
             
         } catch (IOException e) {
             e.printStackTrace();
