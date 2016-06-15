@@ -45,6 +45,9 @@ public class TSRequestController implements Initializable{
 	private Stage dialogStage;
 	private MainApp mainApp;
 	private boolean okCliked = false;
+	private String from;
+	private String to;
+	private int time;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -74,6 +77,7 @@ public class TSRequestController implements Initializable{
 				}
 			
 				if (newSTARTINGNODE != null) {
+					from = newSTARTINGNODE;
 					switch(newSTARTINGNODE) {
 					case "동대구역": CheckImage1.setVisible(true); break;
 					case "수성못": CheckImage1.setVisible(true); break;
@@ -103,6 +107,7 @@ public class TSRequestController implements Initializable{
 				}
 			
 				if (newDESTINATIONNODE != null) {
+					to = newDESTINATIONNODE;
 					switch(newDESTINATIONNODE) {
 					case "동대구역": CheckImage2.setVisible(true); break;
 					case "수성못": CheckImage2.setVisible(true); break;
@@ -110,6 +115,7 @@ public class TSRequestController implements Initializable{
 					case "복현오거리": CheckImage2.setVisible(true); break; 
 					case "서문시장": CheckImage2.setVisible(true); break;
 					}
+					
 				}  
 			}
 		});	
@@ -130,6 +136,10 @@ public class TSRequestController implements Initializable{
 			
 				if (newDESTINATIONNODE != null) {
 					switch(newDESTINATIONNODE) {
+					case "5분": time = 5; break;
+					case "10분": time = 10; break;
+					case "15분": time = 15; break;
+					case "30분": time = 30; break;
 					//case "동대구역": CheckImage2.setVisible(true); break;
 					//case "수성못": CheckImage2.setVisible(true); break;
 					//case "이월드": CheckImage2.setVisible(true); break;
@@ -164,6 +174,7 @@ public class TSRequestController implements Initializable{
 	private void handleOk(){
 		okCliked = true;
 		mainApp.showMatchingInfo();
+		
 		dialogStage.close();
 	}
 	
