@@ -15,11 +15,11 @@
       </font>
     </Label>
     <Label layoutX="168.0" layoutY="158.0" text="ID" />
-    <TextField fx:id="ID_TEXTFIELD" layoutX="212.0" layoutY="155.0" prefWidth="200.0" />
+    <TextField id="ID_TEXTFIELD" fx:id="id" layoutX="212.0" layoutY="155.0" prefWidth="200.0" />
     <Label layoutX="130.0" layoutY="192.0" text="Password" />
-    <PasswordField fx:id="Password_PASSWORDFIELD" layoutX="212.0" layoutY="189.0" prefWidth="200.0" text="" />
-    <Button fx:id="SIGNIN_BUTTON" layoutX="291.0" layoutY="227.0" mnemonicParsing="false" onAction="#signInAction" text="로그인" />
-    <Button fx:id="CANCEL_BUTTON" layoutX="368.0" layoutY="227.0" mnemonicParsing="false" onAction="#cancelAction" text="취소" />
-    <Button fx:id="GOSIGNINPAGE_BUTTON" layoutX="291.0" layoutY="262.0" mnemonicParsing="false" prefWidth="121.0" text="회원가입 페이지로" />
+    <PasswordField id="Password_PASSWORDFIELD" fx:id="password" layoutX="212.0" layoutY="189.0" prefWidth="200.0" text="" />
+    <Button id="SIGNIN_BUTTON" layoutX="291.0" layoutY="227.0" mnemonicParsing="false" onAction="#handleOk" text="로그인" />
+    <Button id="CANCEL_BUTTON" layoutX="368.0" layoutY="227.0" mnemonicParsing="false" onAction="#handleCancel" text="취소" />
+    <Button id="GOSIGNINPAGE_BUTTON" layoutX="291.0" layoutY="262.0" mnemonicParsing="false" prefWidth="121.0" text="회원가입 페이지로" />
   </children>
 </AnchorPane>
