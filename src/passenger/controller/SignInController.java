@@ -59,13 +59,6 @@ public class SignInController {
 	@FXML
 	private void handleOk(){
 		boolean pass = false;
-		/*userLogin user = new userLogin(id.getText(),password.getText());
-		ArrayList<userLogin> item = user.getBook();
-		for(int i = 0; i<item.size();i++){
-			userLogin a = item.get(i);
-			if(a.getId().equals(user.getId())&&a.getPassword().equals(user.getPassword()))
-				pass = true;
-		}*/
 		if(isInputvalib()){
 			okCliked = true;
 			//id.setOpacity(0);
@@ -77,6 +70,11 @@ public class SignInController {
 		else{
 			main.showDialog("error", "error");
 		}
+	}
+	@FXML
+	private void handleSignUp(){
+		//id.setOpacity(0);
+		main.showSignUpPage();
 	}
 	private boolean isInputvalib(){
 		for(LoginInformation item : loginInformation){

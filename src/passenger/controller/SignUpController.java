@@ -36,7 +36,7 @@ public class SignUpController implements Initializable{
 	@FXML private Button SIGNUP_BUTTON;			// 회원가입_버튼
 	@FXML private Button CANCEL_BUTTON;			// 취소_버튼
     
-
+	private Stage dialogStage;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		CANCEL_BUTTON.setOnAction(e->cancelAction(e));
@@ -46,6 +46,7 @@ public class SignUpController implements Initializable{
 	public void cancelAction(ActionEvent e){
 		AnchorPane root = (AnchorPane) CANCEL_BUTTON.getScene().getRoot();
 		root.getChildren().remove(SignUp_ANCHOR);
+		dialogStage.close();
 	}
 	
 	public void signUpAction(ActionEvent event){
@@ -83,6 +84,7 @@ public class SignUpController implements Initializable{
 			pstmt.setString(4, Name);
 			pstmt.setString(5, Contact);
 			pstmt.executeUpdate();
+			dialogStage.close();
 			}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -92,7 +94,14 @@ public class SignUpController implements Initializable{
 			}
 			AnchorPane root = (AnchorPane) CANCEL_BUTTON.getScene().getRoot();
 			root.getChildren().remove(SignUp_ANCHOR);
-			}
+			
+		}
+	
+
+	public void setDialogStage(Stage dialogStage) {
+		// TODO Auto-generated method stub
+		this.dialogStage = dialogStage;
+	}
 	
 	
 }

@@ -35,6 +35,7 @@ public class TSRequestController implements Initializable{
 	@FXML private ComboBox<String> WAITINGTIME_COMBOBOX;		// 대기시간_콤보박스
 	@FXML private Label SELECTEDSTARTINGNODE_LABEL;				// 선택된 출발지_레이블
 	@FXML private Label SELECTEDDESTINATIONNODE_LABEL;			// 선택된 도착지_레이블
+	@FXML private Label SELECTEDDEWAITINGTIMENODE_LABEL;
 	//@FXML private ImageView CHECK_ImageVIEW;					// 체크_이미지뷰
 	@FXML private Button REQUEST_BUTTON;						// 요청하기_버튼
 	@FXML private Button CANCEL_BUTTON;							// 취소_버튼
@@ -54,7 +55,8 @@ public class TSRequestController implements Initializable{
 
 		// bind the selected STARTINGNODE_COMBOBOX label to the selected Starting Node in the combo box.
 		SELECTEDSTARTINGNODE_LABEL.textProperty().bind(STARTINGNODE_COMBOBOX.getSelectionModel().selectedItemProperty());
-//		SELECTEDDESTINATIONNODE_LABEL.textProperty().bind(DESTINATIONNODE_COMBOBOX.getSelectionModel().selectedItemProperty());
+		SELECTEDDESTINATIONNODE_LABEL.textProperty().bind(DESTINATIONNODE_COMBOBOX.getSelectionModel().selectedItemProperty());
+		SELECTEDDEWAITINGTIMENODE_LABEL.textProperty().bind(WAITINGTIME_COMBOBOX.getSelectionModel().selectedItemProperty());
 		{
 		// listen for changes to the STARTINGNODE_COMBOBOX selection (and update the displayed fruit image accordingly).
 		STARTINGNODE_COMBOBOX.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -86,7 +88,7 @@ public class TSRequestController implements Initializable{
 		
 		
 		}
-/*		{		DESTINATIONNODE_COMBOBOX.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+		{		DESTINATIONNODE_COMBOBOX.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 			
 			@Override 
 			public void changed(ObservableValue<? extends String> selected, String oldDESTINATIONNODE, String newDESTINATIONNODE) {
@@ -111,7 +113,33 @@ public class TSRequestController implements Initializable{
 				}  
 			}
 		});	
-		}*/
+		}
+{		WAITINGTIME_COMBOBOX.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+			
+			@Override 
+			public void changed(ObservableValue<? extends String> selected, String oldDESTINATIONNODE, String newDESTINATIONNODE) {
+				if (oldDESTINATIONNODE != null) {
+					switch(oldDESTINATIONNODE) {
+					//case "5분": CheckImage2.setVisible(false); break;
+					//case "10분": CheckImage2.setVisible(false); break;
+					//case "15분": CheckImage2.setVisible(false); break;
+					//case "30분": CheckImage2.setVisible(false); break;
+					
+					}
+				}
+			
+				if (newDESTINATIONNODE != null) {
+					switch(newDESTINATIONNODE) {
+					//case "동대구역": CheckImage2.setVisible(true); break;
+					//case "수성못": CheckImage2.setVisible(true); break;
+					//case "이월드": CheckImage2.setVisible(true); break;
+					//case "복현오거리": CheckImage2.setVisible(true); break; 
+					//case "서문시장": CheckImage2.setVisible(true); break;
+					}
+				}  
+			}
+		});	
+		}
 	}
 
 
