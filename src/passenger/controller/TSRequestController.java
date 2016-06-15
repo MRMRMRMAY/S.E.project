@@ -86,7 +86,7 @@ public class TSRequestController implements Initializable{
 		
 		
 		}
-		{		DESTINATIONNODE_COMBOBOX.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+/*		{		DESTINATIONNODE_COMBOBOX.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 			
 			@Override 
 			public void changed(ObservableValue<? extends String> selected, String oldDESTINATIONNODE, String newDESTINATIONNODE) {
@@ -111,7 +111,7 @@ public class TSRequestController implements Initializable{
 				}  
 			}
 		});	
-		}
+		}*/
 	}
 
 
