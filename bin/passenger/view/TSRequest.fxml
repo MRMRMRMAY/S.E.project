@@ -63,9 +63,15 @@
         </FXCollections>
       </items>
     </ComboBox>
+<<<<<<< HEAD
     <Button fx:id="REQUEST_BUTTON" layoutX="224.0" layoutY="327.0" mnemonicParsing="false" text="4. 요청하기" />
     <Button fx:id="CANCEL_BUTTON" layoutX="331.0" layoutY="328.0" mnemonicParsing="false" text="취소" />
     <ImageView fitHeight="179.09139157913353" fitWidth="278.8863067626953" focusTraversable="false" layoutX="61.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+=======
+    <Button id="REQUEST_BUTTON" layoutX="224.0" layoutY="327.0" mnemonicParsing="false" onAction="#handleOk" text="4. 요청하기" />
+    <Button fx:id="CANCEL_BUTTON" layoutX="331.0" layoutY="328.0" mnemonicParsing="false" onAction="#handleCancel" text="취소" />
+    <ImageView fitHeight="194.0913848876953" fitWidth="302.2447259432951" focusTraversable="false" layoutX="38.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+>>>>>>> refs/remotes/origin/master
       <image>
         <Image url="@maptemp.jpg" />
       </image>

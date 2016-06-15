@@ -35,6 +35,7 @@ public class SignInPage extends Application {
 			Parent root = FXMLLoader.load(getClass().getResource("/passenger/view/SignIn.fxml"));
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
+			
 			primaryStage.show();
 		}
 		catch(Exception e) 

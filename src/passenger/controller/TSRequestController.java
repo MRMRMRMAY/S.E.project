@@ -1,5 +1,6 @@
 ﻿package passenger.controller;
 
+import passenger.MainApp;
 import passenger.model.TSRequest;
 import passenger.view.*;
 
@@ -40,10 +41,12 @@ public class TSRequestController implements Initializable{
 	@FXML private ImageView NodeImage;							// 체크_이미지
 	@FXML private ImageView CheckImage1;
 	@FXML private ImageView CheckImage2;
-		
-	
+	private Stage dialogStage;
+	private MainApp mainApp;
+	private boolean okCliked = false;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
 		assert CheckImage1 != null : "fx:id=\"CheckImage1\" was not injected: check your FXML file 'TSRequest.fxml'.";
 //		assert CheckImage2 != null : "fx:id=\"CheckImage2\" was not injected: check your FXML file 'TSRequest.fxml'.";
 		assert STARTINGNODE_COMBOBOX != null : "fx:id=\"STARTINGNODE_COMBOBOX\" was not injected: check your FXML file 'TSRequest.fxml'.";
@@ -52,7 +55,7 @@ public class TSRequestController implements Initializable{
 		// bind the selected STARTINGNODE_COMBOBOX label to the selected Starting Node in the combo box.
 		SELECTEDSTARTINGNODE_LABEL.textProperty().bind(STARTINGNODE_COMBOBOX.getSelectionModel().selectedItemProperty());
 //		SELECTEDDESTINATIONNODE_LABEL.textProperty().bind(DESTINATIONNODE_COMBOBOX.getSelectionModel().selectedItemProperty());
-
+		{
 		// listen for changes to the STARTINGNODE_COMBOBOX selection (and update the displayed fruit image accordingly).
 		STARTINGNODE_COMBOBOX.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 		
@@ -82,8 +85,8 @@ public class TSRequestController implements Initializable{
 		
 		
 		
-		
-/*		DESTINATIONNODE_COMBOBOX.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+		}
+		{		DESTINATIONNODE_COMBOBOX.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 			
 			@Override 
 			public void changed(ObservableValue<? extends String> selected, String oldDESTINATIONNODE, String newDESTINATIONNODE) {
@@ -107,6 +110,33 @@ public class TSRequestController implements Initializable{
 					}
 				}  
 			}
-		});	*/
+		});	
+		}
 	}
+
+
+	public void setDialogStage(Stage dialogStage) {
+		// TODO Auto-generated method stub
+		this.dialogStage = dialogStage;
+	}
+
+
+	public void setMainApp(MainApp mainApp) {
+		// TODO Auto-generated method stub
+		this.mainApp = mainApp;
+	}
+	@FXML
+	private void handleCancel(){
+		dialogStage.close();
+	}
+	public boolean isOkclicked(){
+		return okCliked;
+	}
+	@FXML
+	private void handleOk(){
+		okCliked = true;
+		mainApp.showMatchingInfo();
+		dialogStage.close();
+	}
+	
 }

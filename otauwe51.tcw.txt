@@ -1,0 +1,47 @@
+﻿Merge remote-tracking branch 'refs/remotes/origin/master' into server-client
+
+# Conflicts:
+#	bin/passenger/view/TSRequest.fxml
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch server-client
+# Your branch is up-to-date with 'origin/server-client'.
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   bin/.gitignore
+#	deleted:    bin/driver/view/MessageC.fxml
+#	deleted:    bin/driver/view/MessageTest.fxml
+#	modified:   bin/passenger/controller/SignInController.class
+#	modified:   bin/passenger/controller/TSRequestController.class
+#	modified:   bin/passenger/model/Passenger.class
+#	modified:   bin/passenger/view/SignIn.fxml
+#	modified:   bin/passenger/view/TSRequest.fxml
+#	deleted:    src/driver/model/dij.java
+#	deleted:    src/driver/view/MessageC.fxml
+#	deleted:    src/driver/view/MessageTest.fxml
+#	new file:   src/information.txt
+#	new file:   src/passenger/MainApp.java
+#	new file:   src/passenger/controller/DialogController.java
+#	modified:   src/passenger/controller/MatchingInfoController.java
+#	modified:   src/passenger/controller/SignInController.java
+#	modified:   src/passenger/controller/SignInPage.java
+#	modified:   src/passenger/controller/TSRequestController.java
+#	new file:   src/passenger/model/Member.java
+#	modified:   src/passenger/model/Passenger.java
+#	new file:   src/passenger/view/Dialogs.fxml
+#	modified:   src/passenger/view/SignIn.fxml
+#	modified:   src/passenger/view/TSRequest.fxml
+#
+# Changes not staged for commit:
+#	modified:   src/driver/controller/MainController.java
+#
+

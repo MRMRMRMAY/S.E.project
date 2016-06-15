@@ -226,8 +226,6 @@ public class MainController
 	{
 		lblState.setText("상태 변합니다.지금 운행 중 상태입니다.");
 
-
-
 		/*Passenger Message */
 
 		/*이 부분이 있으면 실행이 안된다*/

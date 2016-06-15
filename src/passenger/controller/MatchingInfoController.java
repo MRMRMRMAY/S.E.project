@@ -1,5 +1,6 @@
 package passenger.controller;
 
+import passenger.MainApp;
 import passenger.model.FareInfo;
 import passenger.model.MatchingInfo;
 
@@ -35,7 +36,7 @@ public class MatchingInfoController {
 	@FXML private Label TaxiInfo_LABEL;			// 택시 정보 표시
 	@FXML private Button Matching_BUTTON;		// 매칭 완료 버튼
 	@FXML private Button PlateCheck_BUTTON;		// 차량 조회 버튼
-	
+	private MainApp mainApp;
 	MatchingInfo MatchingInfo1 = new MatchingInfo(4, "34자 7853", "010-7853-3786");
 	// FareInfo FareInfo1 = new FareInfo();
 	
@@ -50,5 +51,11 @@ public class MatchingInfoController {
 	public void popTaxiInfo (ActionEvent event) throws Exception {
 		TaxiInfo_LABEL.setText("택시의 차량 번호는 \n\n" + MatchingInfo1.getTaxi_plate() + "이며 \n\n\n택시의 연락처는 \n\n" + MatchingInfo1.getTaxi_contact() + "입니다.");
 //		FareInfo_LABEL.setWrapText(true);
+	}
+
+
+	public void setMainApp(MainApp mainApp) {
+		// TODO Auto-generated method stub
+		this.mainApp = mainApp;
 	}
 }
