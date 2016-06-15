@@ -20,6 +20,6 @@
     <PasswordField id="Password_PASSWORDFIELD" fx:id="password" layoutX="212.0" layoutY="189.0" prefWidth="200.0" text="" />
     <Button id="SIGNIN_BUTTON" layoutX="291.0" layoutY="227.0" mnemonicParsing="false" onAction="#handleOk" text="로그인" />
     <Button id="CANCEL_BUTTON" layoutX="368.0" layoutY="227.0" mnemonicParsing="false" onAction="#handleCancel" text="취소" />
-    <Button id="GOSIGNINPAGE_BUTTON" layoutX="291.0" layoutY="262.0" mnemonicParsing="false" prefWidth="121.0" text="회원가입 페이지로" />
+    <Button id="GOSIGNINPAGE_BUTTON" layoutX="291.0" layoutY="262.0" mnemonicParsing="false" onAction="#handleSignUp" prefWidth="121.0" text="회원가입 페이지로" />
   </children>
 </AnchorPane>

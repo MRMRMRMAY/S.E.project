@@ -28,7 +28,7 @@
         </FXCollections>
       </items>
     </ComboBox>
-    <ComboBox fx:id="DESTINATION_COMBOBOX" layoutX="367.0" layoutY="160.0" prefHeight="21.0" prefWidth="117.0" promptText="2. 도착지">
+    <ComboBox fx:id="DESTINATIONNODE_COMBOBOX" layoutX="367.0" layoutY="160.0" prefHeight="21.0" prefWidth="117.0" promptText="2. 도착지">
       <items>
         <FXCollections fx:factory="observableArrayList">
           <String fx:value="2. 도착지" />
@@ -75,5 +75,7 @@
         <Image url="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Check_mark_23x20_02.svg/120px-Check_mark_23x20_02.svg.png" />
       </image>
     </ImageView>
+    <Label fx:id="SELECTEDDEWAITINGTIMENODE_LABEL" layoutX="361.0" layoutY="285.0" prefWidth="65.0" text="" />
+    <Label layoutX="426.0" layoutY="285.0" text="동안 동승자를 기다립니다" />
   </children>
 </AnchorPane>

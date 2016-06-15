@@ -16,6 +16,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import passenger.controller.MatchingInfoController;
 import passenger.controller.SignInController;
+import passenger.controller.SignUpController;
 import passenger.controller.TSRequestController;
 import physicalarchitecture.ClientConsole;
 import physicalarchitecture.client.ChatClient;
@@ -113,32 +114,32 @@ public class MainApp extends Application {
 		}
 	}
 	
-	public boolean showPersonEditDialog(Person person) {
+	public void showSignUpPage() {
 		try {
 			// Load the fxml file and create a new stage for the popup dialog.
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("view/PersonEditDialog.fxml"));
+			loader.setLocation(MainApp.class.getResource("view/SignUp.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 
 			// Create the dialog Stage.
 			Stage dialogStage = new Stage();
-			dialogStage.setTitle("Edit Person");
+			dialogStage.setTitle("Sign Person");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
 			// Set the person into the controller.
-			PersonEditDialogController controller = loader.getController();
+			SignUpController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			// Show the dialog and wait until the user closes it
 			dialogStage.show();
 
-			return controller.isOkClicked();
+			//return controller.isOkClicked();
 		} catch (IOException e) {
 			e.printStackTrace();
-			return false;
+			//return false;
 		}
 	}
     public void showTSrequestPage() {
