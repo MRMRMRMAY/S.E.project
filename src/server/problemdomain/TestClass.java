@@ -149,16 +149,20 @@ public class TestClass {
 		System.out.println(arr.length);
 		System.out.println(arr[0].length);*/
 		ArrayList<Passenger> passengerData = new ArrayList<Passenger>();
-		
-		passengerData.add(new Passenger("Hans", "Muster"));
-		passengerData.add(new Passenger("Ruth", "Mueller"));
-		passengerData.add(new Passenger("Heinz", "Kurz"));
-		passengerData.add(new Passenger("Cornelia", "Meier"));
-		passengerData.add(new Passenger("Werner", "Meyer"));
-		passengerData.add(new Passenger("Lydia", "Kunz"));
-		passengerData.add(new Passenger("Anna", "Best"));
-		passengerData.add(new Passenger("Stefan", "Meier"));
-		passengerData.add(new Passenger("Martin", "Mueller"));
+
+		passengerData.add(new Passenger("pas1", "1234", "홍길동", "010-6793-6785"));
+		passengerData.add(new Passenger("pas2", "1234", "김길동", "010-3495-7263"));
+		passengerData.add(new Passenger("pas3", "1234", "이길동", "010-2953-9064"));
+		passengerData.add(new Passenger("pas4", "1234", "박길동", "010-4803-7693"));
+		passengerData.add(new Passenger("pas5", "1234", "최길동", "010-0446-2635"));
+//		passengerData.add(new Passenger("Ruth", "Mueller"));
+//		passengerData.add(new Passenger("Heinz", "Kurz"));
+//		passengerData.add(new Passenger("Cornelia", "Meier"));
+//		passengerData.add(new Passenger("Werner", "Meyer"));
+//		passengerData.add(new Passenger("Lydia", "Kunz"));
+//		passengerData.add(new Passenger("Anna", "Best"));
+//		passengerData.add(new Passenger("Stefan", "Meier"));
+//		passengerData.add(new Passenger("Martin", "Mueller"));
 		
 		ArrayList<Taxi> taxilist = new ArrayList<Taxi>();
 		Taxi taxi, taxi1, taxi2, taxi3, taxi4;

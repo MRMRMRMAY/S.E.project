@@ -12,6 +12,13 @@ import java.io.Serializable;
 public class Member implements Serializable, Cloneable {
 	private String id; // id
 	private String pw; // password
+	
+	public Member() {}
+	public Member(String id, String pw)
+	{
+		this.id = id;
+		this.pw = pw;
+	}
 
 	public String getId() {
 		return id;

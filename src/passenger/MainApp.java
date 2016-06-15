@@ -2,12 +2,14 @@ package passenger;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import server.problemdomain.manager.model.*;
 import server.problemdomain.manager.view.*;
 import server.problemdomain.member.Passenger;
 import server.problemdomain.member.Taxi;
 import javafx.application.Application;
+import javafx.application.Application.Parameters;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.stage.Modality;
@@ -15,6 +17,8 @@ import javafx.stage.Stage;
 import passenger.controller.MatchingInfoController;
 import passenger.controller.SignInController;
 import passenger.controller.TSRequestController;
+import physicalarchitecture.ClientConsole;
+import physicalarchitecture.client.ChatClient;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXMLLoader;
@@ -25,16 +29,27 @@ public class MainApp extends Application {
 	
 	private ArrayList<Passenger> passengerData = new ArrayList<Passenger>();
 	private ArrayList<Taxi> serverTaxiData = new ArrayList<Taxi>();
+	
+	private ChatClient client;
 	@Override
 	public void start(Stage primaryStage) {
-		this.primaryStage = primaryStage;
-		primaryStage.setTitle("Sharing App");
+//		this.primaryStage = primaryStage;
+//		primaryStage.setTitle("Sharing App");
 	//	initRootLay();
 		//showMainview();
 		showLoginStage();
 	}
 	public MainApp(){
-	
+		Parameters param = getParameters();
+//		List<String> str = param.getRaw();
+		ClientConsole cc = new ClientConsole();
+		try {
+//			client = new ChatClient(str.get(0), str.get(1), this);
+			client = new ChatClient("localhost", 6666, cc);
+		} catch (IOException exception) {
+			System.out.println("Error: Can't setup connection!" + " Terminating client.");
+			System.exit(1);
+		}	
 	}
 	
 	public void initRootLay(){
@@ -182,5 +197,8 @@ public class MainApp extends Application {
    
 	public static void main(String[] args) {
 		launch(args);
+	}
+	public ChatClient getClient() {
+		return client;
 	}
 }

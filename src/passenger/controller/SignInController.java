@@ -30,17 +30,15 @@ public class SignInController {
 	ReadTestFile read;
 //	private userLogin user = new userLogin();
 	public SignInController() {
-		
-		read = new ReadTestFile();
-		
-		loginInformation = read.getLoginInformation();
-		for(LoginInformation item : loginInformation){
-			System.out.printf("%s %s %s %s \n", item.getId(), item.getPassword(), item.getName(),item.getpassenger_contact());
-		}
+//		read = new ReadTestFile();
+//		
+//		loginInformation = read.getLoginInformation();
+//		for(LoginInformation item : loginInformation){
+//			System.out.printf("%s %s %s %s \n", item.getId(), item.getPassword(), item.getName(),item.getpassenger_contact());
+//		}
 		/*loginInformation.add(new LoginInformation("moment","123456"));
 		loginInformation.add(new LoginInformation("aaaaa","aaaaa"));
 		loginInformation.add(new LoginInformation("mmmmm","123"));*/
-		
 	}
 	@FXML
 	public void initiallize(){
@@ -79,12 +77,17 @@ public class SignInController {
 		}
 	}
 	private boolean isInputvalib(){
-		for(LoginInformation item : loginInformation){
-			if(item.getId().equals(id.getText())&&item.getPassword().equals(password.getText())){
-				return true;
-			}
-		}
+//		for(LoginInformation item : loginInformation){
+//			if(item.getId().equals(id.getText())&&item.getPassword().equals(password.getText())){
+//				return true;
+//			}
+//		}
 		//return "moment".equals(id.getText())&&"123456".equals(password.getText());
+//		return false;
+		if ( main.getClient().sendLogin(id.getText(), password.getText()))
+		{
+			return true;
+		}
 		return false;
 	}
 	public void setMainApp(MainApp mainApp) {

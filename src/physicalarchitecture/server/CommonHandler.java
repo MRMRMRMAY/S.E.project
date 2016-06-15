@@ -73,8 +73,10 @@ public class CommonHandler {
 		System.out.println("id, pw  "  + id + "  "+ pw);
 		System.out.println(server.getPassengerList().size());
 		for (Passenger passenger : server.getPassengerList()) {
-			System.out.println("111");
-			if (passenger.getId() == id && passenger.getPw() == pw) {
+			System.out.println(passenger.getId() + " " + passenger.getPw());
+			
+//			if (passenger.getId() == id.equals(anObject) && passenger.getPw() == pw) {
+			if (id.equals(passenger.getId()) && pw.equals(passenger.getPw()) ) {
 				isSuccess = true;
 				client.setInfo("type", MemberType.PASSENGER); // set member type
 				client.setInfo("id", id); // set id
